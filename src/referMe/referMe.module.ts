@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { ReferMeRoutingModule } from './referMe-routing.module';
 import { ReferMeComponent } from './referMe.component';
+import { SafePipe } from './shared/pipes/safe.pipe';
 
 @NgModule({
   declarations: [
-    ReferMeComponent
+    ReferMeComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
