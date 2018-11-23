@@ -11,4 +11,11 @@ import { LoginComponent } from './login.component';
     LoginRoutingModule
   ]
 })
-export class LoginModule { }
+export class LoginModule {
+  /**
+   *
+   */
+  constructor() {
+    alert('Inside:LoginModule');
+  }
+}

@@ -14,4 +14,11 @@ import { ReferralFilterComponent } from './referral-filter/referral-filter.compo
     HomeRoutingModule
   ]
 })
-export class HomeModule { }
+export class HomeModule {
+  /**
+   *
+   */
+  constructor() {
+    alert('Inside:HomeModule');
+  }
+}
