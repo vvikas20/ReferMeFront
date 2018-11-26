@@ -3,18 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { ReferMeRoutingModule } from './referMe-routing.module';
 import { ReferMeComponent } from './referMe.component';
-import { SafePipe } from './shared/pipes/safe.pipe';
-import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    ReferMeComponent,
-    SafePipe,
-    PageNotFoundComponent
+    ReferMeComponent
   ],
   imports: [
     BrowserModule,
+    CoreModule,
+    SharedModule,
     ReferMeRoutingModule
   ],
   providers: [],
@@ -25,6 +25,6 @@ export class ReferMeModule {
    *
    */
   constructor() {
-    alert('Inside:ReferMeModule');
+    
   }
 }
