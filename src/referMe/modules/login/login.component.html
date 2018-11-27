@@ -1,22 +1,64 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-md-6 col-sm-12 col-xs-12">
-            <h2>Refer Me</h2>
-        </div>
-        <div class="col-lg-6 col-md-6 col-md-6 col-sm-12 col-xs-12">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-                    <span class="icon-class"><i class="fa fa-envelope-square fa-lg"></i></span>
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-                    <span class="icon-class"><i class="fa fa-key fa-lg"></i></span>
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
-        </div>
+<!--Header start-->
+<div class="container-fluid header">
+    <a href="/" class="logo">ReferMe community</a>
+    <div class="header-right">
+        <form class="form-inline">
+            <label for="email">Email: </label>
+            <input type="email" class="form-control" id="email" name="email">
+            <label for="pwd">Password: </label>
+            <input type="password" class="form-control" id="pwd" name="pwd">
+            <button type="button" class="btn btn-warning">Login</button>
+        </form>
     </div>
 </div>
+<!--Header end-->
+
+<!--Body start-->
+<div class="container-fluid body">
+    <div class="row">
+        <!--Left Section-->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="card-body">
+                <p class="card-text">
+                    This group is made of thousands of experienced and novice professionals.
+                    Our mission is to share job referrals.This is where we unite online to help each other with job
+                    referrals and develope a network.
+                    You SHOULD use this group to:
+                    <br>1. Post job referrals
+                    <br>2. To ask for job referrals
+                </p>
+            </div>
+            <div>
+                <img class="center" src="assets/images/ReferMeHomePage.png" alt="Refere Me">
+            </div>
+        </div>
+        <!--Left Section-->
+        <!--Right Section-->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="card-body">
+                <div class="container">
+                    <h3>Create an account</h3>
+                    <form>
+                        <input type="text" class="form-control col-8" placeholder="Enter first name" name="firstname">
+                        <input type="text" class="form-control col-8" placeholder="Enter last name" name="lastname">
+                        <input type="email" class="form-control col-8" placeholder="Enter email" name="email">
+                        <input type="text" class="form-control col-8" placeholder="Enter mobile" name="mobile">
+                        <input type="password" class="form-control col-8" placeholder="Enter password" name="pwd">
+                        <input type="password" class="form-control col-8" placeholder="Retype password" name="repwd">
+                        <label class="radio-inline"><input type="radio" name="optradio" checked>Male </label>
+                        <label class="radio-inline"><input type="radio" name="optradio">Female</label>
+                        <br>
+                        <button type="button" class="btn btn-warning">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Right Section-->
+    </div>
+</div>
+<!--Body end-->
+
+<!--Footer start-->
+<div class="container-fluid login-footer">
+</div>
+<!--Footer end-->
