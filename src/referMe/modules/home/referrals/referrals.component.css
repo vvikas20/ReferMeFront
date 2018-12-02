@@ -1,0 +1,10 @@
+.content-wrapper {
+    background-color: #ecf0f5;
+}
+
+@media (min-width: 768px){
+    .content-wrapper {
+    margin-left: 50px !important;
+    z-index: 840;
+    }
+}

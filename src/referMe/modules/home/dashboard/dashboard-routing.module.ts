@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { DashboardComponent } from './dashboard.component';
 import { PageNotFoundComponent } from 'src/referMe/shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'referrals', pathMatch: 'full' },
-  { path: 'referrals', loadChildren: './referrals/referrals.module#ReferralsModule' },
-  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+  { path: '', component: DashboardComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -14,4 +12,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule { }
+export class DashboardRoutingModule { }
