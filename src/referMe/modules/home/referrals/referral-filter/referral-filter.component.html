@@ -3,17 +3,13 @@
     Filters
   </div>
   <div class="card-body">
-    <div class="my-3">
-      <span class="ui-float-label">
-        <input id="filter-sdc" type="text" size="30" pInputText>
-        <label for="filter-sdc">Skills,Designation,Company</label>
-      </span>
+    <div class="md-form">
+      <input mdbInputDirective type="text" id="sdc" class="form-control">
+      <label for="sdc" class="">Skills,Designation,Company</label>
     </div>
-    <div class="my-3">
-      <span class="ui-float-label">
-        <input id="filter-location" type="text" size="30" pInputText>
-        <label for="filter-location">Location</label>
-      </span>
+    <div class="md-form">
+      <input mdbInputDirective type="text" id="loc" class="form-control">
+      <label for="loc" class="">Location</label>
     </div>
     <div class="my-3">
       <p-dropdown [options]="experience" [(ngModel)]="selectedExperience" [showClear]="true"></p-dropdown>
@@ -22,6 +18,5 @@
       <p-dropdown [options]="salary" [(ngModel)]="selectedSalary" [showClear]="true"></p-dropdown>
     </div>
   </div>
-
-  <button type="button" class="btn btn-warning">Search</button>
+  <a mdbBtn color="warning" size="lg" class="waves-light" mdbWavesEffect>Search</a>
 </div>

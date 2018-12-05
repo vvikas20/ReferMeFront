@@ -8,7 +8,9 @@ import { ReferralFilterComponent } from './referral-filter/referral-filter.compo
 import { SharedModule } from 'src/referMe/shared/shared.module';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// MDB Angular Free
+import { ModalModule, WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [ReferralsComponent, ReferralComponent, ReferralFilterComponent],
@@ -18,7 +20,12 @@ import { FormsModule } from '@angular/forms';
     ReferralsRoutingModule,
     InputTextModule,
     DropdownModule,
-    SharedModule
+    SharedModule,
+    WavesModule,
+    ButtonsModule,
+    InputsModule,
+    ModalModule,
+    ReactiveFormsModule
   ]
 })
 export class ReferralsModule { }

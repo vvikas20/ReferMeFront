@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from 'src/referMe/shared/components/page-not-fo
 const routes: Routes = [
   { path: '', redirectTo: 'referrals', pathMatch: 'full' },
   { path: 'referrals', loadChildren: './referrals/referrals.module#ReferralsModule' },
+  { path: 'posts', loadChildren: './posts/posts.module#PostsModule' },
   { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
   { path: '**', component: PageNotFoundComponent }
 ];

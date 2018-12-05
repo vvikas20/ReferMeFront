@@ -5,10 +5,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [SafePipe, FooterComponent, SidebarComponent, HeaderComponent, PageNotFoundComponent],
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   exports: [SafePipe, FooterComponent, SidebarComponent, HeaderComponent, PageNotFoundComponent],
 })
 export class SharedModule { }

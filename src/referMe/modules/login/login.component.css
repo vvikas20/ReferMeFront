@@ -38,7 +38,7 @@
     .header a {
       float: none;
       display: block;
-      text-align: left;
+      /* text-align: left; */
     }
     .header-right {
       float: none;

@@ -3,11 +3,11 @@
     <a href="/" class="logo">ReferMe community</a>
     <div class="header-right">
         <form class="form-inline">
-            <label for="email">Email: </label>
-            <input type="email" class="form-control" id="email" name="email">
-            <label for="pwd">Password: </label>
-            <input type="password" class="form-control" id="pwd" name="pwd">
-            <button type="button" class="btn btn-warning" name="login">Login</button>
+            <label for="lgnemail">Email: </label>
+            <input type="email" class="form-control" id="lgnemail" name="email">
+            <label for="lgnpwd">Password: </label>
+            <input type="password" class="form-control" id="lgnpwd" name="pwd">
+            <a routerLink="/home/posts" mdbBtn color="warning" size="lg" class="waves-light" mdbWavesEffect>Login</a>
         </form>
     </div>
 </div>
@@ -39,22 +39,31 @@
                 <div class="container">
                     <h3>Create an account</h3>
                     <form>
-                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Enter first name"
-                            name="firstname">
-                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Enter last name"
-                            name="lastname">
-                        <input type="email" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Enter email"
-                            name="email">
-                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Enter mobile"
-                            name="mobile">
-                        <input type="password" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Enter password"
-                            name="pwd">
-                        <input type="password" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Retype password"
-                            name="repwd">
-                        <label class="radio-inline"><input type="radio" name="optradio" checked>Male </label>
-                        <label class="radio-inline"><input type="radio" name="optradio">Female</label>
-                        <br>
-                        <button type="button" routerLink="/home" class="btn btn-warning">Submit</button>
+                        <div class="md-form">
+                            <input mdbInputDirective type="text" id="fname" class="form-control">
+                            <label for="fname">First Name</label>
+                        </div>
+                        <div class="md-form">
+                            <input mdbInputDirective type="text" id="lname" class="form-control">
+                            <label for="lname">Last Name</label>
+                        </div>
+                        <div class="md-form">
+                            <input mdbInputDirective type="text" id="email" class="form-control">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="md-form">
+                            <input mdbInputDirective type="text" id="mobile" class="form-control">
+                            <label for="mobile">Mobile</label>
+                        </div>
+                        <div class="md-form">
+                            <input mdbInputDirective type="text" id="pwd" class="form-control">
+                            <label for="pwd">Password</label>
+                        </div>
+                        <div class="md-form">
+                            <input mdbInputDirective type="text" id="repwd" class="form-control">
+                            <label for="repwd">Retype Password</label>
+                        </div>
+                        <a mdbBtn color="warning" size="lg" class="waves-light" mdbWavesEffect>Submit</a>
                     </form>
                 </div>
             </div>
