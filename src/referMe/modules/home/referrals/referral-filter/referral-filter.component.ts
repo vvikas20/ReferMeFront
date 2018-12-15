@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'referMe-referral-filter',
   templateUrl: './referral-filter.component.html',
-  styleUrls: ['./referral-filter.component.css']
+  styleUrls: ['./referral-filter.component.css'],
+  providers: [MessageService]
 })
 export class ReferralFilterComponent implements OnInit {
 
@@ -13,8 +15,9 @@ export class ReferralFilterComponent implements OnInit {
   selectedSalary: any;
   salary: any[];
 
-  constructor() {
+  constructor(private messageService: MessageService) { }
 
+  ngOnInit() {
     this.experience = [
       { label: 'Experience', value: null },
       { label: '1', value: { id: 1, name: '1' } },
@@ -37,7 +40,11 @@ export class ReferralFilterComponent implements OnInit {
     this.selectedSalary = { label: 'Salary', value: null };
   }
 
-  ngOnInit() {
+  notify() {
+    this.messageService.addAll([
+      { severity: 'success', summary: 'Service Message', detail: 'Via MessageService' },
+      { severity: 'info', summary: 'Info Message', detail: 'Via MessageService' }
+    ]);
   }
 
 }

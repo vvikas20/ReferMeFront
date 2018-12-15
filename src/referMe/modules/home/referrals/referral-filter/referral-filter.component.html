@@ -18,5 +18,7 @@
       <p-dropdown [options]="salary" [(ngModel)]="selectedSalary" [showClear]="true"></p-dropdown>
     </div>
   </div>
-  <a mdbBtn color="warning" size="lg" class="waves-light" mdbWavesEffect>Search</a>
+  <a mdbBtn color="warning" size="lg" class="waves-light" (click)="notify()" mdbWavesEffect>Search</a>
 </div>
+
+<p-toast></p-toast>

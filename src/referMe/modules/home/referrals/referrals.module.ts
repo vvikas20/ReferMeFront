@@ -9,6 +9,7 @@ import { SharedModule } from 'src/referMe/shared/shared.module';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ToastModule} from 'primeng/toast';
 // MDB Angular Free
 import { ModalModule, WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md';
 
@@ -25,6 +26,7 @@ import { ModalModule, WavesModule, InputsModule, ButtonsModule } from 'angular-b
     ButtonsModule,
     InputsModule,
     ModalModule,
+    ToastModule,
     ReactiveFormsModule
   ]
 })
