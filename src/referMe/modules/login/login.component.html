@@ -1,13 +1,13 @@
 <!--Header start-->
 <div class="container-fluid header">
-    <a href="/" class="logo">ReferMe community</a>
+    <a href="/" class="logo">{{applicationHeader}}</a>
     <div class="header-right">
         <form class="form-inline">
             <label for="lgnemail">Email: </label>
-            <input type="email" class="form-control" id="lgnemail" name="email">
+            <input type="email" class="form-control" id="lgnemail" name="email" [(ngModel)]="loginDetail.username">
             <label for="lgnpwd">Password: </label>
-            <input type="password" class="form-control" id="lgnpwd" name="pwd">
-            <a routerLink="/home/referrals" mdbBtn color="warning" size="lg" class="waves-light" mdbWavesEffect>Login</a>
+            <input type="password" class="form-control" id="lgnpwd" name="pwd" [(ngModel)]="loginDetail.password">
+            <a mdbBtn color="warning" size="lg" class="waves-light" mdbWavesEffect (click)="login()">Login</a>
         </form>
     </div>
 </div>
@@ -39,18 +39,18 @@
                 <div class="container">
                     <h3>Create an account</h3>
                     <form>
-                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Enter first name"
-                            name="firstname">
-                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Enter last name"
-                            name="lastname">
-                        <input type="email" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Enter email"
-                            name="email">
-                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Enter mobile"
-                            name="mobile">
-                        <input type="password" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Enter password"
-                            name="pwd">
-                        <input type="password" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12" placeholder="Retype password"
-                            name="repwd">
+                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
+                            placeholder="Enter first name" name="firstname">
+                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
+                            placeholder="Enter last name" name="lastname">
+                        <input type="email" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
+                            placeholder="Enter email" name="email">
+                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
+                            placeholder="Enter mobile" name="mobile">
+                        <input type="password" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
+                            placeholder="Enter password" name="pwd">
+                        <input type="password" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
+                            placeholder="Retype password" name="repwd">
                         <label class="radio-inline"><input type="radio" name="optradio" checked>Male </label>
                         <label class="radio-inline"><input type="radio" name="optradio">Female</label>
                         <br>
