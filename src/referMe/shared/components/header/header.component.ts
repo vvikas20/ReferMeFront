@@ -8,7 +8,7 @@ import { AppUser } from 'src/referMe/core/models/app-user.model';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private appUser: AppUser) { }
+  constructor(public appUser: AppUser) { }
 
   ngOnInit() {
   }
