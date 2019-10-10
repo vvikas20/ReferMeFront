@@ -5,6 +5,8 @@ import { AuthenticationService } from 'src/referMe/core/authentication/authentic
 import { Login } from './models/login.model';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { Router } from '@angular/router';
+import { Registration } from './models/registration.model';
+import { UserService } from 'src/referMe/core/helper/user.service';
 
 @Component({
   selector: 'referMe-login',
@@ -15,19 +17,30 @@ export class LoginComponent implements OnInit {
 
 
   applicationHeader: string;
-  loginDetail: Login;
 
-  constructor(private router: Router, private appService: ApplicationService, private authService: AuthenticationService, private appUser: AppUser) { }
+  loginDetail: Login;
+  registrationDetail: Registration;
+
+  loginErrorMessgae: string;
+  registrationErrorMessgae: string;
+  registrationMessage: string;
+
+  constructor(private router: Router, private appService: ApplicationService, private userService: UserService, private authService: AuthenticationService, private appUser: AppUser) { }
 
   ngOnInit() {
 
+    this.loginErrorMessgae = '';
+    this.registrationErrorMessgae = '';
+    this.registrationMessage = '';
     this.applicationHeader = '';
-    this.loginDetail = new Login();
 
-    this.fetchApplicationHeader();
+    this.loginDetail = new Login();
+    this.registrationDetail = new Registration();
+
+    this.fetchApplicationDetails();
   }
 
-  fetchApplicationHeader() {
+  fetchApplicationDetails() {
     this.appService.getApplicationDetail().subscribe(
       next => {
         this.applicationHeader = next.heading;
@@ -39,24 +52,74 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-    this.authService.validateUser(this.loginDetail.username, this.loginDetail.password).subscribe(
+    if (this.loginDetail.email == '') {
+      this.loginErrorMessgae = 'Email is required.';
+      return;
+    }
+    else if (this.loginDetail.password == '') {
+      this.loginErrorMessgae = 'Password is required.';
+      return;
+    }
+
+    this.authService.validateUser(this.loginDetail.email, this.loginDetail.password).subscribe(
       next => {
         if (next != null) {
+
+          this.appUser.userID = next.UserID;
           this.appUser.firstName = next.FirstName;
+          this.appUser.middleName = next.MiddleName;
           this.appUser.lastName = next.LastName;
-          this.appUser.userName = next.UserName;
-          this.appUser.email = next.Email;
+          this.appUser.emailAddress = next.EmailAddress;
+          this.appUser.mobile = next.Mobile;
 
           //redirect to home page
           this.router.navigate(['/home/referrals']);
         }
-        else {
-          alert('Wrong Credentials');
-        }
       },
       error => {
+        this.loginErrorMessgae = error.error.message;
       },
       () => { });
+  }
+
+  register() {
+    if (this.registrationDetail.firstName == '') {
+      this.registrationErrorMessgae = 'First name is required.';
+      return;
+    }
+    else if (this.registrationDetail.emailAddress == '') {
+      this.registrationErrorMessgae = 'Email address is required.';
+      return;
+    }
+    else if (!this.validateEmail(this.registrationDetail.emailAddress)) {
+      this.registrationErrorMessgae = 'Enter a valid email address';
+      return;
+    }
+    else if (this.registrationDetail.password == '') {
+      this.registrationErrorMessgae = 'Password is required.';
+      return;
+    }
+    else if (this.registrationDetail.password != this.registrationDetail.repassword) {
+      this.registrationErrorMessgae = 'Password missmatch.';
+      return;
+    }
+
+    this.userService.addUser(this.registrationDetail).subscribe(
+      next => {
+        this.registrationErrorMessgae = '';
+        this.registrationMessage = 'Account created successfully.'
+      },
+      error => {
+        this.registrationErrorMessgae = error.error.message;
+      },
+      () => { });
+  }
+
+  validateEmail(input): boolean {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)) {
+      return true;
+    }
+    return false;
   }
 
 }

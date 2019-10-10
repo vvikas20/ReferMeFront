@@ -7,12 +7,13 @@ import { ApplicationService } from './helper/application.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './authentication/authentication.service';
 import { AppUser } from './models/app-user.model';
+import { UserService } from './helper/user.service';
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, HttpClientModule],
   exports: [],
-  providers: [HttpService, LoggerService, ApplicationService, AuthenticationService, AppUser]
+  providers: [HttpService, LoggerService, ApplicationService, UserService, AuthenticationService, AppUser]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    // Ensure that CoreModule is only loaded into AppModule
 

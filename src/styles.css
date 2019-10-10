@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+.errorLogin{
+    display: block;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 3px;
+    background: #fff;
+    color: #ca1a32;
+    line-height: 2;
+    border: 1px solid #ca1a32;
+}
+
+.errorLogin .icon-scope{
+    float: left;
+    margin: -1px 6px 0 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    text-align: center;
+}
+
+.successRegistration{
+    display: block;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 3px;
+    background: #fff;
+    color: #37e100;
+    line-height: 2;
+    border: 1px solid #37e100;
+}
+
+.successRegistration .icon-scope{
+    float: left;
+    margin: -1px 6px 0 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    text-align: center;
+}
+
+.action-icon {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid #e1e1e1;
+    padding: 8px;
+    margin: 0 2px;
+    position: relative;
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    transition: .5s all ease;
+}
+.action-icon svg {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    fill: #405364;
+}
