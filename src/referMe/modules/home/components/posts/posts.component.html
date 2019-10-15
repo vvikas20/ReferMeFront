@@ -1,0 +1,63 @@
+<!--Body Start-->
+<div class="container-fluid row">
+  <!--Filters-->
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <referMe-my-post-filter></referMe-my-post-filter>
+  </div>
+  <!--Filters-->
+  <!--Referrals-->
+  <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+    <a mdbBtn color="warning" size="md" class="waves-light" (click)="openModal()" mdbWavesEffect>Post New Job</a>
+    <ng-container *ngFor="let myPost of myPosts">
+      <referMe-my-post [postDetail]="myPost" (notifyPostDelete)="fetchMyPosts()"></referMe-my-post>
+    </ng-container>
+  </div>
+</div>
+<!--Body End-->
+
+<!--Post Job Modal Start-->
+<div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Post Job Opening</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form">
+          <input mdbInputDirective type="text" class="form-control" [(ngModel)]="postDetail.company">
+          <label for="company" class="">Company</label>
+        </div>
+        <div class="md-form">
+          <input mdbInputDirective type="text" class="form-control" [(ngModel)]="postDetail.position">
+          <label for="jobtitle" class="">Position</label>
+        </div>
+        <div class="md-form">
+          <input mdbInputDirective type="text" class="form-control" [(ngModel)]="postDetail.location">
+          <label for="location" class="">Location</label>
+        </div>
+        <div class="row">
+          <p-dropdown class="col-6" [options]="experienceOptions" [(ngModel)]="postDetail.minExp">
+          </p-dropdown>
+          <p-dropdown class="col-6" [options]="experienceOptions" [(ngModel)]="postDetail.maxExp">
+          </p-dropdown>
+        </div>
+        <div class="md-form">
+          <textarea mdbInputDirective type="text" class="md-textarea form-control" rows="3"
+            [(ngModel)]="postDetail.description"></textarea>
+          <label for="jobdesc" class="">Job Description</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button mdbBtn color="warning" class="waves-light" mdbWavesEffect (click)="postJob()">Post
+          <i class="fa fa-paper-plane-o ml-1"></i>
+        </button>
+        <button mdbBtn color="default" class="waves-light" mdbWavesEffect (click)="frame.hide()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Post Job Modal End-->

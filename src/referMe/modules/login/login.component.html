@@ -7,7 +7,7 @@
                 [(ngModel)]="loginDetail.email" (ngModelChange)="loginErrorMessgae=''">
             <input type="password" class="form-control m-1" placeholder="Password" name="password"
                 [(ngModel)]="loginDetail.password" (ngModelChange)="loginErrorMessgae=''">
-            <a mdbBtn color="warning" size="lg" class="waves-light" mdbWavesEffect (click)="login()">Login</a>
+            <a mdbBtn color="warning" size="md" class="waves-light" mdbWavesEffect (click)="login()">Login</a>
         </form>
         <span class="errorLogin" *ngIf="loginErrorMessgae!=''">
             {{loginErrorMessgae}}
@@ -74,7 +74,7 @@
                             placeholder="Retype password" name="repassword" [(ngModel)]="registrationDetail.repassword"
                             (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
                         <br>
-                        <a mdbBtn color="warning" size="lg" class="waves-light" mdbWavesEffect
+                        <a mdbBtn color="warning" size="md" class="waves-light" mdbWavesEffect
                             (click)="register()">Submit</a>
                     </form>
                     <span class="errorLogin" *ngIf="registrationErrorMessgae!=''">

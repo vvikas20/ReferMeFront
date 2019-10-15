@@ -13,4 +13,9 @@ export class ApiEndPoints {
     static readonly validateUser: string = `${ApiEndPoints.user}/validate`;
     static readonly allUser: string = `${ApiEndPoints.user}/all`;
     static readonly deleteUser: string = `${ApiEndPoints.user}/delete`;
+
+    static readonly jobpost: string = `${ApiEndPoints.baseUrl}/jobpost`;
+    static readonly createpost: string = `${ApiEndPoints.jobpost}/add`;
+    static readonly allpost: string = `${ApiEndPoints.jobpost}/all`;
+    static readonly deletepost: string = `${ApiEndPoints.jobpost}/delete`;
 }

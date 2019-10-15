@@ -1,0 +1,73 @@
+<!--Job Referral Start-->
+<div class="card my-1">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+        <h5 class="card-title">
+          <span>{{userPostDetail.postDetail.company}}</span>
+          <span class="badge badge-pill badge-warning float-right">Add to list</span>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{userPostDetail.postDetail.position}}</h6>
+        <p class="card-text">
+          <b>Experience: {{userPostDetail.postDetail.minExp}} to {{userPostDetail.postDetail.maxExp}}</b>
+          <br>
+          {{userPostDetail.postDetail.description}}
+        </p>
+        <div>
+          <span class="text-muted">Posted By:</span>
+          <hr>
+          <div>
+            <span>{{userPostDetail.userDetail.firstName}} {{userPostDetail.userDetail.lastName}}</span>
+            <a class="text-warning float-right" data-toggle="modal" (click)="requestReferral()">Request
+              Referral</a><br>
+            <span>Manager at Adobe , Noida</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Job Referral End-->
+
+  <!--Request Referral Modal Start-->
+  <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Request Referral</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <i class="fa fa-envelope prefix grey-text"></i>
+            <input type="email" id="form29" [(ngModel)]="to" class="form-control validate" mdbInputDirective
+              [formControl]="contactFormModalEmail">
+            <label data-error="wrong" data-success="right" for="form29">To</label>
+          </div>
+
+          <div class="md-form mb-5">
+            <i class="fa fa-tag prefix grey-text"></i>
+            <input type="text" [(ngModel)]="subject" id="form32" class="form-control validate" mdbInputDirective
+              [formControl]="contactFormModalSubject">
+            <label data-error="wrong" data-success="right" for="form32">Subject</label>
+          </div>
+
+          <div class="md-form">
+            <i class="fa fa-pencil prefix grey-text"></i>
+            <textarea type="text" [(ngModel)]="message" id="form8" class="md-textarea form-control" rows="3"
+              mdbInputDirective [formControl]="contactFormModalMessage"></textarea>
+            <label data-error="wrong" data-success="right" for="form8">Message</label>
+          </div>
+
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button mdbBtn color="warning" class="waves-light" mdbWavesEffect>Send
+            <i class="fa fa-paper-plane-o ml-1"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Request Referral Modal End-->

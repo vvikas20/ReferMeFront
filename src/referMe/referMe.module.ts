@@ -1,16 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ReferMeRoutingModule } from './referMe-routing.module';
 import { ReferMeComponent } from './referMe.component';
 import { CoreModule } from './core/core.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
-    ReferMeComponent
+    ReferMeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -22,11 +24,4 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
   providers: [],
   bootstrap: [ReferMeComponent]
 })
-export class ReferMeModule {
-  /**
-   *
-   */
-  constructor() {
-
-  }
-}
+export class ReferMeModule { }

@@ -16,9 +16,16 @@ export class AuthenticationService {
     const params: HttpParams = new HttpParams().set('email', email).set('password', password);
 
     return this.httpService.Post<any>(ApiEndPoints.validateUser, {}, { headers: reqHeader, params: params }).pipe(map(data => {
+      if (data.EmailAddress != '') {
+        localStorage.setItem('jwtkey', JSON.stringify(data));
+      }
       return data;
     }));
 
+  }
+
+  logoutUser() {
+    localStorage.removeItem('jwtkey');
   }
 
 }

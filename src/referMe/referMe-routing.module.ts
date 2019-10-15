@@ -1,25 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule' },
   { path: 'login', loadChildren: './modules/login/login.module#LoginModule' },
   { path: 'home', loadChildren: './modules/home/home.module#HomeModule' },
-  { path: '**', redirectTo: 'login' }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class ReferMeRoutingModule {
-  /**
-  *
-  */
-  constructor() {
-
-  }
-}
+export class ReferMeRoutingModule { }

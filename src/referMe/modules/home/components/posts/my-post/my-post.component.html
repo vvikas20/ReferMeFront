@@ -1,0 +1,22 @@
+<!--Job Referral Start-->
+<div class="card m-1">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+        <h5 class="card-title">
+          <span>{{postDetail.company}}</span>
+        </h5>
+        <button class="float-right" mdbBtn type="button" size="sm" gradient="purple" outline="true" mdbWavesEffect
+          (click)="deletePost(postDetail.postID)">Delete</button>
+        <h6 class="card-subtitle mb-2 text-muted">{{postDetail.position}}</h6>
+        <p class="card-text">
+          {{postDetail.description}}
+        </p>
+        <div>
+          <span class="text-muted">Referral request received :</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Job Referral End-->

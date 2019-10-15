@@ -2,18 +2,23 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';
 import { HttpService } from './http/http.service';
-import { LoggerService } from './helper/logger.service';
-import { ApplicationService } from './helper/application.service';
+import { LoggerService } from './services/logger.service';
+import { ApplicationService } from './services/application.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './authentication/authentication.service';
 import { AppUser } from './models/app-user.model';
-import { UserService } from './helper/user.service';
+import { UserService } from './services/user.service';
+import { AdminGuard } from './guards/admin.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { NoAuthGuard } from './guards/no-auth.guard';
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, HttpClientModule],
   exports: [],
-  providers: [HttpService, LoggerService, ApplicationService, UserService, AuthenticationService, AppUser]
+  providers: [
+    AdminGuard,AuthGuard,NoAuthGuard,
+    HttpService, LoggerService, ApplicationService, UserService, AuthenticationService, AppUser]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    // Ensure that CoreModule is only loaded into AppModule
 

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ApplicationService } from 'src/referMe/core/helper/application.service';
+import { ApplicationService } from 'src/referMe/core/services/application.service';
 import { AuthenticationService } from 'src/referMe/core/authentication/authentication.service';
 import { Login } from './models/login.model';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { Router } from '@angular/router';
 import { Registration } from './models/registration.model';
-import { UserService } from 'src/referMe/core/helper/user.service';
+import { UserService } from 'src/referMe/core/services/user.service';
 
 @Component({
   selector: 'referMe-login',
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
           this.appUser.mobile = next.Mobile;
 
           //redirect to home page
-          this.router.navigate(['/home/referrals']);
+          this.router.navigateByUrl('home');
         }
       },
       error => {
