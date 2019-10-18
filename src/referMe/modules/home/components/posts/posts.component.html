@@ -1,17 +1,9 @@
 <!--Body Start-->
-<div class="container-fluid row">
-  <!--Filters-->
-  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-    <referMe-my-post-filter></referMe-my-post-filter>
-  </div>
-  <!--Filters-->
-  <!--Referrals-->
-  <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-    <a mdbBtn color="warning" size="md" class="waves-light" (click)="openModal()" mdbWavesEffect>Post New Job</a>
-    <ng-container *ngFor="let myPost of myPosts">
-      <referMe-my-post [postDetail]="myPost" (notifyPostDelete)="fetchMyPosts()"></referMe-my-post>
-    </ng-container>
-  </div>
+<div class="container-fluid">
+  <a mdbBtn color="warning" size="md" class="waves-light" (click)="openModal()" mdbWavesEffect>Post New Job</a>
+  <ng-container *ngFor="let myPost of myPosts">
+    <referMe-my-post [postDetail]="myPost" (notifyPostDelete)="fetchMyPosts()"></referMe-my-post>
+  </ng-container>
 </div>
 <!--Body End-->
 

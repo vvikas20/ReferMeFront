@@ -28,12 +28,16 @@ export class JobComponent implements OnInit {
 
   }
 
+  ngOnChange($event) {
+    console.log($event)
+  }
+
   requestReferral(): void {
 
     this.to = this.userPostDetail.userDetail.emailAddress;
     this.subject = `Referral Request for ${this.userPostDetail.postDetail.position} at ${this.userPostDetail.postDetail.company}`;
-    this.message = 
-`I am interested in applying for ${this.userPostDetail.postDetail.position} at ${this.userPostDetail.postDetail.company}
+    this.message =
+      `I am interested in applying for ${this.userPostDetail.postDetail.position} at ${this.userPostDetail.postDetail.company}
 Thanks,
 ${this.appUser.firstName} ${this.appUser.lastName}
 ${this.appUser.emailAddress}

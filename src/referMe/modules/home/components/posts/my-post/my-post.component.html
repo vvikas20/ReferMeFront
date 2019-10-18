@@ -1,22 +1,17 @@
-<!--Job Referral Start-->
-<div class="card m-1">
+<div class="card border-danger mb-3">
   <div class="card-body">
-    <div class="row">
-      <div class="col-12">
-        <h5 class="card-title">
-          <span>{{postDetail.company}}</span>
-        </h5>
-        <button class="float-right" mdbBtn type="button" size="sm" gradient="purple" outline="true" mdbWavesEffect
-          (click)="deletePost(postDetail.postID)">Delete</button>
-        <h6 class="card-subtitle mb-2 text-muted">{{postDetail.position}}</h6>
-        <p class="card-text">
-          {{postDetail.description}}
-        </p>
-        <div>
-          <span class="text-muted">Referral request received :</span>
-        </div>
-      </div>
-    </div>
+    <h5 class="card-title">
+      <span>{{postDetail.position}}</span>
+      <button type="button" class="btn btn-sm btn-outline-danger waves-effect float-right"
+        (click)="deletePost(postDetail.postID)">Delete</button>
+    </h5>
+    <p class="card-text">{{postDetail.company}}</p>
+    <p class="card-text"><i class="fa fa-briefcase" aria-hidden="true"></i> {{postDetail.minExp}}-{{postDetail.maxExp}}
+      Years</p>
+    <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> {{postDetail.location}}</p>
+    <p class="card-text"><i class="fa fa-file-text" aria-hidden="true"></i> {{postDetail.description}}</p>
+    <h6>Referral Requests</h6>
+    <blockquote class="blockquote mb-0" style="font-size: initial !important;">
+      User1 Software Engineer in Company1 Pvt Ltd.
+    </blockquote>
   </div>
-</div>
-<!--Job Referral End-->

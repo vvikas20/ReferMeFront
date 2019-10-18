@@ -3,6 +3,8 @@ import { PostDetail } from '../../models/user-post.model';
 import { JobpostService } from '../../services/jobpost.service';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { ModalDirective } from 'angular-bootstrap-md';
+import { AlertService } from 'src/referMe/core/helper/alert.service';
+
 
 @Component({
   selector: 'referMe-posts',
@@ -18,7 +20,7 @@ export class PostsComponent implements OnInit {
 
   experienceOptions: { label: string; value: number }[];
 
-  constructor(private appUser: AppUser, private jobpostService: JobpostService) { }
+  constructor(private alertService: AlertService, private appUser: AppUser, private jobpostService: JobpostService) { }
 
   ngOnInit() {
     this.postDetail = new PostDetail();
@@ -65,6 +67,7 @@ export class PostsComponent implements OnInit {
   postJob() {
     this.jobpostService.createPost(this.postDetail).subscribe(
       next => {
+        this.alertService.success('Succes', 'Post created successfully');
         this.createPostModal.hide();
         this.fetchMyPosts();
       },
@@ -76,8 +79,8 @@ export class PostsComponent implements OnInit {
 
   openModal() {
     this.postDetail = new PostDetail();
-    this.postDetail.userID=this.appUser.userID;
-    this.postDetail.contact=this.appUser.mobile;
+    this.postDetail.userID = this.appUser.userID;
+    this.postDetail.contact = this.appUser.mobile;
     this.createPostModal.show();
   }
 }

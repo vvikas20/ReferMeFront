@@ -20,7 +20,7 @@ import { JobFilterComponent } from './components/jobs/job-filter/job-filter.comp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import { ChartModule } from 'primeng/chart';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { WavesModule, ButtonsModule, InputsModule, ModalModule, CardsFreeModule } from 'angular-bootstrap-md';
 import { MyPostComponent } from './components/posts/my-post/my-post.component';
 import { MyPostFilterComponent } from './components/posts/my-post-filter/my-post-filter.component';
@@ -34,7 +34,7 @@ import { JobpostService } from './services/jobpost.service';
     FormsModule,
     InputTextModule,
     DropdownModule,
-    ChartModule,
+    VirtualScrollerModule,
     SharedModule,
     CardsFreeModule,
     WavesModule,
