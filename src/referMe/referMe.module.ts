@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReferMeRoutingModule } from './referMe-routing.module';
 import { ReferMeComponent } from './referMe.component';
 import { CoreModule } from './core/core.module';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
@@ -18,8 +17,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BrowserModule,
     ReferMeRoutingModule,
     CoreModule,
-    BrowserAnimationsModule,
-    MDBBootstrapModule.forRoot()
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [ReferMeComponent]

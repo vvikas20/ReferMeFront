@@ -1,17 +1,18 @@
 <!--Body Start-->
-<div class="container-fluid">
-  <!--Filters-->
-  <div class="row">
-    <div class="col col-lg-3 col-md-3 col-sm-12 sticky">
-      <referMe-job-filter></referMe-job-filter>
-    </div>
-    <!--Filters-->
-    <!--Referrals-->
-    <div class="col col-lg-9 col-md-9 col-sm-12">
-      <ng-container *ngFor="let userPostDetail of userPostDetails">
-        <referMe-job [userPostDetail]="userPostDetail"></referMe-job>
-      </ng-container>
+<section class="container-fluid">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-2">
+        <referMe-job-filter></referMe-job-filter>
+      </div>
+      <!--Filters-->
+      <!--Referrals-->
+      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <ng-container *ngFor="let userPostDetail of userPostDetails">
+          <referMe-job [userPostDetail]="userPostDetail"></referMe-job>
+        </ng-container>
+      </div>
     </div>
   </div>
-</div>
+</section>
 <!--Body End-->

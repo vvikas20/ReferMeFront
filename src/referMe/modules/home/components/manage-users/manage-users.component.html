@@ -1,4 +1,4 @@
-<div class="container">
+<section class="container">
   <p-table [columns]="cols" [value]="users" [paginator]="true" [rows]="10" [responsive]="true" [autoLayout]="true">
     <ng-template pTemplate="header" let-columns>
       <tr>
@@ -18,11 +18,10 @@
           {{rowData[col.field]}}
         </td>
         <td>
-          <button mdbBtn type="button" size="sm" gradient="peach" mdbWavesEffect>Edit</button>
-          <button mdbBtn type="button" size="sm" gradient="purple" outline="true" mdbWavesEffect
-            (click)="deleteUser(rowData['UserID'])">Delete</button>
+          <button type="button">Edit</button>
+          <button type="button" (click)="deleteUser(rowData['UserID'])">Delete</button>
         </td>
       </tr>
     </ng-template>
   </p-table>
-</div>
+</section>

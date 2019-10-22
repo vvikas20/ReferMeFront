@@ -17,24 +17,22 @@ export class JobFilterComponent implements OnInit {
 
   ngOnInit() {
     this.experience = [
-      { label: 'Experience', value: null },
-      { label: '1', value: { id: 1, name: '1' } },
-      { label: '2', value: { id: 2, name: '2' } },
-      { label: '3', value: { id: 3, name: '3' } },
-      { label: '4', value: { id: 4, name: '4' } },
-      { label: '5', value: { id: 5, name: '5' } }
+      { label: '1', value: '1' },
+      { label: '2', value: '2' },
+      { label: '3', value: '3' },
+      { label: '4', value: '4' },
+      { label: '5', value: '5' }
     ];
 
     this.salary = [
-      { label: 'Salary', value: null },
-      { label: '1', value: { id: 1, name: '1' } },
-      { label: '2', value: { id: 2, name: '2' } },
-      { label: '3', value: { id: 3, name: '3' } },
-      { label: '4', value: { id: 4, name: '4' } },
-      { label: '5', value: { id: 5, name: '5' } }
+      { label: '1', value: '1' },
+      { label: '2', value: '2' },
+      { label: '3', value: '3' },
+      { label: '4', value: '4' },
+      { label: '5', value: '5' }
     ];
 
-    this.selectedExperience = { label: 'Experience', value: null };
-    this.selectedSalary = { label: 'Salary', value: null };
+    this.selectedExperience = { label: '1', value: '1' };
+    this.selectedSalary = { label: '1', value: '1' };
   }
 }

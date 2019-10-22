@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
-import { WavesModule, ButtonsModule, InputsModule, ModalModule, CardsFreeModule } from 'angular-bootstrap-md';
+import {SidebarModule} from 'primeng/sidebar';
 import { MyPostComponent } from './components/posts/my-post/my-post.component';
 import { MyPostFilterComponent } from './components/posts/my-post-filter/my-post-filter.component';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
@@ -36,15 +36,11 @@ import { JobpostService } from './services/jobpost.service';
     DropdownModule,
     VirtualScrollerModule,
     SharedModule,
-    CardsFreeModule,
-    WavesModule,
-    ButtonsModule,
-    InputsModule,
-    ModalModule,
     ReactiveFormsModule,
     TableModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    SidebarModule
   ],
   providers: [JobpostService]
 })

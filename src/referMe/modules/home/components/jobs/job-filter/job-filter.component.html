@@ -1,15 +1,15 @@
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Job Filters</h5>
-    <div class="md-form">
-      <input mdbInputDirective type="text" id="sdc" class="form-control">
-      <label for="sdc" class="">Skills,Designation,Company</label>
+<p-card header="Filter">
+  <form>
+    <div class="form-group">
+      <label for="skillsdescriptioncompany">Skills,Designation,Company</label>
+      <input type="text" class="form-control" id="skillsdescriptioncompany" placeholder="">
     </div>
-    <div class="md-form">
-      <input mdbInputDirective type="text" id="loc" class="form-control">
-      <label for="loc" class="">Location</label>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" class="form-control" id="location" placeholder="">
     </div>
-    <div class="my-3">
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Experience</label>
       <div class="ui-grid ui-grid-responsive ui-fluid">
         <div class="ui-grid-row">
           <div class="ui-grid-col-12">
@@ -19,7 +19,8 @@
         </div>
       </div>
     </div>
-    <div class="my-3">
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Salary</label>
       <div class="ui-grid ui-grid-responsive ui-fluid">
         <div class="ui-grid-row">
           <div class="ui-grid-col-12">
@@ -29,6 +30,11 @@
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-warning btn-md btn-block">Search</button>
-  </div>
-</div>
+    <div class="form-group">
+      <button type="button" class="btn btn-warning btn-block">Search</button>
+    </div>
+  </form>
+  <p-footer>
+
+  </p-footer>
+</p-card>

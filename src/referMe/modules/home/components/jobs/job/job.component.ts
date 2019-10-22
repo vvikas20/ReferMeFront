@@ -12,11 +12,7 @@ export class JobComponent implements OnInit {
 
   @Input() userPostDetail: UserPostDetail;
 
-  @ViewChild('frame') frame: any;
-
-  contactFormModalEmail = new FormControl('', Validators.email);
-  contactFormModalSubject = new FormControl('', Validators.required);
-  contactFormModalMessage = new FormControl('', Validators.required);
+  display: boolean = false;
 
   to: string = '';
   subject: string = '';
@@ -43,7 +39,7 @@ ${this.appUser.firstName} ${this.appUser.lastName}
 ${this.appUser.emailAddress}
 ${this.appUser.mobile}`;
 
-    this.frame.show();
+    this.display = true;
   }
 
 }

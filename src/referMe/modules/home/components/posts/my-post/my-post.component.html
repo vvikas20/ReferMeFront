@@ -1,17 +1,23 @@
-<div class="card border-danger mb-3">
-  <div class="card-body">
-    <h5 class="card-title">
-      <span>{{postDetail.position}}</span>
-      <button type="button" class="btn btn-sm btn-outline-danger waves-effect float-right"
-        (click)="deletePost(postDetail.postID)">Delete</button>
-    </h5>
-    <p class="card-text">{{postDetail.company}}</p>
-    <p class="card-text"><i class="fa fa-briefcase" aria-hidden="true"></i> {{postDetail.minExp}}-{{postDetail.maxExp}}
-      Years</p>
-    <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> {{postDetail.location}}</p>
-    <p class="card-text"><i class="fa fa-file-text" aria-hidden="true"></i> {{postDetail.description}}</p>
-    <h6>Referral Requests</h6>
-    <blockquote class="blockquote mb-0" style="font-size: initial !important;">
-      User1 Software Engineer in Company1 Pvt Ltd.
-    </blockquote>
-  </div>
+<p-card header="{{postDetail.position}}" subheader="{{postDetail.company}}" styleClass="mb-1 ui-card-shadow">
+  <button type="button" class="btn btn-outline-danger float-right"
+    (click)="deletePost(postDetail.postID)">Delete</button>
+  <p class="card-text">
+    <i class="fa fa-briefcase mr-1" aria-hidden="true"></i>
+    {{postDetail.minExp}}-{{postDetail.maxExp}}
+    Years
+  </p>
+  <p class="card-text">
+    <i class="fa fa-map-marker mr-2" aria-hidden="true"></i>
+    {{postDetail.location}}
+  </p>
+  <p class="card-text">
+    <i class="fa fa-file-text mr-1" aria-hidden="true"></i>
+    {{postDetail.description}}
+  </p>
+  <p-footer>
+    <p class="text-muted">Referral Requests</p>
+    <p class="text-uppercase">
+      <a class="text-warning font-weight-bold" href="JavaScript:Void(0);">User1</a>
+    </p>
+  </p-footer>
+</p-card>

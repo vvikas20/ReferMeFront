@@ -1,15 +1,15 @@
 <!--Header start-->
-<div class="container-fluid header">
+<div class="header">
     <a href="/" class="logo">{{applicationHeader}}</a>
     <div class="header-right">
         <form class="form-inline">
-            <input type="email" class="form-control m-1" placeholder="Email" name="email"
-                [(ngModel)]="loginDetail.email" (ngModelChange)="loginErrorMessgae=''">
-            <input type="password" class="form-control m-1" placeholder="Password" name="password"
-                [(ngModel)]="loginDetail.password" (ngModelChange)="loginErrorMessgae=''">
-            <a mdbBtn color="warning" class="waves-light" mdbWavesEffect (click)="login()">Login</a>
+            <input type="text" placeholder="Email" class="form-control" [(ngModel)]="loginDetail.email"
+                (ngModelChange)="loginErrorMessgae=''" [ngModelOptions]="{standalone: true}">
+            <input type="password" placeholder="Password" class="form-control" [(ngModel)]="loginDetail.password"
+                (ngModelChange)="loginErrorMessgae=''" [ngModelOptions]="{standalone: true}">
+            <button type="button" class="btn btn-warning" (click)="login()">Login</button>
         </form>
-        <span class="errorLogin" *ngIf="loginErrorMessgae!=''">
+        <span class="errorLogin mt-1" *ngIf="loginErrorMessgae!=''">
             {{loginErrorMessgae}}
             <i class="icon-scope">
                 <svg xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" height="16px"
@@ -24,85 +24,97 @@
     </div>
 </div>
 <!--Header end-->
-
-<!--Body start-->
-<div class="container-fluid body">
-    <div class="row">
-        <!--Left Section-->
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="card-body">
-                <p class="card-text">
-                    This group is made of thousands of experienced and novice professionals.
-                    Our mission is to share job referrals.This is where we unite online to help each other with job
-                    referrals and develope a network.
-                    You SHOULD use this group to:
-                    <br>1. Post job referrals
-                    <br>2. To ask for job referrals
-                </p>
-            </div>
-            <div>
-                <img class="center" src="assets/images/ReferMeHomePage.png" alt="Refere Me">
-            </div>
-        </div>
-        <!--Left Section-->
-        <!--Right Section-->
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="card-body">
-                <div class="container">
-                    <h3>Create new account</h3>
-                    <form>
-                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
-                            placeholder="Enter first name" name="firstname" [(ngModel)]="registrationDetail.firstName"
-                            (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
-                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
-                            placeholder="Enter middle name" name="middlename"
-                            [(ngModel)]="registrationDetail.middleName"
-                            (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
-                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
-                            placeholder="Enter last name" name="lastname" [(ngModel)]="registrationDetail.lastName"
-                            (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
-                        <input type="email" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
-                            placeholder="Enter email" name="email" [(ngModel)]="registrationDetail.emailAddress"
-                            (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
-                        <input type="text" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
-                            placeholder="Enter mobile" name="mobile" [(ngModel)]="registrationDetail.mobile"
-                            (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
-                        <input type="password" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
-                            placeholder="Enter password" name="password" [(ngModel)]="registrationDetail.password"
-                            (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
-                        <input type="password" class="form-control col-lg-8 col-md-8 col-sm-12 col-xs-12"
-                            placeholder="Retype password" name="repassword" [(ngModel)]="registrationDetail.repassword"
-                            (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
-                        <br>
-                        <a mdbBtn color="warning" class="waves-light" mdbWavesEffect (click)="register()">Submit</a>
-                    </form>
-                    <span class="errorLogin" *ngIf="registrationErrorMessgae!=''">
-                        {{registrationErrorMessgae}}
-                        <i class="icon-scope">
-                            <svg xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" height="16px"
-                                style="enable-background:new 0 0 488.451 488.451;" version="1.1"
-                                viewBox="0 0 488.451 488.451" width="16px" x="0px" xmlns="http://www.w3.org/2000/svg"
-                                y="0px">
-                                <path
-                                    d="M484.125,412.013l-212.2-367.6c-12.3-21.3-43.1-21.3-55.4,0l-212.2,367.6c-12.3,21.3,3.1,48,27.7,48h424.4   C481.025,460.013,496.425,433.313,484.125,412.013z M244.525,157.613c13.6,0,24.6,11.3,24.2,24.9l-4,139.6   c-0.3,11-9.3,19.7-20.3,19.7s-20-8.8-20.3-19.7l-3.9-139.6C219.925,168.913,230.825,157.613,244.525,157.613z M244.225,410.113   c-13.9,0-25.2-11.3-25.2-25.2c0-13.9,11.3-25.2,25.2-25.2s25.2,11.3,25.2,25.2S258.125,410.113,244.225,410.113z">
-                                </path>
-                            </svg>
-                        </i>
-                    </span>
-                    <span class="successRegistration" *ngIf="registrationMessage!=''">
-                        {{registrationMessage}}
-                        <i class="icon-scope">
-                        </i>
-                    </span>
+<div class="container-fluid">
+    <!--Body start-->
+    <div class="">
+        <div class="row">
+            <!--Left Section-->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="card border-0">
+                    <img src="assets/images/ReferMeHomePage.png" class="card-img-top center" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">About Community</h5>
+                        <p class="card-text">
+                            This group is made of thousands of experienced and novice professionals.
+                            Our mission is to share job referrals.This is where we unite online to help each other with
+                            job
+                            referrals and develope a network.
+                            You SHOULD use this group to:
+                            <br>1. Post job referrals
+                            <br>2. To ask for job referrals
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--Right Section-->
-    </div>
-</div>
-<!--Body end-->
+            <!--Left Section-->
+            <!--Right Section-->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <form>
+                            <p class="h5 text-muted">Create new account</p>
+                            <div class="form-group col-lg-8 col-md-8">
+                                <input type="text" class="form-control" placeholder="Enter first name" name="firstname"
+                                    [(ngModel)]="registrationDetail.firstName"
+                                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
+                            </div>
+                            <div class="form-group col-lg-8 col-md-8">
+                                <input type="text" class="form-control" placeholder="Enter middle name"
+                                    name="middlename" [(ngModel)]="registrationDetail.middleName"
+                                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
+                            </div>
+                            <div class="form-group col-lg-8 col-md-8">
+                                <input type="text" class="form-control" placeholder="Enter last name" name="lastname"
+                                    [(ngModel)]="registrationDetail.lastName"
+                                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
+                            </div>
+                            <div class="form-group col-lg-8 col-md-8">
+                                <input type="email" class="form-control" placeholder="Enter email" name="email"
+                                    [(ngModel)]="registrationDetail.emailAddress"
+                                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''"></div>
 
+                            <div class="form-group col-lg-8 col-md-8"> <input type="text" class="form-control"
+                                    placeholder="Enter mobile" name="mobile" [(ngModel)]="registrationDetail.mobile"
+                                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''"></div>
+                            <div class="form-group col-lg-8 col-md-8"> <input type="password" class="form-control"
+                                    placeholder="Enter password" name="password"
+                                    [(ngModel)]="registrationDetail.password"
+                                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''"></div>
+                            <div class="form-group col-lg-8 col-md-8"> <input type="password" class="form-control"
+                                    placeholder="Retype password" name="repassword"
+                                    [(ngModel)]="registrationDetail.repassword"
+                                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''"></div>
+                            <div class="form-group col-lg-8 col-md-8">
+                                <button type="button" class="btn btn-warning" (click)="register()">Register</button>
+                            </div>
+                        </form>
+                        <span class="errorLogin mt-1" *ngIf="registrationErrorMessgae!=''">
+                            {{registrationErrorMessgae}}
+                            <i class="icon-scope">
+                                <svg xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" height="16px"
+                                    style="enable-background:new 0 0 488.451 488.451;" version="1.1"
+                                    viewBox="0 0 488.451 488.451" width="16px" x="0px"
+                                    xmlns="http://www.w3.org/2000/svg" y="0px">
+                                    <path
+                                        d="M484.125,412.013l-212.2-367.6c-12.3-21.3-43.1-21.3-55.4,0l-212.2,367.6c-12.3,21.3,3.1,48,27.7,48h424.4   C481.025,460.013,496.425,433.313,484.125,412.013z M244.525,157.613c13.6,0,24.6,11.3,24.2,24.9l-4,139.6   c-0.3,11-9.3,19.7-20.3,19.7s-20-8.8-20.3-19.7l-3.9-139.6C219.925,168.913,230.825,157.613,244.525,157.613z M244.225,410.113   c-13.9,0-25.2-11.3-25.2-25.2c0-13.9,11.3-25.2,25.2-25.2s25.2,11.3,25.2,25.2S258.125,410.113,244.225,410.113z">
+                                    </path>
+                                </svg>
+                            </i>
+                        </span>
+                        <span class="successRegistration" *ngIf="registrationMessage!=''">
+                            {{registrationMessage}}
+                            <i class="icon-scope">
+                            </i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--Right Section-->
+        </div>
+    </div>
+    <!--Body end-->
+</div>
 <!--Footer start-->
-<div class="container-fluid login-footer">
+<div class="">
 </div>
 <!--Footer end-->

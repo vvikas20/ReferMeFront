@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PostDetail } from '../../models/user-post.model';
 import { JobpostService } from '../../services/jobpost.service';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
-import { ModalDirective } from 'angular-bootstrap-md';
 import { AlertService } from 'src/referMe/core/helper/alert.service';
 
 
@@ -13,8 +12,7 @@ import { AlertService } from 'src/referMe/core/helper/alert.service';
 })
 export class PostsComponent implements OnInit {
 
-  @ViewChild('frame') createPostModal: ModalDirective;
-
+  display: boolean = false;
   postDetail: PostDetail;
   myPosts: Array<PostDetail>;
 
@@ -68,7 +66,7 @@ export class PostsComponent implements OnInit {
     this.jobpostService.createPost(this.postDetail).subscribe(
       next => {
         this.alertService.success('Succes', 'Post created successfully');
-        this.createPostModal.hide();
+        this.display = false;
         this.fetchMyPosts();
       },
       error => {
@@ -81,6 +79,6 @@ export class PostsComponent implements OnInit {
     this.postDetail = new PostDetail();
     this.postDetail.userID = this.appUser.userID;
     this.postDetail.contact = this.appUser.mobile;
-    this.createPostModal.show();
+    this.display = true;
   }
 }
