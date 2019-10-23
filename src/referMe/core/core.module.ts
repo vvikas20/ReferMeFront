@@ -4,7 +4,7 @@ import { EnsureModuleLoadedOnceGuard } from './ensureModuleLoadedOnceGuard';
 import { HttpService } from './http/http.service';
 import { LoggerService } from './services/logger.service';
 import { ApplicationService } from './services/application.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticationService } from './authentication/authentication.service';
 import { AppUser } from './models/app-user.model';
 import { UserService } from './services/user.service';
@@ -13,12 +13,18 @@ import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { AlertService } from './helper/alert.service';
+import { HttpTokenInterceptor } from './interceptors/http.token.interceptor';
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, HttpClientModule],
   exports: [],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTokenInterceptor,
+      multi: true
+    },
     AdminGuard, AuthGuard, NoAuthGuard,
     HttpService, LoggerService, MessageService, AlertService, ApplicationService, UserService, AuthenticationService, AppUser]
 })

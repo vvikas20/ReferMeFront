@@ -21,6 +21,7 @@ export class ManageUsersComponent implements OnInit {
     this.cols.push({ field: 'LastName', header: 'LastName', sortable: true });
     this.cols.push({ field: 'EmailAddress', header: 'EmailAddress', sortable: true });
     this.cols.push({ field: 'Mobile', header: 'Mobile', sortable: true });
+    this.cols.push({ field: 'UserRole', header: 'Assigned Role', sortable: true });
 
     this.getAllUsers();
   }

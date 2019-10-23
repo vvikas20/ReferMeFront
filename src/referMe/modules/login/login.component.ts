@@ -104,7 +104,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.userService.addUser(this.registrationDetail).subscribe(
+    this.appService.addUser(this.registrationDetail).subscribe(
       next => {
         this.registrationErrorMessgae = '';
         this.registrationMessage = 'Account created successfully.'

@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    return localStorage.getItem('jwtkey') !== null;
+    return localStorage.getItem('_authToken') !== null;
 
   }
 }

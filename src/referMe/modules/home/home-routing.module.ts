@@ -8,18 +8,20 @@ import { ManageUsersComponent } from './components/manage-users/manage-users.com
 import { ManageJobsComponent } from './components/manage-jobs/manage-jobs.component';
 import { ManagePostsComponent } from './components/manage-posts/manage-posts.component';
 import { AuthGuard } from 'src/referMe/core/guards/auth.guard';
+import { AdminGuard } from 'src/referMe/core/guards/admin.guard';
+import { HomeResolver } from './home-resolver.service';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent,
+    path: '', component: HomeComponent, resolve: { user: HomeResolver },
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-      { path: 'posts', component: PostsComponent, canActivate: [AuthGuard] },
+      { path: '', pathMatch: 'full', redirectTo: 'jobs' },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
+      { path: 'posts', component: PostsComponent, canActivate: [AdminGuard] },
       { path: 'jobs', component: JobsComponent, canActivate: [AuthGuard] },
-      { path: 'manageusers', component: ManageUsersComponent, canActivate: [AuthGuard] },
-      { path: 'managejobs', component: ManageJobsComponent, canActivate: [AuthGuard] },
-      { path: 'manageposts', component: ManagePostsComponent, canActivate: [AuthGuard] }
+      { path: 'manageusers', component: ManageUsersComponent, canActivate: [AdminGuard] },
+      { path: 'managejobs', component: ManageJobsComponent, canActivate: [AdminGuard] },
+      { path: 'manageposts', component: ManagePostsComponent, canActivate: [AdminGuard] }
     ]
   }
 ];

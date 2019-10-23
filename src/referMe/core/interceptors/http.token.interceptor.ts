@@ -5,19 +5,19 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export class HttpTokenInterceptor implements HttpInterceptor {
+
     constructor() { }
-    //function which will be called for all http calls
+
     intercept(
         request: HttpRequest<any>,
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
-        //how to update the request Parameters
+
         const updatedRequest = request.clone({
-            headers: request.headers.set("Authorization", "Some-dummyCode")
+            headers: request.headers.set('Authorization', `Bearer ${localStorage.getItem('_authToken')}`)
         });
-        //logging the updated Parameters to browser's console
-        console.log("Before making api call : ", updatedRequest);
-        return next.handle(request).pipe(
+
+        return next.handle(updatedRequest).pipe(
             tap(
                 event => {
                     //logging the http response to browser's console in case of a success

@@ -11,26 +11,12 @@ export class UserService {
 
   constructor(private httpService: HttpService) { }
 
-  addUser(registrationDetail: Registration): Observable<any> {
-
-    const reqHeader: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-
-    let user = {
-      FirstName: registrationDetail.firstName,
-      MiddleName: registrationDetail.middleName,
-      LastName: registrationDetail.lastName,
-      EmailAddress: registrationDetail.emailAddress,
-      Mobile: registrationDetail.mobile,
-      Password: registrationDetail.password
-    }
-
-    return this.httpService.Post<any>(ApiEndPoints.addUser, user, { headers: reqHeader }).pipe(map(data => {
-      return data;
-    }));
+  getAllUsers(): Observable<any> {
+    return this.httpService.Get<any>(ApiEndPoints.allUser);
   }
 
-  getAllUsers(): Observable<any> {
-    return this.httpService.Get<any>(ApiEndPoints.allUser)
+  getMyDetails(): Observable<any> {
+    return this.httpService.Get<any>(ApiEndPoints.myDetails);
   }
 
   deleteUser(userId: number): Observable<any> {

@@ -21,11 +21,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
-import {SidebarModule} from 'primeng/sidebar';
+import { SidebarModule } from 'primeng/sidebar';
 import { MyPostComponent } from './components/posts/my-post/my-post.component';
 import { MyPostFilterComponent } from './components/posts/my-post-filter/my-post-filter.component';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { JobpostService } from './services/jobpost.service';
+import { UserService } from 'src/referMe/core/services/user.service';
+import { HomeResolver } from './home-resolver.service';
 
 @NgModule({
   declarations: [HomeComponent, HeaderComponent, FooterComponent, SidebarComponent, MyAccountComponent, JobsComponent, PostsComponent, DashboardComponent, ManageUsersComponent, ManagePostsComponent, ManageJobsComponent, JobComponent, JobFilterComponent, MyPostComponent, MyPostFilterComponent],
@@ -42,20 +44,10 @@ import { JobpostService } from './services/jobpost.service';
     SharedModule,
     SidebarModule
   ],
-  providers: [JobpostService]
+  providers: [HomeResolver, JobpostService]
 })
 export class HomeModule {
 
-  constructor(private appUser: AppUser) {
-    let jwt = JSON.parse(localStorage.getItem('jwtkey'));
-    if (jwt != null) {
-      this.appUser.userID = jwt.UserID;
-      this.appUser.firstName = jwt.FirstName;
-      this.appUser.middleName = jwt.MiddleName;
-      this.appUser.lastName = jwt.LastName;
-      this.appUser.emailAddress = jwt.EmailAddress;
-      this.appUser.mobile = jwt.Mobile;
-    }
-  }
+  constructor() { }
 
 }
