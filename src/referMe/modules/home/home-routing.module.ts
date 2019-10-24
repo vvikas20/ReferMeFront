@@ -16,12 +16,12 @@ const routes: Routes = [
     path: '', component: HomeComponent, resolve: { user: HomeResolver },
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'jobs' },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
-      { path: 'posts', component: PostsComponent, canActivate: [AdminGuard] },
-      { path: 'jobs', component: JobsComponent, canActivate: [AuthGuard] },
-      { path: 'manageusers', component: ManageUsersComponent, canActivate: [AdminGuard] },
-      { path: 'managejobs', component: ManageJobsComponent, canActivate: [AdminGuard] },
-      { path: 'manageposts', component: ManagePostsComponent, canActivate: [AdminGuard] }
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'posts', component: PostsComponent },
+      { path: 'jobs', component: JobsComponent },
+      { path: 'manageusers', component: ManageUsersComponent },
+      { path: 'managejobs', component: ManageJobsComponent },
+      { path: 'manageposts', component: ManagePostsComponent }
     ]
   }
 ];
