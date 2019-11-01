@@ -1,27 +1,68 @@
-<section class="container">
-  <p-table [columns]="cols" [value]="users" [paginator]="true" [rows]="10" [responsive]="true" [autoLayout]="true">
-    <ng-template pTemplate="header" let-columns>
-      <tr>
-        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-          {{col.header}}
-          <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
-            ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
-          </p-sortIcon>
-        </th>
-        <th>Action</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-      <tr>
-        <td *ngFor="let col of columns">
-          <span class="ui-column-title">{{col.header}}</span>
-          {{rowData[col.field]}}
-        </td>
-        <td>
-          <button type="button">Edit</button>
-          <button type="button" (click)="deleteUser(rowData['UserID'])">Delete</button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+<section class="container-fluid">
+  <div class="col-12">
+    <p-table [columns]="cols" [value]="users" [paginator]="true" [rows]="10" [responsive]="true" [autoLayout]="true">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+            {{col.header}}
+            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+              ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+            </p-sortIcon>
+          </th>
+          <th>Action</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+          <td *ngFor="let col of columns">
+            <span class="ui-column-title">{{col.header}}</span>
+            {{rowData[col.field]}}
+          </td>
+          <td>
+            <button type="button" (click)="editUser(rowData['UserID'])">Edit</button>
+            <button type="button" (click)="deleteUser(rowData['UserID'])">Delete</button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </section>
+
+<p-sidebar [(visible)]="display" position="right" styleClass="ui-sidebar-md">
+  <form>
+    <p class="h5 text-muted">User Details</p>
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input type="text" class="form-control" name="firstname" [(ngModel)]="selectedUser.firstName"
+        (ngModelChange)="validationFailed=validationMessage=''">
+    </div>
+    <div class="form-group">
+      <label for="middlename">Middle Name</label>
+      <input type="text" class="form-control" name="middlename" [(ngModel)]="selectedUser.middleName"
+        (ngModelChange)="validationFailed=validationMessage=''">
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input type="text" class="form-control" name="lastname" [(ngModel)]="selectedUser.lastName"
+        (ngModelChange)="validationFailed=validationMessage=''">
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="selectedUser.emailAddress"
+        (ngModelChange)="validationFailed=validationMessage=''" readonly>
+    </div>
+    <div class="form-group">
+      <label for="email">Mobile</label>
+      <input type="mobile" class="form-control" name="mobile" [(ngModel)]="selectedUser.mobile"
+        (ngModelChange)="validationFailed=validationMessage=''"></div>
+    <div class="form-group">
+      <label for="minExp">Role</label><br>
+      <p-dropdown id="minExp" [options]="roles" [(ngModel)]="selectedUser.roleId" [ngModelOptions]="{standalone: true}">
+      </p-dropdown>
+    </div>
+
+    <div class="form-group">
+      <button type="button" class="btn btn-warning" (click)="updateUser()">Update</button>
+    </div>
+  </form>
+</p-sidebar>

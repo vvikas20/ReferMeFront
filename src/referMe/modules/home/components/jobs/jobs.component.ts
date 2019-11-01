@@ -20,7 +20,7 @@ export class JobsComponent implements OnInit {
 
   fetchAllJobPosts(): void {
     this.userPostDetails = [];
-    this.jobpostService.getAllPosts().subscribe(next => {
+    this.jobpostService.getOpenings().subscribe(next => {
       next.forEach(element => {
         this.userPostDetails.push({
           postDetail: {

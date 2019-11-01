@@ -11,12 +11,12 @@ export class JobpostService {
 
   constructor(private httpService: HttpService) { }
 
-  getAllPosts(): Observable<any> {
-    return this.httpService.Get<any>(ApiEndPoints.allpost)
+  getOpenings(): Observable<any> {
+    return this.httpService.Get<any>(ApiEndPoints.openings)
   }
 
-  getAllPostsByUser(userId: number): Observable<any> {
-    return this.httpService.Get<any>(`${ApiEndPoints.allpost}/${userId}`);
+  getMyPosts(): Observable<any> {
+    return this.httpService.Get<any>(`${ApiEndPoints.myposts}`);
   }
 
   createPost(postDetail: PostDetail): Observable<any> {

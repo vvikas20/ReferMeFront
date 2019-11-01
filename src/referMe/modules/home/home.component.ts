@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger;
     let user = this.actr.snapshot.data.user;
     this.setUserDetails(user);
   }

@@ -28,6 +28,7 @@ import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { JobpostService } from './services/jobpost.service';
 import { UserService } from 'src/referMe/core/services/user.service';
 import { HomeResolver } from './home-resolver.service';
+import { RoleService } from './services/role.service';
 
 @NgModule({
   declarations: [HomeComponent, HeaderComponent, FooterComponent, SidebarComponent, MyAccountComponent, JobsComponent, PostsComponent, DashboardComponent, ManageUsersComponent, ManagePostsComponent, ManageJobsComponent, JobComponent, JobFilterComponent, MyPostComponent, MyPostFilterComponent],
@@ -44,7 +45,7 @@ import { HomeResolver } from './home-resolver.service';
     SharedModule,
     SidebarModule
   ],
-  providers: [HomeResolver, JobpostService]
+  providers: [HomeResolver, JobpostService, RoleService]
 })
 export class HomeModule {
 

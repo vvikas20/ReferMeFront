@@ -41,7 +41,7 @@ export class PostsComponent implements OnInit {
 
   fetchMyPosts() {
     this.myPosts = [];
-    this.jobpostService.getAllPostsByUser(this.appUser.userID).subscribe(next => {
+    this.jobpostService.getMyPosts().subscribe(next => {
       next.forEach(element => {
         this.myPosts.push({
           postID: element.PostID,
@@ -77,8 +77,6 @@ export class PostsComponent implements OnInit {
 
   openModal() {
     this.postDetail = new PostDetail();
-    this.postDetail.userID = this.appUser.userID;
-    this.postDetail.contact = this.appUser.mobile;
     this.display = true;
   }
 }
