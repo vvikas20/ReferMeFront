@@ -1,40 +1,184 @@
-/* You can add global styles to this file, and also import other style files */  
-.errorLogin{
-    display: block;
-    font-size: 12px;
-    padding: 5px;
-    border-radius: 3px;
-    background: #fff;
-    color: #ca1a32;
-    line-height: 2;
-    border: 1px solid #ca1a32;
+/* You can add global styles to this file, and also import other style files */
+.errorLogin {
+  display: block;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 3px;
+  background: #fff;
+  color: #ca1a32;
+  line-height: 2;
+  border: 1px solid #ca1a32;
 }
 
-.errorLogin .icon-scope{
-    float: left;
-    margin: -1px 6px 0 0;
-    width: 24px;
-    height: 24px;
-    position: relative;
-    text-align: center;
+.errorLogin .icon-scope {
+  float: left;
+  margin: -1px 6px 0 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  text-align: center;
 }
 
-.successRegistration{
-    display: block;
-    font-size: 12px;
-    padding: 5px;
-    border-radius: 3px;
-    background: #fff;
-    color: #37e100;
-    line-height: 2;
-    border: 1px solid #37e100;
+.successRegistration {
+  display: block;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 3px;
+  background: #fff;
+  color: #37e100;
+  line-height: 2;
+  border: 1px solid #37e100;
 }
 
-.successRegistration .icon-scope{
-    float: left;
-    margin: -1px 6px 0 0;
-    width: 24px;
-    height: 24px;
-    position: relative;
-    text-align: center;
+.successRegistration .icon-scope {
+  float: left;
+  margin: -1px 6px 0 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  text-align: center;
+}
+
+body {
+  font-family: "MontserratRegular", Arial, Helvetica, sans-serif !important;
+  font-weight: 400 !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
+  background: #eaebf1 !important;
+}
+
+.wrapper {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#turbotable .ui-table-wrapper {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+  min-height: 230px;
+  background: #fff;
+  max-width: 100%;
+  width: 100% !important;
+  overflow: auto;
+}
+
+#turbotable .ui-table .ui-table-thead > tr > th {
+  position: relative;
+  padding: 5px 10px 5px 5px !important;
+  vertical-align: top;
+  outline: none;
+  border: none !important;
+}
+
+#turbotable .ui-sortable-column.ui-state-highlight {
+  background: #f4f4f4 !important;
+  color: #333 !important;
+}
+#turbotable .ui-sortable-column-icon {
+  color: #414042;
+}
+#turbotable .ui-paginator {
+  margin-top: 15px;
+  padding: 0;
+}
+
+#turbotable .ui-paginator .ui-paginator-pages .ui-paginator-page {
+  border-radius: 3px;
+  margin-left: 2px;
+  height: 2em;
+  min-width: 2em;
+  line-height: 2;
+}
+
+#turbotable .ui-paginator-bottom {
+  border-top: 0 none;
+  padding: 10px;
+  text-align: right;
+  background: 0 0;
+  float: right;
+}
+
+#turbotable .ui-paginator,
+#turbotable tbody,
+#turbotable tbody td,
+#turbotable tbody tr {
+  border-style: none !important;
+}
+
+#turbotable .ui-paginator-pages {
+  margin: 0 -1px;
+  vertical-align: top;
+  display: inline-block;
+  background: #fff;
+  height: 34px;
+  border-radius: 3px;
+  padding: 3px 2px !important;
+  width: auto;
+  line-height: 1;
+}
+
+#turbotable .ui-paginator-last {
+  border-radius: 0 3px 3px 0;
+}
+
+#turbotable .ui-paginator-next,
+#turbotable .ui-paginator-prev,
+#turbotable .ui-paginator-first,
+#turbotable .ui-paginator-last {
+  background: #fff;
+  height: 34px;
+}
+
+#turbotable .ui-paginator .ui-paginator-first,
+#turbotable .ui-paginator .ui-paginator-prev,
+#turbotable .ui-paginator .ui-paginator-next,
+#turbotable .ui-paginator .ui-paginator-last {
+  color: #848484;
+  min-width: 2.286em;
+  border: 0 none;
+  line-height: 2.286em;
+  padding: 0;
+  margin: 0;
+  vertical-align: top;
+  border-radius: 0;
+}
+.ui-paginator .ui-paginator-page,
+.ui-paginator .ui-paginator-next,
+.ui-paginator .ui-paginator-last,
+.ui-paginator .ui-paginator-first,
+.ui-paginator .ui-paginator-prev {
+  cursor: pointer;
+}
+.ui-paginator .ui-paginator-page,
+.ui-paginator .ui-paginator-pages,
+.ui-paginator .ui-paginator-next,
+.ui-paginator .ui-paginator-last,
+.ui-paginator .ui-paginator-first,
+.ui-paginator .ui-paginator-prev,
+.ui-paginator .ui-paginator-current {
+  display: inline-block;
+  min-width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  zoom: 1;
+  margin-left: 0.063em;
+  margin-right: 0.063em;
+  text-decoration: none;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+}
+
+#turbotable .pi-sort:before {
+  font-family: FontAwesome;
+  content: "\f160";
+}
+#turbotable .pi-sort-down:before {
+  font-family: FontAwesome;
+  content: "\f161";
+}
+#turbotable .pi-sort-up:before {
+  font-family: FontAwesome;
+  content: "\f160";
 }

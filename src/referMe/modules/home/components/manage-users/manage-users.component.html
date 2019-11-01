@@ -1,6 +1,7 @@
 <section class="container-fluid">
   <div class="col-12">
-    <p-table [columns]="cols" [value]="users" [paginator]="true" [rows]="10" [responsive]="true" [autoLayout]="true">
+    <p-table id="turbotable" [columns]="cols" [value]="users" [paginator]="true" [rows]="5" [responsive]="true"
+      [autoLayout]="true">
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th *ngFor="let col of columns" [pSortableColumn]="col.field">
@@ -19,8 +20,10 @@
             {{rowData[col.field]}}
           </td>
           <td>
-            <button type="button" (click)="editUser(rowData['UserID'])">Edit</button>
-            <button type="button" (click)="deleteUser(rowData['UserID'])">Delete</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm m-1"
+              (click)="editUser(rowData['UserID'])">Edit</button>
+            <button type="button" class="btn btn-outline-danger btn-sm m-1"
+              (click)="deleteUser(rowData['UserID'])">Delete</button>
           </td>
         </tr>
       </ng-template>
