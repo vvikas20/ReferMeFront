@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -18,6 +18,7 @@ import { TableModule } from 'primeng/table';
 import { JobComponent } from './components/jobs/job/job.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PanelModule } from 'primeng/panel';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
@@ -26,6 +27,7 @@ import { MyPostComponent } from './components/posts/my-post/my-post.component';
 import { JobpostService } from './services/jobpost.service';
 import { HomeResolver } from './home-resolver.service';
 import { RoleService } from './services/role.service';
+import { ReferralService } from './services/referral.service';
 
 @NgModule({
   declarations: [HomeComponent, HeaderComponent, FooterComponent, SidebarComponent, MyAccountComponent, JobsComponent, PostsComponent, DashboardComponent, ManageUsersComponent, ManagePostsComponent, ManageJobsComponent, JobComponent, MyPostComponent],
@@ -39,11 +41,12 @@ import { RoleService } from './services/role.service';
     ReactiveFormsModule,
     TableModule,
     PanelModule,
+    OverlayPanelModule,
     HomeRoutingModule,
     SharedModule,
     SidebarModule
   ],
-  providers: [HomeResolver, JobpostService, RoleService]
+  providers: [DatePipe, HomeResolver, JobpostService, RoleService, ReferralService]
 })
 export class HomeModule {
 

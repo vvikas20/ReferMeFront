@@ -16,8 +16,39 @@
   </p>
   <p-footer>
     <p class="text-muted">Referral Requests</p>
-    <p class="text-uppercase">
-      <a class="text-warning font-weight-bold" href="JavaScript:Void(0);">User1</a>
+    <p class="text-uppercase" *ngFor="let request of referralRequests">
+      <a #link class="text-warning font-weight-bold" href="JavaScript:Void(0);"
+        (click)="showRequestDetails($event,request)">{{request.emailAddress}}</a>
     </p>
   </p-footer>
 </p-card>
+
+<p-sidebar [(visible)]="display" position="right" [showCloseIcon]="false" [blockScroll]="true"
+  styleClass="ui-sidebar-md custom-sidebar">
+  <div class="sidebar-header">
+    <p class="h5"><strong>Referral Request Details</strong></p>
+  </div>
+  <div class="sidebar-body">
+    <dl class="row">
+      <dt class="col-sm-4">First Name</dt>
+      <dd class="col-sm-8">{{selectedReferralRequest.firstName}}</dd>
+      <dt class="col-sm-4">Middle Name</dt>
+      <dd class="col-sm-8">{{selectedReferralRequest.middleName}}</dd>
+      <dt class="col-sm-4">Last Name</dt>
+      <dd class="col-sm-8">{{selectedReferralRequest.lastName}}</dd>
+      <dt class="col-sm-4">Email Address</dt>
+      <dd class="col-sm-8">{{selectedReferralRequest.emailAddress}}</dd>
+      <dt class="col-sm-4">Mobile Number</dt>
+      <dd class="col-sm-8">{{selectedReferralRequest.mobile}}</dd>
+      <dt class="col-sm-4">Requested On</dt>
+      <dd class="col-sm-8">{{selectedReferralRequest.requestedOn}}</dd>
+      <dt class="col-sm-4">Subject</dt>
+      <dd class="col-sm-8">{{selectedReferralRequest.subject}}</dd>
+      <dt class="col-sm-4">Message</dt>
+      <dd class="col-sm-8">{{selectedReferralRequest.message}}</dd>
+    </dl>
+  </div>
+  <div class="sidebar-footer">
+    <button type="button" class="btn btn-light mr-1" (click)="display=false">Close</button>
+  </div>
+</p-sidebar>

@@ -2,6 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PostDetail } from '../../../models/user-post.model';
 import { JobpostService } from '../../../services/jobpost.service';
 import { AlertService } from 'src/referMe/core/helper/alert.service';
+import { User } from '../../../models/user.model';
+import { ReferralService } from '../../../services/referral.service';
+import { ReferralRequest } from '../../../models/referral.model';
+import { DatePipe } from '@angular/common';
+import { OverlayPanel } from 'primeng/overlaypanel';
 
 
 
@@ -15,9 +20,18 @@ export class MyPostComponent implements OnInit {
   @Input() postDetail: PostDetail;
   @Output() notifyPostDelete = new EventEmitter();
 
-  constructor(private alertService: AlertService, private jobpostService: JobpostService) { }
+  referralRequests: Array<ReferralRequest>;
+  selectedReferralRequest: ReferralRequest;
+  display: boolean = false;
+
+  constructor(private datePipe: DatePipe, private alertService: AlertService, private jobpostService: JobpostService, private referralService: ReferralService) { }
 
   ngOnInit() {
+    this.fetchReferralRequests();
+  }
+
+  ngOnChange($event) {
+
   }
 
   deletePost(postId: number) {
@@ -30,5 +44,37 @@ export class MyPostComponent implements OnInit {
 
       },
       () => { });
+  }
+
+  fetchReferralRequests() {
+    this.selectedReferralRequest = new ReferralRequest();
+    this.referralRequests = [];
+    this.referralService.getPostReferrals(this.postDetail.postID).subscribe(
+      next => {
+        if (next != null) {
+          next.forEach(element => {
+            this.referralRequests.push({
+              requestId: element.ReferralID,
+              subject: element.Subject,
+              message: element.Message,
+              requestedOn: this.datePipe.transform(new Date(element.CreatedOn), 'dd-MM-yyyy'),
+              firstName: element.CreatedByUserDetail.FirstName,
+              middleName: element.CreatedByUserDetail.MiddleName,
+              lastName: element.CreatedByUserDetail.LastName,
+              emailAddress: element.CreatedByUserDetail.EmailAddress,
+              mobile: element.CreatedByUserDetail.Mobile
+            });
+          });
+        }
+      },
+      error => {
+
+      },
+      () => { });
+  }
+
+  showRequestDetails(event, request: ReferralRequest) {
+    this.selectedReferralRequest = request;
+    this.display = true;
   }
 }

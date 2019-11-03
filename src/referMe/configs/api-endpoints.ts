@@ -27,4 +27,9 @@ export class ApiEndPoints {
 
     static readonly role: string = `${ApiEndPoints.baseUrl}/roles`;
     static readonly allRole: string = `${ApiEndPoints.role}/all`;
+
+    static readonly referral: string = `${ApiEndPoints.baseUrl}/referrals`;
+    static readonly addReferral: string = `${ApiEndPoints.referral}/add`;
+    static readonly postReferrals: string = `${ApiEndPoints.referral}/referrals`;
+
 }
