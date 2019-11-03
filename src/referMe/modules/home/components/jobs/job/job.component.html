@@ -24,11 +24,14 @@
     </p>
   </p-footer>
 </p-card>
-<!--Request Referral Modal Start-->
 
-<p-sidebar [(visible)]="display" position="right" styleClass="ui-sidebar-md">
-  <form>
-    <p class="h5 text-muted">Request Referral</p>
+<!--Request Referral Modal Start-->
+<p-sidebar [(visible)]="display" position="right" [showCloseIcon]="false" [blockScroll]="true"
+  styleClass="ui-sidebar-md custom-sidebar">
+  <div class="sidebar-header">
+    <p class="h5"><strong>Request Referral</strong></p>
+  </div>
+  <div class="sidebar-body">
     <div class="form-group">
       <label for="to">To</label>
       <input type="text" class="form-control" id="to" placeholder="To" name="to" [(ngModel)]="to" readonly>
@@ -43,9 +46,10 @@
       <textarea class="form-control" id="message" placeholder="Message" rows="7" name="message"
         [(ngModel)]="message"></textarea>
     </div>
-    <div class="form-group">
-      <button type="button" class="btn btn-warning">Send</button>
-    </div>
-  </form>
+  </div>
+  <div class="sidebar-footer">
+    <button type="button" class="btn btn-warning mr-1">Send</button>
+    <button type="button" class="btn btn-light mr-1" (click)="display=false">Close</button>
+  </div>
 </p-sidebar>
 <!--Request Referral Modal End-->

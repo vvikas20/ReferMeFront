@@ -16,22 +16,19 @@ import { ManagePostsComponent } from './components/manage-posts/manage-posts.com
 import { ManageJobsComponent } from './components/manage-jobs/manage-jobs.component';
 import { TableModule } from 'primeng/table';
 import { JobComponent } from './components/jobs/job/job.component';
-import { JobFilterComponent } from './components/jobs/job-filter/job-filter.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PanelModule } from 'primeng/panel';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { SidebarModule } from 'primeng/sidebar';
 import { MyPostComponent } from './components/posts/my-post/my-post.component';
-import { MyPostFilterComponent } from './components/posts/my-post-filter/my-post-filter.component';
-import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { JobpostService } from './services/jobpost.service';
-import { UserService } from 'src/referMe/core/services/user.service';
 import { HomeResolver } from './home-resolver.service';
 import { RoleService } from './services/role.service';
 
 @NgModule({
-  declarations: [HomeComponent, HeaderComponent, FooterComponent, SidebarComponent, MyAccountComponent, JobsComponent, PostsComponent, DashboardComponent, ManageUsersComponent, ManagePostsComponent, ManageJobsComponent, JobComponent, JobFilterComponent, MyPostComponent, MyPostFilterComponent],
+  declarations: [HomeComponent, HeaderComponent, FooterComponent, SidebarComponent, MyAccountComponent, JobsComponent, PostsComponent, DashboardComponent, ManageUsersComponent, ManagePostsComponent, ManageJobsComponent, JobComponent, MyPostComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -41,6 +38,7 @@ import { RoleService } from './services/role.service';
     SharedModule,
     ReactiveFormsModule,
     TableModule,
+    PanelModule,
     HomeRoutingModule,
     SharedModule,
     SidebarModule

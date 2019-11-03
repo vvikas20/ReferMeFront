@@ -16,16 +16,44 @@ export class PostsComponent implements OnInit {
   postDetail: PostDetail;
   myPosts: Array<PostDetail>;
 
+  selectedExperience: any;
+  experience: any[];
+
+  selectedSalary: any;
+  salary: any[];
+
   experienceOptions: { label: string; value: number }[];
 
   constructor(private alertService: AlertService, private appUser: AppUser, private jobpostService: JobpostService) { }
 
   ngOnInit() {
+    this.preparePostFilter();
     this.postDetail = new PostDetail();
     this.myPosts = [];
     this.prepareOptions();
 
     this.fetchMyPosts();
+  }
+
+  preparePostFilter() {
+    this.experience = [
+      { label: '1', value: '1' },
+      { label: '2', value: '2' },
+      { label: '3', value: '3' },
+      { label: '4', value: '4' },
+      { label: '5', value: '5' }
+    ];
+
+    this.salary = [
+      { label: '1', value: '1' },
+      { label: '2', value: '2' },
+      { label: '3', value: '3' },
+      { label: '4', value: '4' },
+      { label: '5', value: '5' }
+    ];
+
+    this.selectedExperience = { label: '1', value: '1' };
+    this.selectedSalary = { label: '1', value: '1' };
   }
 
   prepareOptions() {

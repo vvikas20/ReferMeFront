@@ -31,9 +31,12 @@
   </div>
 </section>
 
-<p-sidebar [(visible)]="display" position="right" styleClass="ui-sidebar-md">
-  <form>
-    <p class="h5 text-muted">User Details</p>
+<p-sidebar [(visible)]="display" position="right" [showCloseIcon]="false" [blockScroll]="true"
+  styleClass="ui-sidebar-md custom-sidebar">
+  <div class="sidebar-header">
+    <p class="h5"><strong>User Details</strong></p>
+  </div>
+  <div class="sidebar-body">
     <div class="form-group">
       <label for="firstname">First Name</label>
       <input type="text" class="form-control" name="firstname" [(ngModel)]="selectedUser.firstName">
@@ -58,9 +61,9 @@
       <p-dropdown id="minExp" [options]="roles" [(ngModel)]="selectedUser.roleId" [ngModelOptions]="{standalone: true}">
       </p-dropdown>
     </div>
-
-    <div class="form-group">
-      <button type="button" class="btn btn-warning" (click)="updateUser()">Update</button>
-    </div>
-  </form>
+  </div>
+  <div class="sidebar-footer">
+    <button type="button" class="btn btn-warning mr-1" (click)="updateUser()">Update</button>
+    <button type="button" class="btn btn-light mr-1" (click)="display=false">Close</button>
+  </div>
 </p-sidebar>
