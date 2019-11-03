@@ -14,6 +14,7 @@ import { NoAuthGuard } from './guards/no-auth.guard';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { AlertService } from './helper/alert.service';
 import { HttpTokenInterceptor } from './interceptors/http.token.interceptor';
+import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,11 @@ import { HttpTokenInterceptor } from './interceptors/http.token.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpTokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptor,
       multi: true
     },
     AdminGuard, AuthGuard, NoAuthGuard,
