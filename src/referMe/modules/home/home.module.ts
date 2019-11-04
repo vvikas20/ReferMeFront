@@ -23,6 +23,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { SidebarModule } from 'primeng/sidebar';
+import { EditorModule } from 'primeng/editor';
+import { DialogModule } from 'primeng/dialog';
+import { PaginatorModule } from 'primeng/paginator';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 import { MyPostComponent } from './components/posts/my-post/my-post.component';
 import { JobpostService } from './services/jobpost.service';
 import { HomeResolver } from './home-resolver.service';
@@ -42,6 +46,10 @@ import { ReferralService } from './services/referral.service';
     TableModule,
     PanelModule,
     OverlayPanelModule,
+    EditorModule,
+    DialogModule,
+    PaginatorModule,
+    ScrollPanelModule,
     HomeRoutingModule,
     SharedModule,
     SidebarModule

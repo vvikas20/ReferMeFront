@@ -22,6 +22,8 @@ export class MyPostComponent implements OnInit {
 
   referralRequests: Array<ReferralRequest>;
   selectedReferralRequest: ReferralRequest;
+
+  displayPostDetail: boolean = false;
   display: boolean = false;
 
   constructor(private datePipe: DatePipe, private alertService: AlertService, private jobpostService: JobpostService, private referralService: ReferralService) { }

@@ -1,13 +1,13 @@
 export class PostDetail {
     postID: number;
     userID: number;
-    company: string;
-    position: string;
+    company: string = '';
+    position: string = '';
     minExp: number;
     maxExp: number;
-    location: string;
+    location: string = '';
     contact: string;
-    description: string;
+    description: string = '';
 }
 
 export class UserDetail {

@@ -110,6 +110,13 @@ body {
   padding: 0;
 }
 
+#turbotable
+  .ui-paginator
+  .ui-paginator-pages
+  .ui-paginator-page.ui-state-active {
+  background-color: #ffc107 !important;
+}
+
 #turbotable .ui-paginator .ui-paginator-pages .ui-paginator-page {
   border-radius: 3px;
   margin-left: 2px;

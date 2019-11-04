@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { JobpostService } from '../../services/jobpost.service';
 import { UserPostDetail } from '../../models/user-post.model';
 
 @Component({
   selector: 'referMe-jobs',
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.scss']
+  styleUrls: ['./jobs.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class JobsComponent implements OnInit {
 
@@ -76,4 +77,12 @@ export class JobsComponent implements OnInit {
       },
       () => { });
   }
+
+  paginate(event) {
+    //event.first = Index of the first record
+    //event.rows = Number of rows to display in new page
+    //event.page = Index of the new page
+    //event.pageCount = Total number of pages
+  }
+
 }

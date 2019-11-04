@@ -11,23 +11,20 @@
     {{userPostDetail.postDetail.location}}
   </p>
   <p class="card-text">
-    <i class="fa fa-file-text mr-1" aria-hidden="true"></i>
-    {{userPostDetail.postDetail.description}}
+    <i class="fa fa-info-circle mr-2" aria-hidden="true"></i>
+    <a class="text-info font-weight-bold" href="JavaScript:Void(0);" (click)="displayJobDetails()">Details</a>
   </p>
   <p-footer>
     <p class="text-muted">Posted By</p>
     <p class="text-uppercase">
       {{userPostDetail.userDetail.firstName}} {{userPostDetail.userDetail.lastName}}
-      <a class="text-warning font-weight-bold float-right" href="JavaScript:Void(0);"
-        (click)="requestReferral()">Request
-        Referral</a>
     </p>
   </p-footer>
 </p-card>
 
 <!--Request Referral Modal Start-->
 <p-sidebar [(visible)]="display" position="right" [showCloseIcon]="false" [blockScroll]="true"
-  styleClass="ui-sidebar-md custom-sidebar">
+  styleClass="ui-sidebar-lg custom-sidebar">
   <div class="sidebar-header">
     <p class="h5"><strong>Request Referral</strong></p>
   </div>
@@ -44,13 +41,31 @@
     </div>
     <div class="form-group">
       <label for="message">Message</label>
-      <textarea class="form-control" id="message" placeholder="Message" rows="7" name="message"
-        [(ngModel)]="this.referral.message"></textarea>
+      <p-editor [(ngModel)]="this.referral.message" [style]="{'height':'320px'}"></p-editor>
     </div>
   </div>
   <div class="sidebar-footer">
-    <button type="button" class="btn btn-warning mr-1" (click)="sendReferralRequest()">Send</button>
-    <button type="button" class="btn btn-light mr-1" (click)="display=false">Close</button>
+    <button pButton type="button" label="Send" class="ui-button-raised ui-button-warning mr-1"
+      (click)="sendReferralRequest()"></button>
+    <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary mr-1"
+      (click)="display=false"></button>
   </div>
 </p-sidebar>
 <!--Request Referral Modal End-->
+
+<p-dialog header="Details" [(visible)]="displayJobDetail" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true">
+  <dl class="row">
+    <dt class="col-sm-4">Job Description</dt>
+    <dd class="col-sm-8">
+      <div [innerHtml]="userPostDetail.postDetail.description | safeHtml"></div>
+    </dd>
+    <dt class="col-sm-4">Attachments</dt>
+    <dd class="col-sm-8"></dd>
+  </dl>
+  <p-footer>
+    <button pButton type="button" label="Request Referral" class="ui-button-raised ui-button-warning"
+      (click)="requestReferral()"></button>
+    <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary"
+      (click)="displayJobDetail=false"></button>
+  </p-footer>
+</p-dialog>

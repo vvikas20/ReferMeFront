@@ -24,6 +24,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
             .pipe(
                 retry(1),
                 catchError((error: HttpErrorResponse) => {
+                    debugger;
                     let errorMessage = '';
                     if (error.error instanceof ErrorEvent) {
                         // client-side error
@@ -34,8 +35,8 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
                     }
 
                     this.alert.error('ERROR', errorMessage);
+                    return throwError(error);
 
-                    return throwError(errorMessage);
                 }), finalize(() => {
                     this.count--;
                     if (this.count == 0) this.spinner.hide()

@@ -11,8 +11,8 @@
     {{postDetail.location}}
   </p>
   <p class="card-text">
-    <i class="fa fa-file-text mr-1" aria-hidden="true"></i>
-    {{postDetail.description}}
+    <i class="fa fa-info-circle mr-2" aria-hidden="true"></i>
+    <a class="text-info font-weight-bold" href="JavaScript:Void(0);" (click)="displayPostDetail=true">Details</a>
   </p>
   <p-footer>
     <p class="text-muted">Referral Requests</p>
@@ -24,7 +24,7 @@
 </p-card>
 
 <p-sidebar [(visible)]="display" position="right" [showCloseIcon]="false" [blockScroll]="true"
-  styleClass="ui-sidebar-md custom-sidebar">
+  styleClass="ui-sidebar-lg custom-sidebar">
   <div class="sidebar-header">
     <p class="h5"><strong>Referral Request Details</strong></p>
   </div>
@@ -45,10 +45,27 @@
       <dt class="col-sm-4">Subject</dt>
       <dd class="col-sm-8">{{selectedReferralRequest.subject}}</dd>
       <dt class="col-sm-4">Message</dt>
-      <dd class="col-sm-8">{{selectedReferralRequest.message}}</dd>
+      <dd class="col-sm-8" [innerHtml]="selectedReferralRequest.message | safeHtml"></dd>
     </dl>
   </div>
   <div class="sidebar-footer">
-    <button type="button" class="btn btn-light mr-1" (click)="display=false">Close</button>
+    <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary mr-1"
+      (click)="display=false"></button>
   </div>
 </p-sidebar>
+
+<p-dialog header="Details" [(visible)]="displayPostDetail" [modal]="true" [style]="{width: '50vw'}"
+  [maximizable]="true">
+  <dl class="row">
+    <dt class="col-sm-4"><i class="fa fa-file-text mr-1" aria-hidden="true"></i>Description</dt>
+    <dd class="col-sm-8">
+      <div [innerHtml]="postDetail.description | safeHtml"></div>
+    </dd>
+    <dt class="col-sm-4"><i class="fa fa-paperclip mr-1" aria-hidden="true"></i>Attachments</dt>
+    <dd class="col-sm-8"></dd>
+  </dl>
+  <p-footer>
+    <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary"
+      (click)="displayPostDetail=false"></button>
+  </p-footer>
+</p-dialog>

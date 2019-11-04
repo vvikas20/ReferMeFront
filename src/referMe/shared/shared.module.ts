@@ -8,11 +8,12 @@ import { DropdownModule } from 'primeng/dropdown';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-import {PasswordModule} from 'primeng/password';
-import {CardModule} from 'primeng/card';
+import { PasswordModule } from 'primeng/password';
+import { CardModule } from 'primeng/card';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
-  declarations: [SafePipe, ToastComponent],
+  declarations: [SafePipe, ToastComponent, SafeHtmlPipe],
   imports: [
     CommonModule,
     InputTextModule,
@@ -24,7 +25,9 @@ import {CardModule} from 'primeng/card';
     PasswordModule,
     CardModule
   ],
-  exports: [SafePipe,
+  exports: [
+    SafePipe,
+    SafeHtmlPipe,
     InputTextModule,
     ButtonModule,
     DropdownModule,

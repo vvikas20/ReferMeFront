@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { PostDetail } from '../../models/user-post.model';
 import { JobpostService } from '../../services/jobpost.service';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
@@ -8,7 +8,8 @@ import { AlertService } from 'src/referMe/core/helper/alert.service';
 @Component({
   selector: 'referMe-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  styleUrls: ['./posts.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PostsComponent implements OnInit {
 
@@ -36,34 +37,31 @@ export class PostsComponent implements OnInit {
   }
 
   preparePostFilter() {
-    this.experience = [
-      { label: '1', value: '1' },
-      { label: '2', value: '2' },
-      { label: '3', value: '3' },
-      { label: '4', value: '4' },
-      { label: '5', value: '5' }
-    ];
+    this.experience = [];
+    let i: number = 0;
+    while (i < 21) {
+      this.experience.push({ label: i.toString(), value: i });
+      i++;
+    }
 
-    this.salary = [
-      { label: '1', value: '1' },
-      { label: '2', value: '2' },
-      { label: '3', value: '3' },
-      { label: '4', value: '4' },
-      { label: '5', value: '5' }
-    ];
+    this.salary = [];
+    let j: number = 0;
+    while (j < 21) {
+      this.salary.push({ label: j.toString(), value: j });
+      j++;
+    }
 
-    this.selectedExperience = { label: '1', value: '1' };
-    this.selectedSalary = { label: '1', value: '1' };
+    this.selectedExperience = 0;
+    this.selectedSalary = 0;
   }
 
   prepareOptions() {
-    this.experienceOptions = [
-      { label: '1', value: 1 },
-      { label: '2', value: 2 },
-      { label: '3', value: 3 },
-      { label: '4', value: 4 },
-      { label: '5', value: 5 }
-    ];
+    this.experienceOptions = [];
+    let i: number = 0;
+    while (i < 21) {
+      this.experienceOptions.push({ label: i.toString(), value: i });
+      i++;
+    }
   }
 
 
@@ -91,6 +89,20 @@ export class PostsComponent implements OnInit {
   }
 
   postJob() {
+
+    if (this.postDetail.position.trim() == '') {
+      this.alertService.info('INFO', 'Position can not be empty');
+      return;
+    }
+    else if (this.postDetail.company.trim() == '') {
+      this.alertService.info('INFO', 'Copmany can not be empty');
+      return;
+    }
+    else if (this.postDetail.location.trim() == '') {
+      this.alertService.info('INFO', 'Location can not be empty');
+      return;
+    }
+
     this.jobpostService.createPost(this.postDetail).subscribe(
       next => {
         this.alertService.success('Succes', 'Post created successfully');
@@ -106,5 +118,12 @@ export class PostsComponent implements OnInit {
   openModal() {
     this.postDetail = new PostDetail();
     this.display = true;
+  }
+
+  paginate(event) {
+    //event.first = Index of the first record
+    //event.rows = Number of rows to display in new page
+    //event.page = Index of the new page
+    //event.pageCount = Total number of pages
   }
 }

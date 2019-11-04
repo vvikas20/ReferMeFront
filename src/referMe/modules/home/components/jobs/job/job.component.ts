@@ -15,6 +15,7 @@ export class JobComponent implements OnInit {
 
   @Input() userPostDetail: UserPostDetail;
 
+  displayJobDetail: boolean = false;
   display: boolean = false;
 
   referral: Referral;
@@ -29,18 +30,18 @@ export class JobComponent implements OnInit {
 
   }
 
+  displayJobDetails(): void {
+    this.displayJobDetail = true;
+  }
+
   requestReferral(): void {
+    this.displayJobDetail = false;
     this.referral = new Referral();
 
     this.referral.postId = this.userPostDetail.postDetail.postID;
     this.referral.to = this.userPostDetail.userDetail.emailAddress;
     this.referral.subject = `Referral Request for ${this.userPostDetail.postDetail.position} at ${this.userPostDetail.postDetail.company}`;
-    this.referral.message =
-      `I am interested in applying for ${this.userPostDetail.postDetail.position} at ${this.userPostDetail.postDetail.company}
-Thanks,
-${this.appUser.firstName} ${this.appUser.lastName}
-${this.appUser.emailAddress}
-${this.appUser.mobile}`;
+    this.referral.message = `<p>I am interested in applying for the position of <strong>${this.userPostDetail.postDetail.position}</strong> at <strong>${this.userPostDetail.postDetail.company}</strong>.</p><p><br></p><p><br></p><p><br></p><p>Thanks,</p><p>${this.appUser.firstName} ${this.appUser.lastName}</p><p>${this.appUser.emailAddress}</p><p>${this.appUser.mobile}</p>`;
 
     this.display = true;
   }
