@@ -24,7 +24,6 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
             .pipe(
                 retry(1),
                 catchError((error: HttpErrorResponse) => {
-                    debugger;
                     let errorMessage = '';
                     if (error.error instanceof ErrorEvent) {
                         // client-side error

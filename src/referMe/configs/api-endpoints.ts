@@ -28,6 +28,12 @@ export class ApiEndPoints {
     static readonly role: string = `${ApiEndPoints.baseUrl}/roles`;
     static readonly allRole: string = `${ApiEndPoints.role}/all`;
 
+    static readonly company: string = `${ApiEndPoints.baseUrl}/companies`;
+    static readonly allCompany: string = `${ApiEndPoints.company}/all`;
+
+    static readonly location: string = `${ApiEndPoints.baseUrl}/locations`;
+    static readonly allLocation: string = `${ApiEndPoints.location}/all`;
+
     static readonly referral: string = `${ApiEndPoints.baseUrl}/referrals`;
     static readonly addReferral: string = `${ApiEndPoints.referral}/add`;
     static readonly postReferrals: string = `${ApiEndPoints.referral}/referrals`;

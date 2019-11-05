@@ -110,35 +110,38 @@
   position="right"
   [showCloseIcon]="false"
   [blockScroll]="true"
-  styleClass="ui-sidebar-lg custom-sidebar"
+  styleClass="ui-sidebar-md custom-sidebar"
 >
   <div class="sidebar-header">
     <p class="h5"><strong>Post Job Opening</strong></p>
   </div>
   <div class="sidebar-body">
     <div class="form-group">
-      <label for="position">Position</label>
+      <p class="h6">Position</p>
       <input
         type="text"
         class="form-control"
-        id="position"
         name="position"
         [(ngModel)]="postDetail.position"
       />
     </div>
     <div class="form-group form-row">
       <div class="col">
-        <label for="company">Company</label>
-        <input
-          type="text"
-          class="form-control"
-          id="company"
-          name="companyname"
-          [(ngModel)]="postDetail.company"
-        />
+        <p class="h6">Company</p>
+        <div class="ui-grid ui-grid-responsive ui-fluid">
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12">
+              <p-autoComplete
+                [(ngModel)]="postDetail.company"
+                [suggestions]="companies"
+                (completeMethod)="searchCompany($event)"
+              ></p-autoComplete>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col">
-        <label for="minExp">Min Exp</label>
+        <p class="h6">Min Exp</p>
         <div class="ui-grid ui-grid-responsive ui-fluid">
           <div class="ui-grid-row">
             <div class="ui-grid-col-12">
@@ -153,7 +156,7 @@
         </div>
       </div>
       <div class="col">
-        <label for="maxExp">Max Exp</label>
+        <p class="h6">Max Exp</p>
         <div class="ui-grid ui-grid-responsive ui-fluid">
           <div class="ui-grid-row">
             <div class="ui-grid-col-12">
@@ -168,18 +171,26 @@
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <label for="location">Location</label>
-      <input
-        type="text"
-        class="form-control"
-        id="location"
-        name="location"
-        [(ngModel)]="postDetail.location"
-      />
+    <div class="form-group form-row">
+      <div class="col">
+        <p class="h6">Location</p>
+        <div class="ui-grid ui-grid-responsive ui-fluid">
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-12">
+              <p-autoComplete
+                [(ngModel)]="postDetail.location"
+                [suggestions]="locations"
+                (completeMethod)="searchLocation($event)"
+              ></p-autoComplete>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
     </div>
     <div class="form-group">
-      <label for="description">Job Description</label>
+      <p class="h6">Job Description</p>
       <p-editor
         [(ngModel)]="postDetail.description"
         [style]="{ height: '320px' }"

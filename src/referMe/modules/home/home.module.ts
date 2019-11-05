@@ -26,12 +26,15 @@ import { SidebarModule } from 'primeng/sidebar';
 import { EditorModule } from 'primeng/editor';
 import { DialogModule } from 'primeng/dialog';
 import { PaginatorModule } from 'primeng/paginator';
-import {ScrollPanelModule} from 'primeng/scrollpanel';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 import { MyPostComponent } from './components/posts/my-post/my-post.component';
 import { JobpostService } from './services/jobpost.service';
 import { HomeResolver } from './home-resolver.service';
 import { RoleService } from './services/role.service';
 import { ReferralService } from './services/referral.service';
+import { CompanyService } from './services/company.service';
+import { LocationService } from './services/location.service';
 
 @NgModule({
   declarations: [HomeComponent, HeaderComponent, FooterComponent, SidebarComponent, MyAccountComponent, JobsComponent, PostsComponent, DashboardComponent, ManageUsersComponent, ManagePostsComponent, ManageJobsComponent, JobComponent, MyPostComponent],
@@ -50,11 +53,20 @@ import { ReferralService } from './services/referral.service';
     DialogModule,
     PaginatorModule,
     ScrollPanelModule,
+    AutoCompleteModule,
     HomeRoutingModule,
     SharedModule,
     SidebarModule
   ],
-  providers: [DatePipe, HomeResolver, JobpostService, RoleService, ReferralService]
+  providers: [
+    DatePipe,
+    HomeResolver,
+    JobpostService,
+    RoleService,
+    ReferralService,
+    CompanyService,
+    LocationService
+  ]
 })
 export class HomeModule {
 

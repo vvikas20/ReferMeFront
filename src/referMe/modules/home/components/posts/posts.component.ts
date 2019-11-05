@@ -3,6 +3,8 @@ import { PostDetail } from '../../models/user-post.model';
 import { JobpostService } from '../../services/jobpost.service';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { AlertService } from 'src/referMe/core/helper/alert.service';
+import { CompanyService } from '../../services/company.service';
+import { LocationService } from '../../services/location.service';
 
 
 @Component({
@@ -19,12 +21,24 @@ export class PostsComponent implements OnInit {
   selectedExperience: any;
   experience: any[];
 
+
+  companies: Array<string>;
+  companyMaster: Array<{ companyId: number, companyName: string }>;
+
+  locations: Array<string>;
+  locationMaster: Array<{ locationID: number, city: string, state: string }>
+
   selectedSalary: any;
   salary: any[];
 
   experienceOptions: { label: string; value: number }[];
 
-  constructor(private alertService: AlertService, private appUser: AppUser, private jobpostService: JobpostService) { }
+  constructor(private alertService: AlertService,
+    private jobpostService: JobpostService,
+    private companyService: CompanyService,
+    private locationService: LocationService) {
+
+  }
 
   ngOnInit() {
     this.preparePostFilter();
@@ -33,6 +47,9 @@ export class PostsComponent implements OnInit {
     this.prepareOptions();
 
     this.fetchMyPosts();
+
+    this.fetchCompanies();
+    this.fetchLocations();
   }
 
   preparePostFilter() {
@@ -63,6 +80,51 @@ export class PostsComponent implements OnInit {
     }
   }
 
+  fetchLocations() {
+    this.locations = [];
+    this.locationMaster = [];
+    this.locationService.getLocations().subscribe(
+      next => {
+        next.forEach(location => {
+          this.locationMaster.push({
+            locationID: location.LocationID,
+            city: location.City,
+            state: location.State
+          });
+        });
+      },
+      error => {
+
+      },
+      () => { });
+  }
+
+  fetchCompanies() {
+    this.companies = [];
+    this.companyMaster = [];
+    this.companyService.getCompanies().subscribe(
+      next => {
+        next.forEach(company => {
+          this.companyMaster.push({
+            companyId: company.CompanyID,
+            companyName: company.CompanyName
+          });
+        });
+      },
+      error => {
+
+      },
+      () => { });
+  }
+
+
+  searchCompany(event) {
+    this.companies = this.companyMaster.filter(c => c.companyName.toUpperCase().startsWith(event.query.toUpperCase())).map(c => c.companyName)
+  }
+
+  searchLocation(event) {
+    this.locations = this.locationMaster.filter(c => c.city.toUpperCase().startsWith(event.query.toUpperCase())).map(c => c.city)
+  }
 
   fetchMyPosts() {
     this.myPosts = [];
