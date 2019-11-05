@@ -6,20 +6,38 @@
         <p-card header="Filter">
           <form>
             <div class="form-group">
-              <label for="skillsdescriptioncompany" style="word-break: break-all;">Skills,Designation,Company</label>
-              <input type="text" class="form-control" id="skillsdescriptioncompany" placeholder="" />
+              <label
+                for="skillsdescriptioncompany"
+                style="word-break: break-all;"
+                >Skills,Designation,Company</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="skillsdescriptioncompany"
+                placeholder=""
+              />
             </div>
             <div class="form-group">
               <label for="location">Location</label>
-              <input type="text" class="form-control" id="location" placeholder="" />
+              <input
+                type="text"
+                class="form-control"
+                id="location"
+                placeholder=""
+              />
             </div>
             <div class="form-group">
               <label for="exampleFormControlSelect1">Experience</label>
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
-                    <p-dropdown [options]="experience" [(ngModel)]="selectedExperience" [showClear]="true"
-                      [autoWidth]="false">
+                    <p-dropdown
+                      [options]="experience"
+                      [(ngModel)]="selectedExperience"
+                      [showClear]="true"
+                      [autoWidth]="false"
+                    >
                     </p-dropdown>
                   </div>
                 </div>
@@ -30,7 +48,12 @@
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
-                    <p-dropdown [options]="salary" [(ngModel)]="selectedSalary" [showClear]="true" [autoWidth]="false">
+                    <p-dropdown
+                      [options]="salary"
+                      [(ngModel)]="selectedSalary"
+                      [showClear]="true"
+                      [autoWidth]="false"
+                    >
                     </p-dropdown>
                   </div>
                 </div>
@@ -48,14 +71,17 @@
       <!--Filters-->
       <!--Referrals-->
       <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-        <p-scrollPanel [style]="{ width: '100%', height: '100vh' }" styleClass="custombar1">
-          <div>
-            <ng-container *ngFor="let userPostDetail of userPostDetails">
-              <referMe-job [userPostDetail]="userPostDetail"></referMe-job>
-            </ng-container>
-          </div>
-        </p-scrollPanel>
-        <p-paginator id="turbotable" [rows]="5" [totalRecords]="26" (onPageChange)="paginate($event)"></p-paginator>
+        <div>
+          <ng-container *ngFor="let userPostDetail of userPostDetails">
+            <referMe-job [userPostDetail]="userPostDetail"></referMe-job>
+          </ng-container>
+        </div>
+        <p-paginator
+          id="turbotable"
+          [rows]="5"
+          [totalRecords]="26"
+          (onPageChange)="paginate($event)"
+        ></p-paginator>
       </div>
     </div>
   </div>

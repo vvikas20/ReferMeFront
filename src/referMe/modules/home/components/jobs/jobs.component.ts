@@ -5,8 +5,7 @@ import { UserPostDetail } from '../../models/user-post.model';
 @Component({
   selector: 'referMe-jobs',
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
 

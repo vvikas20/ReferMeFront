@@ -8,8 +8,7 @@ import { AlertService } from 'src/referMe/core/helper/alert.service';
 @Component({
   selector: 'referMe-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
 
