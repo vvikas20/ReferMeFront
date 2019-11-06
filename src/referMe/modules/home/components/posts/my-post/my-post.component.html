@@ -23,36 +23,40 @@
   </p-footer>
 </p-card>
 
-<p-sidebar [(visible)]="display" position="right" [showCloseIcon]="false" [blockScroll]="true"
-  styleClass="ui-sidebar-md custom-sidebar">
-  <div class="sidebar-header">
-    <p class="h5"><strong>Referral Request Details</strong></p>
+<div bsModal #referralDetailModal="bs-modal" class="modal right fade" tabindex="-1">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Referral Request Details</h4>
+        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <dl class="row">
+              <dt class="col-sm-4">First Name</dt>
+              <dd class="col-sm-8">{{selectedReferralRequest.firstName}}</dd>
+              <dt class="col-sm-4">Middle Name</dt>
+              <dd class="col-sm-8">{{selectedReferralRequest.middleName}}</dd>
+              <dt class="col-sm-4">Last Name</dt>
+              <dd class="col-sm-8">{{selectedReferralRequest.lastName}}</dd>
+              <dt class="col-sm-4">Email Address</dt>
+              <dd class="col-sm-8">{{selectedReferralRequest.emailAddress}}</dd>
+              <dt class="col-sm-4">Mobile Number</dt>
+              <dd class="col-sm-8">{{selectedReferralRequest.mobile}}</dd>
+              <dt class="col-sm-4">Requested On</dt>
+              <dd class="col-sm-8">{{selectedReferralRequest.requestedOn}}</dd>
+              <dt class="col-sm-4">Subject</dt>
+              <dd class="col-sm-8">{{selectedReferralRequest.subject}}</dd>
+              <dt class="col-sm-4">Message</dt>
+              <dd class="col-sm-8" [innerHtml]="selectedReferralRequest.message | safeHtml"></dd>
+            </dl>
+      </div>
+      <div class="modal-footer">
+          <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary mr-1"
+          (click)="display=false"></button>
+      </div>
+    </div>
   </div>
-  <div class="sidebar-body">
-    <dl class="row">
-      <dt class="col-sm-4">First Name</dt>
-      <dd class="col-sm-8">{{selectedReferralRequest.firstName}}</dd>
-      <dt class="col-sm-4">Middle Name</dt>
-      <dd class="col-sm-8">{{selectedReferralRequest.middleName}}</dd>
-      <dt class="col-sm-4">Last Name</dt>
-      <dd class="col-sm-8">{{selectedReferralRequest.lastName}}</dd>
-      <dt class="col-sm-4">Email Address</dt>
-      <dd class="col-sm-8">{{selectedReferralRequest.emailAddress}}</dd>
-      <dt class="col-sm-4">Mobile Number</dt>
-      <dd class="col-sm-8">{{selectedReferralRequest.mobile}}</dd>
-      <dt class="col-sm-4">Requested On</dt>
-      <dd class="col-sm-8">{{selectedReferralRequest.requestedOn}}</dd>
-      <dt class="col-sm-4">Subject</dt>
-      <dd class="col-sm-8">{{selectedReferralRequest.subject}}</dd>
-      <dt class="col-sm-4">Message</dt>
-      <dd class="col-sm-8" [innerHtml]="selectedReferralRequest.message | safeHtml"></dd>
-    </dl>
-  </div>
-  <div class="sidebar-footer">
-    <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary mr-1"
-      (click)="display=false"></button>
-  </div>
-</p-sidebar>
+</div>
 
 <p-dialog header="Details" [(visible)]="displayPostDetail" [modal]="true" [style]="{width: '50vw'}"
   [maximizable]="true">

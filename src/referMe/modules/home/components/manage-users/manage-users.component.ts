@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { UserService } from "src/referMe/core/services/user.service";
 import { RoleService } from "../../services/role.service";
 import { User } from "../../models/user.model";
+import { ModalDirective } from "ngx-bootstrap";
 
 @Component({
   selector: 'referMe-manage-users',
@@ -9,6 +10,8 @@ import { User } from "../../models/user.model";
   styleUrls: ['./manage-users.component.scss']
 })
 export class ManageUsersComponent implements OnInit {
+
+  @ViewChild('userDetailModal') userDetailModal: ModalDirective;
 
   validationFailed: boolean = false;
   validationMessage: string = '';
@@ -69,7 +72,7 @@ export class ManageUsersComponent implements OnInit {
     this.selectedUser = new User();
     this.userService.getUserDetails(userId).subscribe(
       next => {
-        this.selectedUser.userId=next.UserID;
+        this.selectedUser.userId = next.UserID;
         this.selectedUser.firstName = next.FirstName;
         this.selectedUser.middleName = next.MiddleName;
         this.selectedUser.lastName = next.LastName;
@@ -77,7 +80,7 @@ export class ManageUsersComponent implements OnInit {
         this.selectedUser.mobile = next.Mobile;
         this.selectedUser.roleId = next.UserRoleID;
 
-        this.display = true;
+        this.userDetailModal.show();
       },
       error => {
 
@@ -88,7 +91,7 @@ export class ManageUsersComponent implements OnInit {
   updateUser() {
     this.userService.updateUser(this.selectedUser).subscribe(
       next => {
-        this.display = false;
+        this.userDetailModal.hide();
         this.getAllUsers();
       },
       error => {
@@ -106,6 +109,10 @@ export class ManageUsersComponent implements OnInit {
 
       },
       () => { });
+  }
+
+  hideModal(){
+    this.userDetailModal.hide();
   }
 
 }

@@ -5,6 +5,7 @@ import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { AlertService } from 'src/referMe/core/helper/alert.service';
 import { CompanyService } from '../../services/company.service';
 import { LocationService } from '../../services/location.service';
+import { ModalDirective } from 'ngx-bootstrap';
 
 
 @Component({
@@ -13,6 +14,9 @@ import { LocationService } from '../../services/location.service';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
+
+
+  @ViewChild('jobPostModal') jobPostModal: ModalDirective;
 
   display: boolean = false;
   postDetail: PostDetail;
@@ -167,7 +171,7 @@ export class PostsComponent implements OnInit {
     this.jobpostService.createPost(this.postDetail).subscribe(
       next => {
         this.alertService.success('Succes', 'Post created successfully');
-        this.display = false;
+        this.jobPostModal.hide();
         this.fetchMyPosts();
       },
       error => {
@@ -178,7 +182,11 @@ export class PostsComponent implements OnInit {
 
   openModal() {
     this.postDetail = new PostDetail();
-    this.display = true;
+    this.jobPostModal.show();
+  }
+
+  hideModal() {
+    this.jobPostModal.hide();
   }
 
   paginate(event) {

@@ -71,29 +71,6 @@ body::-webkit-scrollbar-thumb {
   padding: 0 !important;
 }
 
-.sidebar-header {
-  background: #ffc107;
-  margin: 0;
-  padding: 10px 15px;
-}
-
-.sidebar-body {
-  height: calc(100vh - 120px);
-  overflow: auto;
-  font-size: 14px;
-  position: static;
-  padding: 20px;
-  margin: 0;
-}
-
-.sidebar-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 1rem;
-  border-top: 1px solid #e9ecef;
-}
-
 #turbotable .ui-table-wrapper {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
   min-height: 230px;

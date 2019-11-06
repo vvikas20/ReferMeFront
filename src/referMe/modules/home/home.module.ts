@@ -27,7 +27,8 @@ import { EditorModule } from 'primeng/editor';
 import { DialogModule } from 'primeng/dialog';
 import { PaginatorModule } from 'primeng/paginator';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-import {AutoCompleteModule} from 'primeng/autocomplete';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { ModalModule } from 'ngx-bootstrap';
 import { MyPostComponent } from './components/posts/my-post/my-post.component';
 import { JobpostService } from './services/jobpost.service';
 import { HomeResolver } from './home-resolver.service';
@@ -54,9 +55,9 @@ import { LocationService } from './services/location.service';
     PaginatorModule,
     ScrollPanelModule,
     AutoCompleteModule,
+    ModalModule.forRoot(),
     HomeRoutingModule,
-    SharedModule,
-    SidebarModule
+    SharedModule
   ],
   providers: [
     DatePipe,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { PostDetail } from '../../../models/user-post.model';
 import { JobpostService } from '../../../services/jobpost.service';
 import { AlertService } from 'src/referMe/core/helper/alert.service';
@@ -7,6 +7,7 @@ import { ReferralService } from '../../../services/referral.service';
 import { ReferralRequest } from '../../../models/referral.model';
 import { DatePipe } from '@angular/common';
 import { OverlayPanel } from 'primeng/overlaypanel';
+import { ModalDirective } from 'ngx-bootstrap';
 
 
 
@@ -16,6 +17,9 @@ import { OverlayPanel } from 'primeng/overlaypanel';
   styleUrls: ['./my-post.component.scss']
 })
 export class MyPostComponent implements OnInit {
+
+
+  @ViewChild('referralDetailModal') referralDetailModal: ModalDirective;
 
   @Input() postDetail: PostDetail;
   @Output() notifyPostDelete = new EventEmitter();
@@ -77,6 +81,6 @@ export class MyPostComponent implements OnInit {
 
   showRequestDetails(event, request: ReferralRequest) {
     this.selectedReferralRequest = request;
-    this.display = true;
+    this.referralDetailModal.show();
   }
 }
