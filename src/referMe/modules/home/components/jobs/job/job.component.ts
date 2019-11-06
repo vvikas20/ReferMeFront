@@ -19,7 +19,6 @@ export class JobComponent implements OnInit {
   @Input() userPostDetail: UserPostDetail;
 
   displayJobDetail: boolean = false;
-  display: boolean = false;
 
   referral: Referral;
 
@@ -62,4 +61,7 @@ export class JobComponent implements OnInit {
     );
   }
 
+  hideModal() {
+    this.requestReferralModal.hide();
+  }
 }

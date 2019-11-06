@@ -28,7 +28,6 @@ export class MyPostComponent implements OnInit {
   selectedReferralRequest: ReferralRequest;
 
   displayPostDetail: boolean = false;
-  display: boolean = false;
 
   constructor(private datePipe: DatePipe, private alertService: AlertService, private jobpostService: JobpostService, private referralService: ReferralService) { }
 
@@ -82,5 +81,9 @@ export class MyPostComponent implements OnInit {
   showRequestDetails(event, request: ReferralRequest) {
     this.selectedReferralRequest = request;
     this.referralDetailModal.show();
+  }
+
+  hideModal(){
+    this.referralDetailModal.hide();
   }
 }

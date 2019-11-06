@@ -29,7 +29,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title pull-left">Request Referral</h4>
-        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+        <button type="button" class="close pull-right" (click)="hideModal()">&times;</button>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -51,7 +51,7 @@
         <button pButton type="button" label="Send" class="ui-button-raised ui-button-warning mr-1"
           (click)="sendReferralRequest()"></button>
         <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary mr-1"
-          (click)="display=false"></button>
+          (click)="hideModal()"></button>
       </div>
     </div>
   </div>

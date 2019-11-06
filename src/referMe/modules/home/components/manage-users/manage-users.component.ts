@@ -15,7 +15,6 @@ export class ManageUsersComponent implements OnInit {
 
   validationFailed: boolean = false;
   validationMessage: string = '';
-  display: boolean = false;
 
   selectedUser: User;
   roles: { label: string; value: number; }[];

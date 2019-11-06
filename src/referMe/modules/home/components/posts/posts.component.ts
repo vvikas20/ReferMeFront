@@ -18,7 +18,6 @@ export class PostsComponent implements OnInit {
 
   @ViewChild('jobPostModal') jobPostModal: ModalDirective;
 
-  display: boolean = false;
   postDetail: PostDetail;
   myPosts: Array<PostDetail>;
 
