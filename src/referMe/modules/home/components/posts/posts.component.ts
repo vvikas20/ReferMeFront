@@ -111,6 +111,12 @@ export class PostsComponent implements OnInit {
   }
 
   fetchPosts() {
+
+    if (this.postFilter.maxExp > 0 && this.postFilter.minExp > this.postFilter.maxExp) {
+      this.alertService.info('INFO', 'Minimum Experience can not be greater than Maximum Experience');
+      return;
+    }
+
     this.myPosts = [];
     this.jobpostService.getMyPosts(this.postFilter).subscribe(next => {
       next.forEach(element => {
@@ -141,6 +147,10 @@ export class PostsComponent implements OnInit {
     }
     else if (this.postDetail.company.trim() == '') {
       this.alertService.info('INFO', 'Copmany can not be empty');
+      return;
+    }
+    else if (this.postFilter.maxExp > 0 && this.postFilter.minExp > this.postFilter.maxExp) {
+      this.alertService.info('INFO', 'Minimum Experience can not be greater than Maximum Experience');
       return;
     }
     else if (this.postDetail.location.trim() == '') {

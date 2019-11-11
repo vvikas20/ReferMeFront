@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { JobpostService } from '../../services/jobpost.service';
-import { UserPostDetail } from '../../models/user-post.model';
+import { UserPostDetail, PostFilter } from '../../models/user-post.model';
+import { AlertService } from 'src/referMe/core/helper/alert.service';
+import { LocationService } from '../../services/location.service';
+import { CompanyService } from '../../services/company.service';
 
 @Component({
   selector: 'referMe-jobs',
@@ -11,42 +14,96 @@ export class JobsComponent implements OnInit {
 
   userPostDetails: Array<UserPostDetail>;
 
-  selectedExperience: any;
-  experience: any[];
+  companies: Array<string>;
+  companyMaster: Array<{ companyId: number, companyName: string }>;
 
-  selectedSalary: any;
-  salary: any[];
+  locations: Array<string>;
+  locationMaster: Array<{ locationID: number, city: string, state: string }>
 
-  constructor(private jobpostService: JobpostService) { }
+  experienceOptions: { label: string; value: number }[];
+
+  jobFilter: PostFilter;
+
+  constructor(private alertService: AlertService,
+    private jobpostService: JobpostService,
+    private companyService: CompanyService,
+    private locationService: LocationService) {
+
+  }
+
 
   ngOnInit() {
-    this.prepareJobFilters();
+    this.jobFilter = new PostFilter();
     this.userPostDetails = [];
-    this.fetchAllJobPosts();
+    this.fetchJobPosts();
+
+    this.prepareOptions();
+    this.fetchCompanies();
+    this.fetchLocations();
   }
 
-  private prepareJobFilters() {
-    this.experience = [
-      { label: '1', value: '1' },
-      { label: '2', value: '2' },
-      { label: '3', value: '3' },
-      { label: '4', value: '4' },
-      { label: '5', value: '5' }
-    ];
-    this.salary = [
-      { label: '1', value: '1' },
-      { label: '2', value: '2' },
-      { label: '3', value: '3' },
-      { label: '4', value: '4' },
-      { label: '5', value: '5' }
-    ];
-    this.selectedExperience = { label: '1', value: '1' };
-    this.selectedSalary = { label: '1', value: '1' };
+  prepareOptions() {
+    this.experienceOptions = [];
+    let i: number = 0;
+    while (i < 21) {
+      this.experienceOptions.push({ label: i.toString(), value: i });
+      i++;
+    }
+
+    this.jobFilter.minExp = 0;
+    this.jobFilter.maxExp = 0;
   }
 
-  fetchAllJobPosts(): void {
+  fetchLocations() {
+    this.locations = [];
+    this.locationMaster = [];
+    this.locationService.getLocations().subscribe(
+      next => {
+        next.forEach(location => {
+          this.locationMaster.push({
+            locationID: location.LocationID,
+            city: location.City,
+            state: location.State
+          });
+        });
+      },
+      error => {
+
+      },
+      () => { });
+  }
+
+  fetchCompanies() {
+    this.companies = [];
+    this.companyMaster = [];
+    this.companyService.getCompanies().subscribe(
+      next => {
+        next.forEach(company => {
+          this.companyMaster.push({
+            companyId: company.CompanyID,
+            companyName: company.CompanyName
+          });
+        });
+      },
+      error => {
+
+      },
+      () => { });
+  }
+
+
+  searchCompany(event) {
+    this.companies = this.companyMaster.filter(c => c.companyName.toUpperCase().startsWith(event.query.toUpperCase())).map(c => c.companyName)
+  }
+
+  searchLocation(event) {
+    this.locations = this.locationMaster.filter(c => c.city.toUpperCase().startsWith(event.query.toUpperCase())).map(c => c.city)
+  }
+
+  fetchJobPosts(): void {
+
     this.userPostDetails = [];
-    this.jobpostService.getOpenings().subscribe(next => {
+    this.jobpostService.getOpenings(this.jobFilter).subscribe(next => {
       next.forEach(element => {
         this.userPostDetails.push({
           postDetail: {

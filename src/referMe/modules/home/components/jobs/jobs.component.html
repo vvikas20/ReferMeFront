@@ -3,42 +3,57 @@
   <div class="col-12">
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-2">
-        <p-card header="Filter">
+        <p-card header="Filter ({{userPostDetails.length}} Jobs)">
           <form>
             <div class="form-group">
-              <label for="skillsdescriptioncompany" style="word-break: break-all;">Skills,Designation,Company</label>
-              <input type="text" class="form-control" id="skillsdescriptioncompany" placeholder="" />
-            </div>
-            <div class="form-group">
-              <label for="location">Location</label>
-              <input type="text" class="form-control" id="location" placeholder="" />
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Min Experience</label>
+              <p class="h6">Company</p>
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
-                    <p-dropdown [options]="experience" [(ngModel)]="selectedExperience" [showClear]="true"
-                      [autoWidth]="false">
+                    <p-autoComplete [(ngModel)]="this.jobFilter.company" [suggestions]="companies"
+                      (completeMethod)="searchCompany($event)" [ngModelOptions]="{standalone: true}"></p-autoComplete>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <p class="h6">Location</p>
+              <div class="ui-grid ui-grid-responsive ui-fluid">
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">
+                    <p-autoComplete [(ngModel)]="this.jobFilter.location" [suggestions]="locations"
+                      (completeMethod)="searchLocation($event)" [ngModelOptions]="{standalone: true}">
+                    </p-autoComplete>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <p class="h6">Min Exp</p>
+              <div class="ui-grid ui-grid-responsive ui-fluid">
+                <div class="ui-grid-row">
+                  <div class="ui-grid-col-12">
+                    <p-dropdown [options]="experienceOptions" [(ngModel)]="this.jobFilter.minExp"
+                      [ngModelOptions]="{standalone: true}">
                     </p-dropdown>
                   </div>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlSelect1">Max Experience</label>
+              <p class="h6">Max Exp</p>
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
-                    <p-dropdown [options]="experience" [(ngModel)]="selectedExperience" [showClear]="true"
-                      [autoWidth]="false">
+                    <p-dropdown [options]="experienceOptions" [(ngModel)]="this.jobFilter.maxExp"
+                      [ngModelOptions]="{standalone: true}">
                     </p-dropdown>
                   </div>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <button type="button" class="btn btn-warning btn-block">
+              <button type="button" class="btn btn-warning btn-block" (click)="fetchJobPosts()">
                 Search
               </button>
             </div>

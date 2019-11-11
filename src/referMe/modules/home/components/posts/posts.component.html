@@ -11,15 +11,15 @@
           </p-card>
         </div>
         <div>
-          <p-card header="Filter">
+          <p-card header="Filter ({{myPosts.length}} Posts)">
             <form>
               <div class="form-group">
                 <p class="h6">Company</p>
                 <div class="ui-grid ui-grid-responsive ui-fluid">
                   <div class="ui-grid-row">
                     <div class="ui-grid-col-12">
-                      <p-autoComplete [(ngModel)]="postFilter.company" [suggestions]="companies"
-                        (completeMethod)="searchCompany($event)"></p-autoComplete>
+                      <p-autoComplete [(ngModel)]="this.postFilter.company" [suggestions]="companies"
+                        (completeMethod)="searchCompany($event)" [ngModelOptions]="{standalone: true}"></p-autoComplete>
                     </div>
                   </div>
                 </div>
@@ -29,8 +29,9 @@
                 <div class="ui-grid ui-grid-responsive ui-fluid">
                   <div class="ui-grid-row">
                     <div class="ui-grid-col-12">
-                      <p-autoComplete [(ngModel)]="postFilter.location" [suggestions]="locations"
-                        (completeMethod)="searchLocation($event)"></p-autoComplete>
+                      <p-autoComplete [(ngModel)]="this.postFilter.location" [suggestions]="locations"
+                        (completeMethod)="searchLocation($event)" [ngModelOptions]="{standalone: true}">
+                      </p-autoComplete>
                     </div>
                   </div>
                 </div>
@@ -40,7 +41,8 @@
                 <div class="ui-grid ui-grid-responsive ui-fluid">
                   <div class="ui-grid-row">
                     <div class="ui-grid-col-12">
-                      <p-dropdown [options]="experienceOptions" [(ngModel)]="postFilter.minExp">
+                      <p-dropdown [options]="experienceOptions" [(ngModel)]="this.postFilter.minExp"
+                        [ngModelOptions]="{standalone: true}">
                       </p-dropdown>
                     </div>
                   </div>
@@ -51,7 +53,8 @@
                 <div class="ui-grid ui-grid-responsive ui-fluid">
                   <div class="ui-grid-row">
                     <div class="ui-grid-col-12">
-                      <p-dropdown [options]="experienceOptions" [(ngModel)]="postFilter.maxExp">
+                      <p-dropdown [options]="experienceOptions" [(ngModel)]="this.postFilter.maxExp"
+                        [ngModelOptions]="{standalone: true}">
                       </p-dropdown>
                     </div>
                   </div>
@@ -70,7 +73,7 @@
       <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <div>
           <ng-container *ngFor="let myPost of myPosts">
-            <referMe-my-post [postDetail]="myPost" (notifyPostDelete)="fetchMyPosts()"></referMe-my-post>
+            <referMe-my-post [postDetail]="myPost" (notifyPostDelete)="fetchPosts()"></referMe-my-post>
           </ng-container>
         </div>
         <p-paginator id="turbotable" [rows]="5" [totalRecords]="26" (onPageChange)="paginate($event)"></p-paginator>
@@ -91,7 +94,8 @@
       <div class="modal-body">
         <div class="form-group">
           <p class="h6">Position</p>
-          <input type="text" class="form-control" name="position" [(ngModel)]="postDetail.position" />
+          <input type="text" class="form-control" name="position" [(ngModel)]="this.postDetail.position"
+            [ngModelOptions]="{standalone: true}" />
         </div>
         <div class="form-group form-row">
           <div class="col">
@@ -99,8 +103,8 @@
             <div class="ui-grid ui-grid-responsive ui-fluid">
               <div class="ui-grid-row">
                 <div class="ui-grid-col-12">
-                  <p-autoComplete [(ngModel)]="postDetail.company" [suggestions]="companies"
-                    (completeMethod)="searchCompany($event)"></p-autoComplete>
+                  <p-autoComplete [(ngModel)]="this.postDetail.company" [suggestions]="companies"
+                    (completeMethod)="searchCompany($event)" [ngModelOptions]="{standalone: true}"></p-autoComplete>
                 </div>
               </div>
             </div>
@@ -110,7 +114,8 @@
             <div class="ui-grid ui-grid-responsive ui-fluid">
               <div class="ui-grid-row">
                 <div class="ui-grid-col-12">
-                  <p-dropdown [options]="experienceOptions" [(ngModel)]="postDetail.minExp">
+                  <p-dropdown [options]="experienceOptions" [(ngModel)]="this.postDetail.minExp"
+                    [ngModelOptions]="{standalone: true}">
                   </p-dropdown>
                 </div>
               </div>
@@ -121,7 +126,8 @@
             <div class="ui-grid ui-grid-responsive ui-fluid">
               <div class="ui-grid-row">
                 <div class="ui-grid-col-12">
-                  <p-dropdown [options]="experienceOptions" [(ngModel)]="postDetail.maxExp">
+                  <p-dropdown [options]="experienceOptions" [(ngModel)]="this.postDetail.maxExp"
+                    [ngModelOptions]="{standalone: true}">
                   </p-dropdown>
                 </div>
               </div>
@@ -134,8 +140,8 @@
             <div class="ui-grid ui-grid-responsive ui-fluid">
               <div class="ui-grid-row">
                 <div class="ui-grid-col-12">
-                  <p-autoComplete [(ngModel)]="postDetail.location" [suggestions]="locations"
-                    (completeMethod)="searchLocation($event)"></p-autoComplete>
+                  <p-autoComplete [(ngModel)]="this.postDetail.location" [suggestions]="locations"
+                    (completeMethod)="searchLocation($event)" [ngModelOptions]="{standalone: true}"></p-autoComplete>
                 </div>
               </div>
             </div>
@@ -145,7 +151,8 @@
         </div>
         <div class="form-group">
           <p class="h6">Job Description</p>
-          <p-editor [(ngModel)]="postDetail.description" [style]="{ height: '320px' }"></p-editor>
+          <p-editor [(ngModel)]="this.postDetail.description" [style]="{ height: '320px' }"
+            [ngModelOptions]="{standalone: true}"></p-editor>
         </div>
       </div>
       <div class="modal-footer">
