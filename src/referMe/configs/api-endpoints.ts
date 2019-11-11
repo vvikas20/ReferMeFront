@@ -19,11 +19,11 @@ export class ApiEndPoints {
     static readonly updateUser: string = `${ApiEndPoints.user}/update`;
     static readonly deleteUser: string = `${ApiEndPoints.user}/delete`;
 
-    static readonly post: string = `${ApiEndPoints.baseUrl}/posts`;
-    static readonly createpost: string = `${ApiEndPoints.post}/add`;
-    static readonly myposts: string = `${ApiEndPoints.post}/my`;
-    static readonly openings: string = `${ApiEndPoints.post}/others`;
-    static readonly deletepost: string = `${ApiEndPoints.post}/delete`;
+    static readonly jobposts: string = `${ApiEndPoints.baseUrl}/jobposts`;
+    static readonly createpost: string = `${ApiEndPoints.jobposts}/add`;
+    static readonly myposts: string = `${ApiEndPoints.jobposts}/my-posts`;
+    static readonly jobs: string = `${ApiEndPoints.jobposts}/jobs`;
+    static readonly deletepost: string = `${ApiEndPoints.jobposts}/delete`;
 
     static readonly role: string = `${ApiEndPoints.baseUrl}/roles`;
     static readonly allRole: string = `${ApiEndPoints.role}/all`;

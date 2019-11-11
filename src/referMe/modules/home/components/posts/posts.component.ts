@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { PostDetail } from '../../models/user-post.model';
+import { PostDetail, PostFilter } from '../../models/user-post.model';
 import { JobpostService } from '../../services/jobpost.service';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { AlertService } from 'src/referMe/core/helper/alert.service';
@@ -21,20 +21,15 @@ export class PostsComponent implements OnInit {
   postDetail: PostDetail;
   myPosts: Array<PostDetail>;
 
-  selectedExperience: any;
-  experience: any[];
-
-
   companies: Array<string>;
   companyMaster: Array<{ companyId: number, companyName: string }>;
 
   locations: Array<string>;
   locationMaster: Array<{ locationID: number, city: string, state: string }>
 
-  selectedSalary: any;
-  salary: any[];
-
   experienceOptions: { label: string; value: number }[];
+
+  postFilter: PostFilter;
 
   constructor(private alertService: AlertService,
     private jobpostService: JobpostService,
@@ -44,34 +39,17 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.preparePostFilter();
+
+    this.postFilter = new PostFilter();
     this.postDetail = new PostDetail();
+
     this.myPosts = [];
     this.prepareOptions();
 
-    this.fetchMyPosts();
+    this.fetchPosts();
 
     this.fetchCompanies();
     this.fetchLocations();
-  }
-
-  preparePostFilter() {
-    this.experience = [];
-    let i: number = 0;
-    while (i < 21) {
-      this.experience.push({ label: i.toString(), value: i });
-      i++;
-    }
-
-    this.salary = [];
-    let j: number = 0;
-    while (j < 21) {
-      this.salary.push({ label: j.toString(), value: j });
-      j++;
-    }
-
-    this.selectedExperience = 0;
-    this.selectedSalary = 0;
   }
 
   prepareOptions() {
@@ -81,6 +59,9 @@ export class PostsComponent implements OnInit {
       this.experienceOptions.push({ label: i.toString(), value: i });
       i++;
     }
+
+    this.postFilter.minExp = 0;
+    this.postFilter.maxExp = 0;
   }
 
   fetchLocations() {
@@ -129,9 +110,9 @@ export class PostsComponent implements OnInit {
     this.locations = this.locationMaster.filter(c => c.city.toUpperCase().startsWith(event.query.toUpperCase())).map(c => c.city)
   }
 
-  fetchMyPosts() {
+  fetchPosts() {
     this.myPosts = [];
-    this.jobpostService.getMyPosts().subscribe(next => {
+    this.jobpostService.getMyPosts(this.postFilter).subscribe(next => {
       next.forEach(element => {
         this.myPosts.push({
           postID: element.PostID,
@@ -171,7 +152,7 @@ export class PostsComponent implements OnInit {
       next => {
         this.alertService.success('Succes', 'Post created successfully');
         this.jobPostModal.hide();
-        this.fetchMyPosts();
+        this.fetchPosts();
       },
       error => {
 

@@ -23,3 +23,10 @@ export class UserPostDetail {
     postDetail: PostDetail;
     userDetail: UserDetail;
 }
+
+export class PostFilter {
+    company: string = '';
+    location: string = '';
+    minExp: number = 0;
+    maxExp: number = 0;
+  }

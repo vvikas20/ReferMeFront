@@ -6,54 +6,32 @@
         <p-card header="Filter">
           <form>
             <div class="form-group">
-              <label
-                for="skillsdescriptioncompany"
-                style="word-break: break-all;"
-                >Skills,Designation,Company</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="skillsdescriptioncompany"
-                placeholder=""
-              />
+              <label for="skillsdescriptioncompany" style="word-break: break-all;">Skills,Designation,Company</label>
+              <input type="text" class="form-control" id="skillsdescriptioncompany" placeholder="" />
             </div>
             <div class="form-group">
               <label for="location">Location</label>
-              <input
-                type="text"
-                class="form-control"
-                id="location"
-                placeholder=""
-              />
+              <input type="text" class="form-control" id="location" placeholder="" />
             </div>
             <div class="form-group">
-              <label for="exampleFormControlSelect1">Experience</label>
+              <label for="exampleFormControlSelect1">Min Experience</label>
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
-                    <p-dropdown
-                      [options]="experience"
-                      [(ngModel)]="selectedExperience"
-                      [showClear]="true"
-                      [autoWidth]="false"
-                    >
+                    <p-dropdown [options]="experience" [(ngModel)]="selectedExperience" [showClear]="true"
+                      [autoWidth]="false">
                     </p-dropdown>
                   </div>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlSelect1">Salary</label>
+              <label for="exampleFormControlSelect1">Max Experience</label>
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
-                    <p-dropdown
-                      [options]="salary"
-                      [(ngModel)]="selectedSalary"
-                      [showClear]="true"
-                      [autoWidth]="false"
-                    >
+                    <p-dropdown [options]="experience" [(ngModel)]="selectedExperience" [showClear]="true"
+                      [autoWidth]="false">
                     </p-dropdown>
                   </div>
                 </div>
@@ -76,12 +54,7 @@
             <referMe-job [userPostDetail]="userPostDetail"></referMe-job>
           </ng-container>
         </div>
-        <p-paginator
-          id="turbotable"
-          [rows]="5"
-          [totalRecords]="26"
-          (onPageChange)="paginate($event)"
-        ></p-paginator>
+        <p-paginator id="turbotable" [rows]="5" [totalRecords]="26" (onPageChange)="paginate($event)"></p-paginator>
       </div>
     </div>
   </div>
