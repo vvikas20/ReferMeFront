@@ -5,53 +5,20 @@ import { ApiEndPoints } from 'src/referMe/configs/api-endpoints';
 import { PostDetail, PostFilter } from '../models/user-post.model';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { SearchParameter } from '../models/search-parameter.model';
 
 @Injectable()
 export class JobpostService {
 
   constructor(private httpService: HttpService) { }
 
-  getOpenings(postFilter: PostFilter): Observable<any> {
-
+  getOpenings(searchParameter: SearchParameter): Observable<any> {
     const reqHeader: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-
-    let searchParameter = {
-      Filters: [],
-      GlobalFilter: '',
-      SortMeta: null,
-      Page: 1,
-      Rows: 100,
-      DefaultSortField: '',
-      DefaultSortOrder: 1
-    };
-
-    if (postFilter.company != '') searchParameter.Filters.push({ Field: 'company', Value: postFilter.company });
-    if (postFilter.location != '') searchParameter.Filters.push({ Field: 'location', Value: postFilter.location });
-    if (postFilter.minExp > 0) searchParameter.Filters.push({ Field: 'minExp', Value: postFilter.minExp });
-    if (postFilter.maxExp > 0) searchParameter.Filters.push({ Field: 'maxExp', Value: postFilter.maxExp });
-
     return this.httpService.Post<any>(ApiEndPoints.jobs, searchParameter, { headers: reqHeader });
   }
 
-  getMyPosts(postFilter: PostFilter): Observable<any> {
-
+  getMyPosts(searchParameter: SearchParameter): Observable<any> {
     const reqHeader: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-
-    let searchParameter = {
-      Filters: [],
-      GlobalFilter: '',
-      SortMeta: null,
-      Page: 1,
-      Rows: 100,
-      DefaultSortField: '',
-      DefaultSortOrder: 1
-    };
-
-    if (postFilter.company != '') searchParameter.Filters.push({ Field: 'company', Value: postFilter.company });
-    if (postFilter.location != '') searchParameter.Filters.push({ Field: 'location', Value: postFilter.location });
-    if (postFilter.minExp > 0) searchParameter.Filters.push({ Field: 'minExp', Value: postFilter.minExp });
-    if (postFilter.maxExp > 0) searchParameter.Filters.push({ Field: 'maxExp', Value: postFilter.maxExp });
-
     return this.httpService.Post<any>(`${ApiEndPoints.myposts}`, searchParameter, { headers: reqHeader });
   }
 

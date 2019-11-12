@@ -3,7 +3,7 @@
   <div class="col-12">
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-2">
-        <p-card header="Filter ({{userPostDetails.length}} Jobs)">
+        <p-card header="Filter ({{totallFilteredJobCount}} Jobs)">
           <form>
             <div class="form-group">
               <p class="h6">Company</p>
@@ -52,13 +52,14 @@
                 </div>
               </div>
             </div>
+          </form>
+          <p-footer>
             <div class="form-group">
-              <button type="button" class="btn btn-warning btn-block" (click)="fetchJobPosts()">
+              <button type="button" class="btn btn-warning btn-block" (click)="refreshJobs()">
                 Search
               </button>
             </div>
-          </form>
-          <p-footer> </p-footer>
+          </p-footer>
         </p-card>
       </div>
       <!--Filters-->
@@ -69,7 +70,8 @@
             <referMe-job [userPostDetail]="userPostDetail"></referMe-job>
           </ng-container>
         </div>
-        <p-paginator id="turbotable" [rows]="5" [totalRecords]="26" (onPageChange)="paginate($event)"></p-paginator>
+        <p-paginator id="turbotable" [rows]="10" [totalRecords]="totallFilteredJobCount"
+          (onPageChange)="paginate($event)"></p-paginator>
       </div>
     </div>
   </div>

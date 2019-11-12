@@ -6,6 +6,7 @@ import { AlertService } from 'src/referMe/core/helper/alert.service';
 import { CompanyService } from '../../services/company.service';
 import { LocationService } from '../../services/location.service';
 import { ModalDirective } from 'ngx-bootstrap';
+import { SearchParameter } from '../../models/search-parameter.model';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class PostsComponent implements OnInit {
   @ViewChild('jobPostModal') jobPostModal: ModalDirective;
 
   postDetail: PostDetail;
+
+  totallFilteredPostCount: number;
   myPosts: Array<PostDetail>;
 
   companies: Array<string>;
@@ -30,6 +33,7 @@ export class PostsComponent implements OnInit {
   experienceOptions: { label: string; value: number }[];
 
   postFilter: PostFilter;
+
 
   constructor(private alertService: AlertService,
     private jobpostService: JobpostService,
@@ -43,10 +47,11 @@ export class PostsComponent implements OnInit {
     this.postFilter = new PostFilter();
     this.postDetail = new PostDetail();
 
+    this.totallFilteredPostCount = 0;
     this.myPosts = [];
     this.prepareOptions();
 
-    this.fetchPosts();
+    this.fetchPosts(new SearchParameter());
 
     this.fetchCompanies();
     this.fetchLocations();
@@ -110,16 +115,24 @@ export class PostsComponent implements OnInit {
     this.locations = this.locationMaster.filter(c => c.city.toUpperCase().startsWith(event.query.toUpperCase())).map(c => c.city)
   }
 
-  fetchPosts() {
+  fetchPosts(searchParameter: SearchParameter) {
 
     if (this.postFilter.maxExp > 0 && this.postFilter.minExp > this.postFilter.maxExp) {
       this.alertService.info('INFO', 'Minimum Experience can not be greater than Maximum Experience');
       return;
     }
 
+    if (this.postFilter.company != '') searchParameter.Filters.push({ Field: 'company', Value: this.postFilter.company });
+    if (this.postFilter.location != '') searchParameter.Filters.push({ Field: 'location', Value: this.postFilter.location });
+    if (this.postFilter.minExp > 0) searchParameter.Filters.push({ Field: 'minExp', Value: this.postFilter.minExp });
+    if (this.postFilter.maxExp > 0) searchParameter.Filters.push({ Field: 'maxExp', Value: this.postFilter.maxExp });
+
+    // this.totallFilteredPostCount = 0;
     this.myPosts = [];
-    this.jobpostService.getMyPosts(this.postFilter).subscribe(next => {
-      next.forEach(element => {
+
+    this.jobpostService.getMyPosts(searchParameter).subscribe(next => {
+      this.totallFilteredPostCount = next.TotallItem;
+      next.Items.forEach(element => {
         this.myPosts.push({
           postID: element.PostID,
           userID: element.UserID,
@@ -162,7 +175,7 @@ export class PostsComponent implements OnInit {
       next => {
         this.alertService.success('Succes', 'Post created successfully');
         this.jobPostModal.hide();
-        this.fetchPosts();
+        this.fetchPosts(new SearchParameter());
       },
       error => {
 
@@ -184,5 +197,17 @@ export class PostsComponent implements OnInit {
     //event.rows = Number of rows to display in new page
     //event.page = Index of the new page
     //event.pageCount = Total number of pages
+
+    console.log('paginate', event);
+
+    let searchParam = new SearchParameter();
+    searchParam.Page = event.page + 1;
+    searchParam.Rows = event.rows;
+
+    this.fetchPosts(searchParam);
+  }
+
+  refreshPosts() {
+    this.fetchPosts(new SearchParameter());
   }
 }

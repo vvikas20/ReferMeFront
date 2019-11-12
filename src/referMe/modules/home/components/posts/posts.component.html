@@ -11,7 +11,7 @@
           </p-card>
         </div>
         <div>
-          <p-card header="Filter ({{myPosts.length}} Posts)">
+          <p-card header="Filter ({{totallFilteredPostCount}} Posts)">
             <form>
               <div class="form-group">
                 <p class="h6">Company</p>
@@ -60,23 +60,25 @@
                   </div>
                 </div>
               </div>
+            </form>
+            <p-footer>
               <div class="form-group">
-                <button type="button" class="btn btn-warning btn-block" (click)="fetchPosts()">
+                <button type="button" class="btn btn-warning btn-block" (click)="refreshPosts()">
                   Search
                 </button>
               </div>
-            </form>
-            <p-footer> </p-footer>
+            </p-footer>
           </p-card>
         </div>
       </div>
       <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <div>
           <ng-container *ngFor="let myPost of myPosts">
-            <referMe-my-post [postDetail]="myPost" (notifyPostDelete)="fetchPosts()"></referMe-my-post>
+            <referMe-my-post [postDetail]="myPost" (notifyPostDelete)="refreshPosts()"></referMe-my-post>
           </ng-container>
         </div>
-        <p-paginator id="turbotable" [rows]="5" [totalRecords]="26" (onPageChange)="paginate($event)"></p-paginator>
+        <p-paginator id="turbotable" [rows]="10" [totalRecords]="this.totallFilteredPostCount"
+          (onPageChange)="paginate($event)"></p-paginator>
       </div>
     </div>
   </div>
