@@ -59,14 +59,16 @@
 <!--Request Referral Modal End-->
 
 <p-dialog header="Details" [(visible)]="displayJobDetail" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true">
-  <dl class="row">
-    <dt class="col-sm-4">Job Description</dt>
-    <dd class="col-sm-8">
-      <div [innerHtml]="userPostDetail.postDetail.description | safeHtml"></div>
-    </dd>
-    <dt class="col-sm-4">Attachments</dt>
-    <dd class="col-sm-8"></dd>
-  </dl>
+  <div class="col">
+    <div class="row">
+      <p><strong>Job Description</strong></p>
+      <p [innerHtml]="userPostDetail.postDetail.description | safeHtml"></p>
+    </div>
+    <div class="row">
+      <p><strong>Attachments</strong></p>
+      <p></p>
+    </div>
+  </div>
   <p-footer>
     <button pButton type="button" label="Request Referral" class="ui-button-raised ui-button-warning"
       (click)="requestReferral()"></button>
