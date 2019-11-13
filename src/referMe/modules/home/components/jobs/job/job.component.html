@@ -15,10 +15,28 @@
     <a class="text-info font-weight-bold" href="JavaScript:Void(0);" (click)="displayJobDetails()">Details</a>
   </p>
   <p-footer>
-    <p class="text-muted">Posted By</p>
-    <p class="text-uppercase">
-      {{userPostDetail.userDetail.firstName}} {{userPostDetail.userDetail.lastName}}
-    </p>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs 12">
+        <div class="d-flex justify-content-start">
+          <h5>
+            <span class="keyword">Java EE</span>
+            <span class="keyword">Maven</span>
+            <span class="keyword">AWS</span>
+          </h5>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs 12">
+        <div class="d-flex justify-content-end">
+          <div class="text-muted">
+            Posted By
+            <em class="text-uppercase">{{userPostDetail.userDetail.firstName}}
+              {{userPostDetail.userDetail.lastName}}</em>
+            On
+            <em> {{userPostDetail.postDetail.postedOn}}</em>
+          </div>
+        </div>
+      </div>
+    </div>
   </p-footer>
 </p-card>
 
@@ -60,13 +78,25 @@
 
 <p-dialog header="Details" [(visible)]="displayJobDetail" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true">
   <div class="col">
-    <div class="row">
-      <p><strong>Job Description</strong></p>
-      <p [innerHtml]="userPostDetail.postDetail.description | safeHtml"></p>
+    <div class="">
+      <div>
+        <p class="h6 text-uppercase">
+          <i class="fa fa-file-text mr-1" aria-hidden="true"></i>
+          <strong>Job Description</strong>
+        </p>
+      </div>
+      <div style="border-left: 3px solid lightgray; padding-left: 10px;min-height: 10vh;">
+        <p [innerHtml]="userPostDetail.postDetail.description | safeHtml"></p>
+      </div>
     </div>
-    <div class="row">
-      <p><strong>Attachments</strong></p>
-      <p></p>
+    <div class="">
+      <div>
+        <p class="h6 text-uppercase">
+          <i class="fa fa-paperclip mr-1" aria-hidden="true"></i>
+          <strong>Attachments</strong>
+        </p>
+      </div>
+      <div style="border-left: 3px solid lightgray; padding-left: 10px;min-height: 10vh;"></div>
     </div>
   </div>
   <p-footer>

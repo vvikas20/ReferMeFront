@@ -151,6 +151,21 @@
           <div class="col"></div>
           <div class="col"></div>
         </div>
+        <div class="form-group form-row">
+          <div class="col">
+            <p class="h6">Keywords</p>
+            <div class="ui-grid ui-grid-responsive ui-fluid">
+              <div class="ui-grid-row">
+                <div class="ui-grid-col-12">
+                  <p-chips [(ngModel)]="this.postDetail.keywords" [addOnTab]="true"
+                    [ngModelOptions]="{standalone: true}">
+                  </p-chips>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
         <div class="form-group">
           <p class="h6">Job Description</p>
           <p-editor [(ngModel)]="this.postDetail.description" [style]="{ height: '320px' }"

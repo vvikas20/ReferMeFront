@@ -7,6 +7,7 @@ import { CompanyService } from '../../services/company.service';
 import { LocationService } from '../../services/location.service';
 import { ModalDirective } from 'ngx-bootstrap';
 import { SearchParameter } from '../../models/search-parameter.model';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class PostsComponent implements OnInit {
 
 
   constructor(private alertService: AlertService,
+    private datePipe: DatePipe,
     private jobpostService: JobpostService,
     private companyService: CompanyService,
     private locationService: LocationService) {
@@ -141,8 +143,10 @@ export class PostsComponent implements OnInit {
           minExp: element.MinExp,
           maxExp: element.MaxExp,
           location: element.Location,
+          keywords: [],
           contact: element.Contact,
-          description: element.Description
+          description: element.Description,
+          postedOn: this.datePipe.transform(new Date(element.PostedOn), 'MMM d, y, h:mm:ss a')
         });
       });
     },

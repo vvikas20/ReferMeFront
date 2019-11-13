@@ -28,6 +28,7 @@ import { DialogModule } from 'primeng/dialog';
 import { PaginatorModule } from 'primeng/paginator';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { ChipsModule } from 'primeng/chips';
 import { ModalModule } from 'ngx-bootstrap';
 import { MyPostComponent } from './components/posts/my-post/my-post.component';
 import { JobpostService } from './services/jobpost.service';
@@ -55,6 +56,7 @@ import { LocationService } from './services/location.service';
     PaginatorModule,
     ScrollPanelModule,
     AutoCompleteModule,
+    ChipsModule,
     ModalModule.forRoot(),
     HomeRoutingModule,
     SharedModule

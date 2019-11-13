@@ -5,6 +5,7 @@ import { AlertService } from 'src/referMe/core/helper/alert.service';
 import { LocationService } from '../../services/location.service';
 import { CompanyService } from '../../services/company.service';
 import { SearchParameter } from '../../models/search-parameter.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'referMe-jobs',
@@ -28,6 +29,7 @@ export class JobsComponent implements OnInit {
 
 
   constructor(private alertService: AlertService,
+    private datePipe: DatePipe,
     private jobpostService: JobpostService,
     private companyService: CompanyService,
     private locationService: LocationService) {
@@ -131,8 +133,10 @@ export class JobsComponent implements OnInit {
             minExp: element.PostDetail.MinExp,
             maxExp: element.PostDetail.MaxExp,
             location: element.PostDetail.Location,
+            keywords: [],
             contact: element.PostDetail.Contact,
-            description: element.PostDetail.Description
+            description: element.PostDetail.Description,
+            postedOn: this.datePipe.transform(new Date(element.PostDetail.PostedOn), 'MMM d, y, h:mm:ss a')
           },
           userDetail: {
             userID: element.UserDetail.UserID,
@@ -156,7 +160,7 @@ export class JobsComponent implements OnInit {
     //event.rows = Number of rows to display in new page
     //event.page = Index of the new page
     //event.pageCount = Total number of pages
-    
+
     let searchParam = new SearchParameter();
     searchParam.Page = event.page + 1;
     searchParam.Rows = event.rows;

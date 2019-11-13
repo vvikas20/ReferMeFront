@@ -6,8 +6,10 @@ export class PostDetail {
     minExp: number;
     maxExp: number;
     location: string = '';
+    keywords: Array<string> = [];
     contact: string;
     description: string = '';
+    postedOn: string = '';
 }
 
 export class UserDetail {
@@ -25,8 +27,9 @@ export class UserPostDetail {
 }
 
 export class PostFilter {
+    keywords: Array<string> = [];
     company: string = '';
     location: string = '';
     minExp: number = 0;
     maxExp: number = 0;
-  }
+}
