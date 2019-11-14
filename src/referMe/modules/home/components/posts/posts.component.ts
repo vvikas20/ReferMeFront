@@ -124,6 +124,7 @@ export class PostsComponent implements OnInit {
       return;
     }
 
+    if (this.postFilter.keywords.length > 0) searchParameter.Filters.push({ Field: 'keywords', Value: this.postFilter.keywords.join('##') });
     if (this.postFilter.company != '') searchParameter.Filters.push({ Field: 'company', Value: this.postFilter.company });
     if (this.postFilter.location != '') searchParameter.Filters.push({ Field: 'location', Value: this.postFilter.location });
     if (this.postFilter.minExp > 0) searchParameter.Filters.push({ Field: 'minExp', Value: this.postFilter.minExp });
@@ -143,7 +144,7 @@ export class PostsComponent implements OnInit {
           minExp: element.MinExp,
           maxExp: element.MaxExp,
           location: element.Location,
-          keywords: [],
+          keywords: element.Keywords,
           contact: element.Contact,
           description: element.Description,
           postedOn: this.datePipe.transform(new Date(element.PostedOn), 'MMM d, y, h:mm:ss a')

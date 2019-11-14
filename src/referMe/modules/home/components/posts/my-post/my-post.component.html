@@ -15,6 +15,9 @@
     <a class="text-info font-weight-bold" href="JavaScript:Void(0);" (click)="displayPostDetail=true">Details</a>
   </p>
   <p-footer>
+    <h5>
+      <span class="keyword" *ngFor="let key of postDetail.keywords">{{key}}</span>
+    </h5>
     <p class="text-muted">Referral Requests</p>
     <p class="text-uppercase" *ngFor="let request of referralRequests">
       <a #link class="text-warning font-weight-bold" href="JavaScript:Void(0);"
@@ -31,27 +34,27 @@
         <button type="button" class="close pull-right" (click)="hideModal()">&times;</button>
       </div>
       <div class="modal-body">
-          <dl class="row">
-              <dt class="col-sm-4">First Name</dt>
-              <dd class="col-sm-8">{{selectedReferralRequest.firstName}}</dd>
-              <dt class="col-sm-4">Middle Name</dt>
-              <dd class="col-sm-8">{{selectedReferralRequest.middleName}}</dd>
-              <dt class="col-sm-4">Last Name</dt>
-              <dd class="col-sm-8">{{selectedReferralRequest.lastName}}</dd>
-              <dt class="col-sm-4">Email Address</dt>
-              <dd class="col-sm-8">{{selectedReferralRequest.emailAddress}}</dd>
-              <dt class="col-sm-4">Mobile Number</dt>
-              <dd class="col-sm-8">{{selectedReferralRequest.mobile}}</dd>
-              <dt class="col-sm-4">Requested On</dt>
-              <dd class="col-sm-8">{{selectedReferralRequest.requestedOn}}</dd>
-              <dt class="col-sm-4">Subject</dt>
-              <dd class="col-sm-8">{{selectedReferralRequest.subject}}</dd>
-              <dt class="col-sm-4">Message</dt>
-              <dd class="col-sm-8" [innerHtml]="selectedReferralRequest.message | safeHtml"></dd>
-            </dl>
+        <dl class="row">
+          <dt class="col-sm-4">First Name</dt>
+          <dd class="col-sm-8">{{selectedReferralRequest.firstName}}</dd>
+          <dt class="col-sm-4">Middle Name</dt>
+          <dd class="col-sm-8">{{selectedReferralRequest.middleName}}</dd>
+          <dt class="col-sm-4">Last Name</dt>
+          <dd class="col-sm-8">{{selectedReferralRequest.lastName}}</dd>
+          <dt class="col-sm-4">Email Address</dt>
+          <dd class="col-sm-8">{{selectedReferralRequest.emailAddress}}</dd>
+          <dt class="col-sm-4">Mobile Number</dt>
+          <dd class="col-sm-8">{{selectedReferralRequest.mobile}}</dd>
+          <dt class="col-sm-4">Requested On</dt>
+          <dd class="col-sm-8">{{selectedReferralRequest.requestedOn}}</dd>
+          <dt class="col-sm-4">Subject</dt>
+          <dd class="col-sm-8">{{selectedReferralRequest.subject}}</dd>
+          <dt class="col-sm-4">Message</dt>
+          <dd class="col-sm-8" [innerHtml]="selectedReferralRequest.message | safeHtml"></dd>
+        </dl>
       </div>
       <div class="modal-footer">
-          <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary mr-1"
+        <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary mr-1"
           (click)="hideModal()"></button>
       </div>
     </div>

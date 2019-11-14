@@ -34,6 +34,7 @@ export class JobpostService {
       MaxExp: postDetail.maxExp,
       Location: postDetail.location,
       Description: postDetail.description,
+      Keywords: postDetail.keywords,
       Contact: postDetail.contact
     }
 

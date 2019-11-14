@@ -19,9 +19,7 @@
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs 12">
         <div class="d-flex justify-content-start">
           <h5>
-            <span class="keyword">Java EE</span>
-            <span class="keyword">Maven</span>
-            <span class="keyword">AWS</span>
+            <span class="keyword" *ngFor="let key of userPostDetail.postDetail.keywords">{{key}}</span>
           </h5>
         </div>
       </div>

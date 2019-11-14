@@ -113,6 +113,9 @@ export class JobsComponent implements OnInit {
       return;
     }
 
+    debugger;
+
+    if (this.jobFilter.keywords.length > 0) searchParameter.Filters.push({ Field: 'keywords', Value: this.jobFilter.keywords.join('##') });
     if (this.jobFilter.company != '') searchParameter.Filters.push({ Field: 'company', Value: this.jobFilter.company });
     if (this.jobFilter.location != '') searchParameter.Filters.push({ Field: 'location', Value: this.jobFilter.location });
     if (this.jobFilter.minExp > 0) searchParameter.Filters.push({ Field: 'minExp', Value: this.jobFilter.minExp });
@@ -133,7 +136,7 @@ export class JobsComponent implements OnInit {
             minExp: element.PostDetail.MinExp,
             maxExp: element.PostDetail.MaxExp,
             location: element.PostDetail.Location,
-            keywords: [],
+            keywords: element.PostDetail.Keywords,
             contact: element.PostDetail.Contact,
             description: element.PostDetail.Description,
             postedOn: this.datePipe.transform(new Date(element.PostDetail.PostedOn), 'MMM d, y, h:mm:ss a')
