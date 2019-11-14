@@ -1,4 +1,5 @@
-<p-card header="{{postDetail.position}}" subheader="{{postDetail.company}}" styleClass="mb-1 ui-card-shadow">
+<p-card header="{{postDetail.position}}" subheader="{{postDetail.company}}"
+  [styleClass]="'mb-1 ui-card-shadow my-post-card'">
   <button type="button" class="btn btn-outline-danger float-right"
     (click)="deletePost(postDetail.postID)">Delete</button>
   <p class="card-text">
