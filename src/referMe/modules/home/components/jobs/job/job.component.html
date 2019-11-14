@@ -1,6 +1,6 @@
 <!--Job Referral Start-->
 <p-card header="{{userPostDetail.postDetail.position}}" subheader="{{userPostDetail.postDetail.company}}"
-  styleClass="mb-1 ui-card-shadow">
+  [styleClass]="'mb-1 ui-card-shadow job-card'">
   <p class="card-text">
     <i class="fa fa-briefcase mr-1" aria-hidden="true"></i>
     {{userPostDetail.postDetail.minExp}}-{{userPostDetail.postDetail.maxExp}}

@@ -4,13 +4,16 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse, Htt
 import { Observable, throwError } from "rxjs";
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { AlertService } from "../helper/alert.service";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
 
     count: number = 0;
 
-    constructor(private spinner: Ng4LoadingSpinnerService, private alert: AlertService) { }
+    constructor(private spinner: Ng4LoadingSpinnerService,
+        private alert: AlertService,
+        private router: Router) { }
 
     intercept(
         request: HttpRequest<any>,
@@ -30,7 +33,8 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
                         errorMessage = `Error: ${error.error.message}`;
                     } else {
                         // server-side error
-                        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+                        if (error.status == 401) this.router.navigateByUrl('/');
+                        else errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
                     }
 
                     this.alert.error('ERROR', errorMessage);
