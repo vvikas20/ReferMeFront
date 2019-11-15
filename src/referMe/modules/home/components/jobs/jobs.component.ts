@@ -113,8 +113,6 @@ export class JobsComponent implements OnInit {
       return;
     }
 
-    debugger;
-
     if (this.jobFilter.keywords.length > 0) searchParameter.Filters.push({ Field: 'keywords', Value: this.jobFilter.keywords.join('##') });
     if (this.jobFilter.company != '') searchParameter.Filters.push({ Field: 'company', Value: this.jobFilter.company });
     if (this.jobFilter.location != '') searchParameter.Filters.push({ Field: 'location', Value: this.jobFilter.location });
@@ -173,5 +171,9 @@ export class JobsComponent implements OnInit {
 
   refreshJobs() {
     this.fetchJobPosts(new SearchParameter());
+  }
+
+  clearFilter() {
+    this.jobFilter = new PostFilter();
   }
 }

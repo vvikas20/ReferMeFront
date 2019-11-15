@@ -15,10 +15,9 @@ import { ModalDirective } from 'ngx-bootstrap';
 export class JobComponent implements OnInit {
 
   @ViewChild('requestReferralModal') requestReferralModal: ModalDirective;
+  @ViewChild('jobDetailModal') jobDetailModal: ModalDirective;
 
   @Input() userPostDetail: UserPostDetail;
-
-  displayJobDetail: boolean = false;
 
   referral: Referral;
 
@@ -33,11 +32,11 @@ export class JobComponent implements OnInit {
   }
 
   displayJobDetails(): void {
-    this.displayJobDetail = true;
+    this.jobDetailModal.show();
   }
 
   requestReferral(): void {
-    this.displayJobDetail = false;
+    this.jobDetailModal.hide();
     this.referral = new Referral();
 
     this.referral.postId = this.userPostDetail.postDetail.postID;
@@ -64,4 +63,9 @@ export class JobComponent implements OnInit {
   hideModal() {
     this.requestReferralModal.hide();
   }
+
+  hideJobDetailModal() {
+    this.jobDetailModal.hide();
+  }
+
 }

@@ -20,14 +20,13 @@ export class MyPostComponent implements OnInit {
 
 
   @ViewChild('referralDetailModal') referralDetailModal: ModalDirective;
+  @ViewChild('postDetailModal') postDetailModal: ModalDirective;
 
   @Input() postDetail: PostDetail;
   @Output() notifyPostDelete = new EventEmitter();
 
   referralRequests: Array<ReferralRequest>;
   selectedReferralRequest: ReferralRequest;
-
-  displayPostDetail: boolean = false;
 
   constructor(private datePipe: DatePipe, private alertService: AlertService, private jobpostService: JobpostService, private referralService: ReferralService) { }
 
@@ -83,7 +82,16 @@ export class MyPostComponent implements OnInit {
     this.referralDetailModal.show();
   }
 
-  hideModal(){
+  hideModal() {
     this.referralDetailModal.hide();
   }
+
+  openPostDetailModal() {
+    this.postDetailModal.show();
+  }
+
+  hidePostDetailModal() {
+    this.postDetailModal.hide();
+  }
+
 }

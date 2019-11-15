@@ -1,6 +1,6 @@
 <!--Job Referral Start-->
 <p-card header="{{userPostDetail.postDetail.position}}" subheader="{{userPostDetail.postDetail.company}}"
-  [styleClass]="'mb-1 ui-card-shadow job-card'">
+  [styleClass]="'mb-1 ui-card-shadow custom-border-left-job'">
   <p class="card-text">
     <i class="fa fa-briefcase mr-1" aria-hidden="true"></i>
     {{userPostDetail.postDetail.minExp}}-{{userPostDetail.postDetail.maxExp}}
@@ -40,12 +40,22 @@
 
 <!--Request Referral Modal Start-->
 
-<div bsModal #requestReferralModal="bs-modal" class="modal right fade" tabindex="-1">
+<div bsModal #requestReferralModal="bs-modal" class="custom-modal modal fade" tabindex="-1">
   <div class="modal-dialog  modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Request Referral</h4>
-        <button type="button" class="close pull-right" (click)="hideModal()">&times;</button>
+        <h4 class="modal-title">Request Referral</h4>
+        <span class="close-icon" (click)="hideModal()">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" width="32px" height="32px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;"
+            xml:space="preserve">
+            <circle style="fill:#ffc107;" cx="25" cy="25" r="25" />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+                   " />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+                   " />
+          </svg>
+        </span>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -74,33 +84,43 @@
 </div>
 <!--Request Referral Modal End-->
 
-<p-dialog header="Details" [(visible)]="displayJobDetail" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true">
-  <div class="col">
-    <div class="">
-      <div>
-        <p class="h6 text-uppercase">
-          <i class="fa fa-file-text mr-1" aria-hidden="true"></i>
-          <strong>Job Description</strong>
-        </p>
+
+<div bsModal #jobDetailModal="bs-modal" class="custom-modal modal fade" tabindex="-1">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Job Details</h4>
+        <span class="close-icon" (click)="hideJobDetailModal()">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" width="32px" height="32px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;"
+            xml:space="preserve">
+            <circle style="fill:#ffc107;" cx="25" cy="25" r="25" />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+                 " />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+                 " />
+          </svg>
+        </span>
       </div>
-      <div style="border-left: 3px solid lightgray; padding-left: 10px;min-height: 10vh;">
-        <p [innerHtml]="userPostDetail.postDetail.description | safeHtml"></p>
+      <div class="modal-body">
+        <div class="col">
+          <p-card header="Description" styleClass="mb-2 custom-border-left-job">
+            <div>
+              <p [innerHtml]="userPostDetail.postDetail.description | safeHtml"></p>
+            </div>
+          </p-card>
+          <p-card header="Attachments" styleClass="mb-2 custom-border-left-job">
+            <div>
+            </div>
+          </p-card>
+        </div>
       </div>
-    </div>
-    <div class="">
-      <div>
-        <p class="h6 text-uppercase">
-          <i class="fa fa-paperclip mr-1" aria-hidden="true"></i>
-          <strong>Attachments</strong>
-        </p>
+      <div class="modal-footer">
+        <button pButton type="button" label="Request Referral" class="ui-button-raised ui-button-warning"
+          (click)="requestReferral()"></button>
+        <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary"
+          (click)="hideJobDetailModal()"></button>
       </div>
-      <div style="border-left: 3px solid lightgray; padding-left: 10px;min-height: 10vh;"></div>
     </div>
   </div>
-  <p-footer>
-    <button pButton type="button" label="Request Referral" class="ui-button-raised ui-button-warning"
-      (click)="requestReferral()"></button>
-    <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary"
-      (click)="displayJobDetail=false"></button>
-  </p-footer>
-</p-dialog>
+</div>

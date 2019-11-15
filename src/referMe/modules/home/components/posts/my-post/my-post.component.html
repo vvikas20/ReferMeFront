@@ -1,5 +1,5 @@
 <p-card header="{{postDetail.position}}" subheader="{{postDetail.company}}"
-  [styleClass]="'mb-1 ui-card-shadow my-post-card'">
+  [styleClass]="'mb-1 ui-card-shadow custom-border-left-post'">
   <button type="button" class="btn btn-outline-danger float-right"
     (click)="deletePost(postDetail.postID)">Delete</button>
   <p class="card-text">
@@ -13,7 +13,7 @@
   </p>
   <p class="card-text">
     <i class="fa fa-info-circle mr-2" aria-hidden="true"></i>
-    <a class="text-info font-weight-bold" href="JavaScript:Void(0);" (click)="displayPostDetail=true">Details</a>
+    <a class="text-info font-weight-bold" href="JavaScript:Void(0);" (click)="openPostDetailModal()">Details</a>
   </p>
   <p-footer>
     <h5>
@@ -27,31 +27,41 @@
   </p-footer>
 </p-card>
 
-<div bsModal #referralDetailModal="bs-modal" class="modal right fade" tabindex="-1">
+<div bsModal #referralDetailModal="bs-modal" class="custom-modal modal fade" tabindex="-1">
   <div class="modal-dialog  modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Referral Request Details</h4>
-        <button type="button" class="close pull-right" (click)="hideModal()">&times;</button>
+        <h4 class="modal-title">Referral Request Details</h4>
+        <span class="close-icon" (click)="hideModal()">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" width="32px" height="32px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;"
+            xml:space="preserve">
+            <circle style="fill:#ffc107;" cx="25" cy="25" r="25" />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+             " />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+             " />
+          </svg>
+        </span>
       </div>
       <div class="modal-body">
         <dl class="row">
-          <dt class="col-sm-4">First Name</dt>
-          <dd class="col-sm-8">{{selectedReferralRequest.firstName}}</dd>
-          <dt class="col-sm-4">Middle Name</dt>
-          <dd class="col-sm-8">{{selectedReferralRequest.middleName}}</dd>
-          <dt class="col-sm-4">Last Name</dt>
-          <dd class="col-sm-8">{{selectedReferralRequest.lastName}}</dd>
-          <dt class="col-sm-4">Email Address</dt>
-          <dd class="col-sm-8">{{selectedReferralRequest.emailAddress}}</dd>
-          <dt class="col-sm-4">Mobile Number</dt>
-          <dd class="col-sm-8">{{selectedReferralRequest.mobile}}</dd>
-          <dt class="col-sm-4">Requested On</dt>
-          <dd class="col-sm-8">{{selectedReferralRequest.requestedOn}}</dd>
-          <dt class="col-sm-4">Subject</dt>
-          <dd class="col-sm-8">{{selectedReferralRequest.subject}}</dd>
-          <dt class="col-sm-4">Message</dt>
-          <dd class="col-sm-8" [innerHtml]="selectedReferralRequest.message | safeHtml"></dd>
+          <dt class="col-sm-3">First Name</dt>
+          <dd class="col-sm-9">{{selectedReferralRequest.firstName}}</dd>
+          <dt class="col-sm-3">Middle Name</dt>
+          <dd class="col-sm-9">{{selectedReferralRequest.middleName}}</dd>
+          <dt class="col-sm-3">Last Name</dt>
+          <dd class="col-sm-9">{{selectedReferralRequest.lastName}}</dd>
+          <dt class="col-sm-3">Email Address</dt>
+          <dd class="col-sm-9">{{selectedReferralRequest.emailAddress}}</dd>
+          <dt class="col-sm-3">Mobile Number</dt>
+          <dd class="col-sm-9">{{selectedReferralRequest.mobile}}</dd>
+          <dt class="col-sm-3">Requested On</dt>
+          <dd class="col-sm-9">{{selectedReferralRequest.requestedOn}}</dd>
+          <dt class="col-sm-3">Subject</dt>
+          <dd class="col-sm-9">{{selectedReferralRequest.subject}}</dd>
+          <dt class="col-sm-3">Message</dt>
+          <dd class="col-sm-9" [innerHtml]="selectedReferralRequest.message | safeHtml"></dd>
         </dl>
       </div>
       <div class="modal-footer">
@@ -62,18 +72,40 @@
   </div>
 </div>
 
-<p-dialog header="Details" [(visible)]="displayPostDetail" [modal]="true" [style]="{width: '50vw'}"
-  [maximizable]="true">
-  <dl class="row">
-    <dt class="col-sm-4"><i class="fa fa-file-text mr-1" aria-hidden="true"></i>Description</dt>
-    <dd class="col-sm-8">
-      <div [innerHtml]="postDetail.description | safeHtml"></div>
-    </dd>
-    <dt class="col-sm-4"><i class="fa fa-paperclip mr-1" aria-hidden="true"></i>Attachments</dt>
-    <dd class="col-sm-8"></dd>
-  </dl>
-  <p-footer>
-    <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary"
-      (click)="displayPostDetail=false"></button>
-  </p-footer>
-</p-dialog>
+<div bsModal #postDetailModal="bs-modal" class="custom-modal modal fade" tabindex="-1">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Post Details</h4>
+        <span class="close-icon" (click)="hidePostDetailModal()">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" width="32px" height="32px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;"
+            xml:space="preserve">
+            <circle style="fill:#ffc107;" cx="25" cy="25" r="25" />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+               " />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+               " />
+          </svg>
+        </span>
+      </div>
+      <div class="modal-body">
+        <div class="col">
+          <p-card header="Description" styleClass="mb-2 custom-border-left-post">
+            <div>
+              <p [innerHtml]="postDetail.description | safeHtml"></p>
+            </div>
+          </p-card>
+          <p-card header="Attachments" styleClass="mb-2 custom-border-left-post">
+            <div>
+            </div>
+          </p-card>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary mr-1"
+          (click)="hidePostDetailModal()"></button>
+      </div>
+    </div>
+  </div>
+</div>

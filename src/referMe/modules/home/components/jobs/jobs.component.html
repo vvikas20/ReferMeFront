@@ -4,9 +4,9 @@
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-2">
         <p-card header="Filter ({{totallFilteredJobCount}} Jobs)">
-          <form>
+          <div class="job-filter-card">
             <div class="form-group">
-              <p class="h6">Keywords</p>
+              <label>Keywords</label>
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
@@ -17,7 +17,7 @@
               </div>
             </div>
             <div class="form-group">
-              <p class="h6">Company</p>
+              <label>Company</label>
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
@@ -28,7 +28,7 @@
               </div>
             </div>
             <div class="form-group">
-              <p class="h6">Location</p>
+              <label>Location</label>
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
@@ -40,7 +40,7 @@
               </div>
             </div>
             <div class="form-group">
-              <p class="h6">Min Exp</p>
+              <label>Min Exp</label>
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
@@ -52,7 +52,7 @@
               </div>
             </div>
             <div class="form-group">
-              <p class="h6">Max Exp</p>
+              <label>Max Exp</label>
               <div class="ui-grid ui-grid-responsive ui-fluid">
                 <div class="ui-grid-row">
                   <div class="ui-grid-col-12">
@@ -63,13 +63,12 @@
                 </div>
               </div>
             </div>
-          </form>
+          </div>
           <p-footer>
-            <div class="form-group">
-              <button type="button" class="btn btn-warning btn-block" (click)="refreshJobs()">
-                Search
-              </button>
-            </div>
+            <button pButton type="button" label="Search" class="mr-2 ui-button-raised ui-button-warning"
+              (click)="refreshJobs()"></button>
+            <button pButton type="button" label="Clear" class="ui-button-raised ui-button-secondary"
+              (click)="clearFilter()"></button>
           </p-footer>
         </p-card>
       </div>

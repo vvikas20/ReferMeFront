@@ -18,15 +18,11 @@ import { TableModule } from 'primeng/table';
 import { JobComponent } from './components/jobs/job/job.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PanelModule } from 'primeng/panel';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
-import { SidebarModule } from 'primeng/sidebar';
 import { EditorModule } from 'primeng/editor';
-import { DialogModule } from 'primeng/dialog';
 import { PaginatorModule } from 'primeng/paginator';
-import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ChipsModule } from 'primeng/chips';
 import { ModalModule } from 'ngx-bootstrap';
@@ -50,11 +46,8 @@ import { LocationService } from './services/location.service';
     ReactiveFormsModule,
     TableModule,
     PanelModule,
-    OverlayPanelModule,
     EditorModule,
-    DialogModule,
     PaginatorModule,
-    ScrollPanelModule,
     AutoCompleteModule,
     ChipsModule,
     ModalModule.forRoot(),

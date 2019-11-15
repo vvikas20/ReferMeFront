@@ -213,7 +213,7 @@ body .ui-chips > ul.ui-inputtext .ui-chips-token {
 }
 
 .keyword{
-  border: 1px solid #000;
+  /* border: 1px solid #b92b27; */
   background-color: #fff;
   color: black;
   padding: 3px 10px;
@@ -228,14 +228,29 @@ body .ui-chips > ul.ui-inputtext .ui-chips-token {
   -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
 }
-.job-card{
-  border-top: 3px solid gray;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-}
 
-.my-post-card{
-  border-top: 3px solid #ffc107;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+.custom-border-left-job     {border-left: 5px solid #b92b27;}
+.custom-border-left-post     {border-left: 5px solid #ffc107;}
+
+.job-filter-card {}
+.job-filter-card label{margin-bottom:0;font-weight: bold;display: inline-block;}
+
+.post-filter-card {}
+.post-filter-card label{margin-bottom:0;font-weight: bold;display: inline-block;}
+
+.custom-modal .modal-dialog                 {margin: 2vh auto 2vh auto}
+.custom-modal .modal-content                { height: 96vh;border:3px solid #ffc107}
+.custom-modal .modal-content .modal-header  { height: 50px;margin: 0;padding:0;border-bottom: 2px solid lightgray;}
+.custom-modal .modal-content .modal-header .modal-title { padding: 10px 15px; margin: 0;font-weight: bold; display: inline-block;}
+.custom-modal .modal-content .modal-body  {overflow-y: auto;}
+.custom-modal .modal-content .modal-body::-webkit-scrollbar {width: 6px;}
+.custom-modal .modal-content .modal-body::-webkit-scrollbar-track {}
+.custom-modal .modal-content .modal-body::-webkit-scrollbar-thumb {-webkit-border-radius: 3px;border-radius: 3px;background-color: #000;}
+.custom-modal .modal-content .modal-footer{ height: 50px;border-top: 2px solid lightgray;}
+.custom-modal .modal-content .close-icon  {margin: -10px; cursor: pointer;}
+.custom-modal .modal-content .modal-body label{margin-bottom:0}
+
+body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight,
+body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group.ui-state-highlight{
+  background-color: #ffc107 !important;
 }

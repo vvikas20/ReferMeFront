@@ -33,12 +33,22 @@
   </div>
 </section>
 
-<div bsModal #userDetailModal="bs-modal" class="modal right fade" tabindex="-1">
+<div bsModal #userDetailModal="bs-modal" class="custom-modal modal fade" tabindex="-1">
   <div class="modal-dialog  modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">User Details</h4>
-        <button type="button" class="close pull-right" (click)="hideModal()">&times;</button>
+        <h4 class="modal-title">User Details</h4>
+        <span class="close-icon" (click)="hideModal()">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" width="32px" height="32px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;"
+            xml:space="preserve">
+            <circle style="fill:#ffc107;" cx="25" cy="25" r="25" />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+                   " />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+                   " />
+          </svg>
+        </span>
       </div>
       <div class="modal-body">
         <div class="form-group">

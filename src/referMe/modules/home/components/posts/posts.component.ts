@@ -215,4 +215,8 @@ export class PostsComponent implements OnInit {
   refreshPosts() {
     this.fetchPosts(new SearchParameter());
   }
+
+  clearFilter() {
+    this.postFilter = new PostFilter();
+  }
 }
