@@ -38,6 +38,7 @@ export class UserService {
       UserID: user.userId,
       FirstName: user.firstName,
       MiddleName: user.middleName,
+      EmailAddress: user.emailAddress,
       LastName: user.lastName,
       Mobile: user.mobile,
       UserRoleID: user.roleId
