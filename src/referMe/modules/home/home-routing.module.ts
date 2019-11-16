@@ -10,6 +10,7 @@ import { ManagePostsComponent } from './components/manage-posts/manage-posts.com
 import { AuthGuard } from 'src/referMe/core/guards/auth.guard';
 import { AdminGuard } from 'src/referMe/core/guards/admin.guard';
 import { HomeResolver } from './home-resolver.service';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'posts', component: PostsComponent },
       { path: 'jobs', component: JobsComponent },
+      { path: 'myaccount', component: MyAccountComponent },
       { path: 'manageusers', component: ManageUsersComponent },
       { path: 'managejobs', component: ManageJobsComponent },
       { path: 'manageposts', component: ManagePostsComponent }

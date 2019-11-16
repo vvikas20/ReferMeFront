@@ -250,7 +250,17 @@ body .ui-chips > ul.ui-inputtext .ui-chips-token {
 .custom-modal .modal-content .close-icon  {margin: -10px; cursor: pointer;}
 .custom-modal .modal-content .modal-body label{margin-bottom:0}
 
+body .dropdown-item.active,body .dropdown-item:active,
 body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight,
 body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group.ui-state-highlight{
   background-color: #ffc107 !important;
+}
+
+.full-wrap{
+  background: #fff;
+  box-shadow: 0 5px 12px rgba(0,0,0,.15);
+  border-radius: 5px;
+  min-height: 500px;
+  margin-top: 10px;
+  width: 100vw;
 }
