@@ -1,3 +1,5 @@
+import { Referral, ReferralRequest } from "./referral.model";
+
 export class PostDetail {
     postID: number;
     userID: number;
@@ -22,8 +24,10 @@ export class UserDetail {
 }
 
 export class UserPostDetail {
+    applied: boolean = false;
     postDetail: PostDetail;
     userDetail: UserDetail;
+    referralDetail: ReferralRequest;
 }
 
 export class PostFilter {

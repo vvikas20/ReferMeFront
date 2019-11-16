@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { JobpostService } from '../../services/jobpost.service';
-import { UserPostDetail, PostFilter } from '../../models/user-post.model';
+import { UserPostDetail, PostFilter, PostDetail } from '../../models/user-post.model';
 import { AlertService } from 'src/referMe/core/helper/alert.service';
 import { LocationService } from '../../services/location.service';
 import { CompanyService } from '../../services/company.service';
 import { SearchParameter } from '../../models/search-parameter.model';
 import { DatePipe } from '@angular/common';
+import { Referral, ReferralRequest } from '../../models/referral.model';
 
 @Component({
   selector: 'referMe-jobs',
@@ -125,7 +126,8 @@ export class JobsComponent implements OnInit {
     this.jobpostService.getOpenings(searchParameter).subscribe(next => {
       this.totallFilteredJobCount = next.TotallItem;
       next.Items.forEach(element => {
-        this.userPostDetails.push({
+        let job: UserPostDetail = {
+          applied: element.Applied,
           postDetail: {
             postID: element.PostDetail.PostID,
             userID: element.PostDetail.UserID,
@@ -146,8 +148,17 @@ export class JobsComponent implements OnInit {
             lastName: element.UserDetail.LastName,
             emailAddress: element.UserDetail.EmailAddress,
             mobile: element.UserDetail.Mobile
-          }
-        });
+          },
+          referralDetail: new ReferralRequest()
+        };
+
+        if (job.applied) {
+          job.referralDetail.subject = element.ReferralDetail.Subject;
+          job.referralDetail.message = element.ReferralDetail.Message;
+          job.referralDetail.requestedOn = this.datePipe.transform(new Date(element.ReferralDetail.CreatedOn), 'MMM d, y, h:mm:ss a')
+        }
+
+        this.userPostDetails.push(job);
       });
     },
       error => {

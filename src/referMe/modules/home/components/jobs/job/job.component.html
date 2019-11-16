@@ -1,6 +1,19 @@
 <!--Job Referral Start-->
 <p-card header="{{userPostDetail.postDetail.position}}" subheader="{{userPostDetail.postDetail.company}}"
   [styleClass]="'mb-1 ui-card-shadow custom-border-left-job'">
+  <span class="pull-right pointer" (click)="openReferralDetail()" *ngIf="userPostDetail.applied">
+    <i>
+      <svg height="32px" viewBox="0 0 512 512" width="32px" xmlns="http://www.w3.org/2000/svg" style="fill:#ffc107">
+        <path
+          d="m316.109375 197.738281v-50.0625h70.90625l-131.015625-147.675781-131.015625 147.675781h70.90625v50.0625zm0 0" />
+        <path d="m364.457031 343.199219 147.542969 147.542969v-249.421876zm0 0" />
+        <path
+          d="m339.363281 360.527344-83.363281 57.566406-83.363281-57.566406-151.425781 151.425781h469.578124zm0 0" />
+        <path d="m256 381.636719 222.882812-153.902344h-445.765624zm0 0" />
+        <path d="m147.542969 343.199219-147.542969-101.878907v249.421876zm0 0" /></svg>
+    </i>
+  </span>
+
   <p class="card-text">
     <i class="fa fa-briefcase mr-1" aria-hidden="true"></i>
     {{userPostDetail.postDetail.minExp}}-{{userPostDetail.postDetail.maxExp}}
@@ -117,9 +130,44 @@
       </div>
       <div class="modal-footer">
         <button pButton type="button" label="Request Referral" class="ui-button-raised ui-button-warning"
-          (click)="requestReferral()"></button>
+          (click)="requestReferral()" *ngIf="!userPostDetail.applied"></button>
         <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary"
           (click)="hideJobDetailModal()"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #referralDetailModal="bs-modal" class="custom-modal modal fade" tabindex="-1">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Referral Request Details</h4>
+        <span class="close-icon" (click)="hideReferralDetail()">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" width="32px" height="32px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;"
+            xml:space="preserve">
+            <circle style="fill:#ffc107;" cx="25" cy="25" r="25" />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+               " />
+            <polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+               " />
+          </svg>
+        </span>
+      </div>
+      <div class="modal-body">
+        <dl class="row">
+          <dt class="col-sm-3">Requested On</dt>
+          <dd class="col-sm-9">{{userPostDetail.referralDetail.requestedOn}}</dd>
+          <dt class="col-sm-3">Subject</dt>
+          <dd class="col-sm-9">{{userPostDetail.referralDetail.subject}}</dd>
+          <dt class="col-sm-3">Message</dt>
+          <dd class="col-sm-9" [innerHtml]="userPostDetail.referralDetail.message | safeHtml"></dd>
+        </dl>
+      </div>
+      <div class="modal-footer">
+        <button pButton type="button" label="Close" class="ui-button-raised ui-button-secondary mr-1"
+          (click)="hideReferralDetail()"></button>
       </div>
     </div>
   </div>

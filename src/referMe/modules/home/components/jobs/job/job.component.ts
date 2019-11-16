@@ -16,6 +16,7 @@ export class JobComponent implements OnInit {
 
   @ViewChild('requestReferralModal') requestReferralModal: ModalDirective;
   @ViewChild('jobDetailModal') jobDetailModal: ModalDirective;
+  @ViewChild('referralDetailModal') referralDetailModal: ModalDirective;
 
   @Input() userPostDetail: UserPostDetail;
 
@@ -68,4 +69,11 @@ export class JobComponent implements OnInit {
     this.jobDetailModal.hide();
   }
 
+  openReferralDetail() {
+    this.referralDetailModal.show();
+  }
+
+  hideReferralDetail() {
+    this.referralDetailModal.hide();
+  }
 }
