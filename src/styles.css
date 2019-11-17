@@ -231,8 +231,26 @@ body .ui-chips > ul.ui-inputtext .ui-chips-token {
 
 .pointer {cursor: pointer;}
 
+.dashboard-card {min-width: 200px; height:100px;margin:10px 20px;border-radius: 5px!important;border-left: 5px solid #ee0979;}
+
+.dashboard-card .overview-box .icon {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 15px;
+}
+
+.dashboard-card .overview-box .text {
+  font-weight: 300;
+  display: inline-block;
+}
+
+.radiant-1 {background-image: -webkit-linear-gradient(90deg,#3f5efb 0%,#fc466b 100%) !important;}
+.radiant-2 {background-image: -webkit-linear-gradient(90deg,#11998e 0%,#38ef7d 100%) !important;}
+.radiant-3 {background-image: -webkit-linear-gradient(90deg,#ee0979 0%,#ff6a00 100%) !important;}
+.radiant-4 {background-image: -webkit-linear-gradient(90deg,#45b649 0%,#dce35b 100%) !important;}
+
 .custom-border-left-job     {border-left: 5px solid #b92b27;}
-.custom-border-left-post     {border-left: 5px solid #ffc107;}
+.custom-border-left-post    {border-left: 5px solid #ffc107;}
 
 .job-filter-card {}
 .job-filter-card label{margin-bottom:0;font-weight: bold;display: inline-block;}
