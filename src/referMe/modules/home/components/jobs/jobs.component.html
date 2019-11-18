@@ -77,7 +77,7 @@
       <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
         <div>
           <ng-container *ngFor="let userPostDetail of userPostDetails">
-            <referMe-job [userPostDetail]="userPostDetail"></referMe-job>
+            <referMe-job [userPostDetail]="userPostDetail" (notifyRefresh)="refreshJobs()"></referMe-job>
           </ng-container>
         </div>
         <p-paginator id="turbotable" [rows]="10" [totalRecords]="totallFilteredJobCount"

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserPostDetail } from '../../../models/user-post.model';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
@@ -19,6 +19,7 @@ export class JobComponent implements OnInit {
   @ViewChild('referralDetailModal') referralDetailModal: ModalDirective;
 
   @Input() userPostDetail: UserPostDetail;
+  @Output() notifyRefresh = new EventEmitter();
 
   referral: Referral;
 
@@ -53,6 +54,7 @@ export class JobComponent implements OnInit {
       data => {
         this.alertService.success('SUCCESS', 'Referral requested successfully.');
         this.requestReferralModal.hide();
+        this.notifyRefresh.emit();
       },
       error => {
 
