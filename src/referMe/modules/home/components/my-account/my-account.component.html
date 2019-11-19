@@ -3,6 +3,71 @@
   <div class="col-12">
     <div class="row">
       <div class="full-wrap">
+        <div class="col">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col sm-12">
+              <div class="d-flex justify-content-center mt-5">
+                <img class="profile-pic" src="assets/images/user-profile.png">
+              </div>
+              <div class="d-flex justify-content-center mt-5">
+                <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000"
+                  (onUpload)="onBasicUpload($event)"></p-fileUpload>
+              </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col sm-12 user-profile">
+              <p-fieldset legend="Personal Detail">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="selectedUser.firstName"
+                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
+                </div>
+                <div class="form-group">
+                  <label>Middle name</label>
+                  <input type="text" class="form-control" [(ngModel)]="selectedUser.middleName"
+                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="selectedUser.lastName"
+                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''">
+                </div>
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input type="email" class="form-control" [(ngModel)]="selectedUser.emailAddress"
+                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''" readonly></div>
+                <div class="form-group">
+                  <label>Mobile</label>
+                  <input type="text" class="form-control" [(ngModel)]="selectedUser.mobile"
+                    (ngModelChange)="registrationMessage=registrationErrorMessgae=''"></div>
+                <div class="form-group">
+                  <label>Resume</label><br>
+                  <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000"
+                    (onUpload)="onBasicUpload($event)"></p-fileUpload>
+                </div>
+                <span class="errorLogin mt-1" *ngIf="registrationErrorMessgae!=''">
+                  {{registrationErrorMessgae}}
+                  <i class="icon-scope">
+                    <svg xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" height="16px"
+                      style="enable-background:new 0 0 488.451 488.451;" version="1.1" viewBox="0 0 488.451 488.451"
+                      width="16px" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
+                      <path
+                        d="M484.125,412.013l-212.2-367.6c-12.3-21.3-43.1-21.3-55.4,0l-212.2,367.6c-12.3,21.3,3.1,48,27.7,48h424.4   C481.025,460.013,496.425,433.313,484.125,412.013z M244.525,157.613c13.6,0,24.6,11.3,24.2,24.9l-4,139.6   c-0.3,11-9.3,19.7-20.3,19.7s-20-8.8-20.3-19.7l-3.9-139.6C219.925,168.913,230.825,157.613,244.525,157.613z M244.225,410.113   c-13.9,0-25.2-11.3-25.2-25.2c0-13.9,11.3-25.2,25.2-25.2s25.2,11.3,25.2,25.2S258.125,410.113,244.225,410.113z">
+                      </path>
+                    </svg>
+                  </i>
+                </span>
+                <span class="successRegistration" *ngIf="registrationMessage!=''">
+                  {{registrationMessage}}
+                  <i class="icon-scope">
+                  </i>
+                </span>
+              </p-fieldset>
+            </div>
+          </div>
+          <div class="row m-2 float-right">
+            <button pButton type="button" label="Update" class="ui-button-raised ui-button-warning"></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

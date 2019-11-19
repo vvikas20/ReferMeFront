@@ -25,6 +25,8 @@ import { EditorModule } from 'primeng/editor';
 import { PaginatorModule } from 'primeng/paginator';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ChipsModule } from 'primeng/chips';
+import { FieldsetModule } from 'primeng/fieldset';
+import { FileUploadModule } from 'primeng/fileupload';
 import { ModalModule } from 'ngx-bootstrap';
 import { MyPostComponent } from './components/posts/my-post/my-post.component';
 import { JobpostService } from './services/jobpost.service';
@@ -50,6 +52,8 @@ import { LocationService } from './services/location.service';
     PaginatorModule,
     AutoCompleteModule,
     ChipsModule,
+    FieldsetModule,
+    FileUploadModule,
     ModalModule.forRoot(),
     HomeRoutingModule,
     SharedModule
