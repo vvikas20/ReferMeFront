@@ -10,8 +10,7 @@
                 <img class="profile-pic" src="assets/images/user-profile.png">
               </div>
               <div class="d-flex justify-content-center mt-5">
-                <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000"
-                  (onUpload)="onBasicUpload($event)"></p-fileUpload>
+                <p-fileUpload mode="basic" name="demo[]" accept="image/*" maxFileSize="1000000"></p-fileUpload>
               </div>
             </div>
             <div class="col-lg-9 col-md-9 col sm-12 user-profile">
@@ -41,8 +40,7 @@
                     (ngModelChange)="registrationMessage=registrationErrorMessgae=''"></div>
                 <div class="form-group">
                   <label>Resume</label><br>
-                  <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000"
-                    (onUpload)="onBasicUpload($event)"></p-fileUpload>
+                  <p-fileUpload mode="basic" name="demo[]" accept="image/*" maxFileSize="1000000"></p-fileUpload>
                 </div>
                 <span class="errorLogin mt-1" *ngIf="registrationErrorMessgae!=''">
                   {{registrationErrorMessgae}}
