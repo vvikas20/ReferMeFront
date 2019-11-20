@@ -20,6 +20,10 @@ export class MyAccountComponent implements OnInit {
 
   userProfile: UserProfile;
 
+  //Create blobUrl from blob object.
+  blobUrl: string;
+
+
   constructor(private userService: UserService,
     private alertService: AlertService,
     private appUser: AppUser) { }
@@ -28,13 +32,13 @@ export class MyAccountComponent implements OnInit {
     this.loginErrorMessgae = '';
     this.registrationErrorMessgae = '';
     this.registrationMessage = '';
-
-    this.getMyDetail();
+    this.blobUrl = '';
+    this.getMyProfile();
   }
 
-  getMyDetail() {
+  getMyProfile() {
     this.userProfile = new UserProfile();
-    this.userService.getUserDetails(this.appUser.userID).subscribe(
+    this.userService.getUserProfile(this.appUser.userID).subscribe(
       next => {
         this.userProfile.userId = next.UserID;
         this.userProfile.firstName = next.FirstName;
@@ -42,6 +46,9 @@ export class MyAccountComponent implements OnInit {
         this.userProfile.lastName = next.LastName;
         this.userProfile.emailAddress = next.EmailAddress;
         this.userProfile.mobile = next.Mobile;
+        this.userProfile.profile = next.Profile == null ? null : `data:image/png;base64,${next.Profile}`;
+        this.userProfile.resume = next.Resume;
+        this.blobUrl = next.Resume == null ? '' : window.URL.createObjectURL(next.Resume);
       },
       error => {
 
@@ -62,7 +69,7 @@ export class MyAccountComponent implements OnInit {
     this.userService.updateProfile(this.userProfile).subscribe(
       next => {
         this.alertService.success('Success', 'Profile updated Successfully');
-        this.getMyDetail();
+        this.getMyProfile();
       },
       error => {
 

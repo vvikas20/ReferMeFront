@@ -31,6 +31,11 @@ export class UserService {
     return this.httpService.Get<any>(ApiEndPoints.userDetails, { params: params })
   }
 
+  getUserProfile(userId: number): Observable<any> {
+    const params = new HttpParams().set('userId', `${userId}`);
+    return this.httpService.Get<any>(ApiEndPoints.userProfile, { params: params })
+  }
+
   updateProfile(userProfile: UserProfile): Observable<any> {
 
     let formData = new FormData();

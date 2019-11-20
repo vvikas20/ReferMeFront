@@ -7,4 +7,6 @@ export class UserProfile {
     mobile: string = '';
     profileImageFile: File;
     resumeFile: File;
+    profile: any = null;
+    resume: any = null;
 }
