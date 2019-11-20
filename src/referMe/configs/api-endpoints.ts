@@ -18,6 +18,7 @@ export class ApiEndPoints {
     static readonly userDetails: string = `${ApiEndPoints.user}/user-detail`;
     static readonly updateUser: string = `${ApiEndPoints.user}/update`;
     static readonly deleteUser: string = `${ApiEndPoints.user}/delete`;
+    static readonly updateprofile: string = `${ApiEndPoints.user}/updateprofile`;
 
     static readonly jobposts: string = `${ApiEndPoints.baseUrl}/jobposts`;
     static readonly createpost: string = `${ApiEndPoints.jobposts}/add`;

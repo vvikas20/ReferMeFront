@@ -3,6 +3,8 @@ import { Registration } from 'src/referMe/modules/login/models/registration.mode
 import { User } from '../../models/user.model';
 import { UserService } from 'src/referMe/core/services/user.service';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
+import { UserProfile } from '../../models/user-profile.model';
+import { AlertService } from 'src/referMe/core/helper/alert.service';
 
 @Component({
   selector: 'referMe-my-account',
@@ -16,9 +18,11 @@ export class MyAccountComponent implements OnInit {
   registrationErrorMessgae: string;
   registrationMessage: string;
 
-  selectedUser: User;
+  userProfile: UserProfile;
 
-  constructor(private userService: UserService, private appUser: AppUser) { }
+  constructor(private userService: UserService,
+    private alertService: AlertService,
+    private appUser: AppUser) { }
 
   ngOnInit() {
     this.loginErrorMessgae = '';
@@ -29,16 +33,36 @@ export class MyAccountComponent implements OnInit {
   }
 
   getMyDetail() {
-    this.selectedUser = new User();
+    this.userProfile = new UserProfile();
     this.userService.getUserDetails(this.appUser.userID).subscribe(
       next => {
-        this.selectedUser.userId = next.UserID;
-        this.selectedUser.firstName = next.FirstName;
-        this.selectedUser.middleName = next.MiddleName;
-        this.selectedUser.lastName = next.LastName;
-        this.selectedUser.emailAddress = next.EmailAddress;
-        this.selectedUser.mobile = next.Mobile;
-        this.selectedUser.roleId = next.UserRoleID;
+        this.userProfile.userId = next.UserID;
+        this.userProfile.firstName = next.FirstName;
+        this.userProfile.middleName = next.MiddleName;
+        this.userProfile.lastName = next.LastName;
+        this.userProfile.emailAddress = next.EmailAddress;
+        this.userProfile.mobile = next.Mobile;
+      },
+      error => {
+
+      },
+      () => { });
+  }
+
+  onProfileSelect($event) {
+    this.userProfile.profileImageFile = $event.files[0];
+  }
+
+  onResumeSelect($event) {
+    this.userProfile.resumeFile = $event.files[0];
+  }
+
+  updateProfile() {
+
+    this.userService.updateProfile(this.userProfile).subscribe(
+      next => {
+        this.alertService.success('Success', 'Profile updated Successfully');
+        this.getMyDetail();
       },
       error => {
 
