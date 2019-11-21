@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverURL: 'http://localhost:55789/'
+  serverURL: 'http://api.vsvikassingh.co.in'
 };
 
 /*

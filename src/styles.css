@@ -373,7 +373,8 @@ body
 .profile-pic {
   display: inline-block;
   overflow: hidden;
-  border: 5px solid;
+  border: 1px solid #ee0979;
+  padding: 5px;
   vertical-align: top;
   border-top-left-radius: 50% 50%;
   border-top-right-radius: 50% 50%;
@@ -381,10 +382,42 @@ body
   border-bottom-left-radius: 50% 50%;
   max-width: 200px;
   max-height: 200px;
+  width: 100%;
+  height: auto;
 }
 
 .user-profile label {
   margin-bottom: 0;
   font-weight: bold;
+  display: inline-block;
+}
+
+.profile-image-uploader {
+  border: #ffc107;
+}
+
+.resume-uploader {
+  border: red;
+}
+
+.profile-image-uploader .ui-fileupload-buttonbar .ui-button,
+.resume-uploader .ui-fileupload-buttonbar .ui-button {
+  background: #656565;
+  color: #fff;
+  padding: 5px;
+  font-family: MontserratRegular, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  min-height: 32px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.profile-image-uploader .ui-fileupload-row,
+.resume-uploader .ui-fileupload-row {
+  border: 1px solid #c9c9c9;
+  background: #e5e5e5;
   display: inline-block;
 }

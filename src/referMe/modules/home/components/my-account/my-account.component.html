@@ -11,7 +11,9 @@
                   src="{{this.userProfile.profile == null ? 'assets/images/user-profile.png' : this.userProfile.profile}}">
               </div>
               <div class="d-flex justify-content-center mt-5">
-                <p-fileUpload mode="basic" accept="image/*" maxFileSize="1000000" (onSelect)="onProfileSelect($event)">
+                <p-fileUpload [styleClass]="'profile-image-uploader'" #profileImageUploader [showUploadButton]="false"
+                  [showCancelButton]="false" accept="image/*" maxFileSize="2000000" (onSelect)="onProfileSelect($event)"
+                  (onRemove)="onProfileRemove($event)">
                 </p-fileUpload>
               </div>
             </div>
@@ -41,9 +43,12 @@
                   <input type="text" class="form-control" [(ngModel)]="userProfile.mobile"
                     (ngModelChange)="registrationMessage=registrationErrorMessgae=''"></div>
                 <div class="form-group">
-                  <label>Resume</label> <a href="javascript:void(0);" (click)="viewResume()">Resume</a> <br>
-                  <p-fileUpload mode="basic" accept="application/pdf" maxFileSize="1000000"
-                    (onSelect)="onResumeSelect($event)">
+                  <label>Resume</label>
+                  <a class="pull-right text-warning font-weight-bold" href="javascript:void(0);" (click)="viewResume()"
+                    *ngIf="userProfile.resume!=null">View Uploaded Resume</a> <br>
+                  <p-fileUpload [styleClass]="'resume-uploader'" #resumeUploader [showUploadButton]="false"
+                    [showCancelButton]="false" accept="application/pdf" maxFileSize="2000000"
+                    (onSelect)="onResumeSelect($event)" (onRemove)="onResumeRemove($event)">
                   </p-fileUpload>
                 </div>
                 <span class=" errorLogin mt-1" *ngIf="registrationErrorMessgae!=''">

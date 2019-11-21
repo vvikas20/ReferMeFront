@@ -6,6 +6,7 @@ import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { UserProfile } from '../../models/user-profile.model';
 import { AlertService } from 'src/referMe/core/helper/alert.service';
 import { ModalDirective } from 'ngx-bootstrap';
+import { FileUpload } from 'primeng/fileupload';
 
 @Component({
   selector: 'referMe-my-account',
@@ -14,8 +15,11 @@ import { ModalDirective } from 'ngx-bootstrap';
 })
 export class MyAccountComponent implements OnInit {
 
+  @ViewChild('profileImageUploader') profileImageUploader: FileUpload;
+  @ViewChild('resumeUploader') resumeUploader: FileUpload;
+
   @ViewChild('resumeModal') resumeModal: ModalDirective;
-  pdfSrc: string;
+  pdfSrc: string = '';
 
   loginErrorMessgae: string;
   registrationErrorMessgae: string;
@@ -40,6 +44,10 @@ export class MyAccountComponent implements OnInit {
   }
 
   getMyProfile() {
+
+    this.profileImageUploader.clear();
+    this.resumeUploader.clear();
+
     this.userProfile = new UserProfile();
     this.userService.getUserProfile(this.appUser.userID).subscribe(
       next => {
@@ -50,7 +58,7 @@ export class MyAccountComponent implements OnInit {
         this.userProfile.emailAddress = next.EmailAddress;
         this.userProfile.mobile = next.Mobile;
         this.userProfile.profile = next.Profile == null ? null : `data:image/png;base64,${next.Profile}`;
-        this.userProfile.resume = next.Resume == null ? '' : new Blob([this.base64ToArrayBuffer(next.Resume)]);
+        this.userProfile.resume = next.Resume == null ? null : new Blob([this.base64ToArrayBuffer(next.Resume)]);
       },
       error => {
 
@@ -89,8 +97,16 @@ export class MyAccountComponent implements OnInit {
     this.userProfile.profileImageFile = $event.files[0];
   }
 
+  onProfileRemove($event) {
+    this.userProfile.profileImageFile = null;
+  }
+
   onResumeSelect($event) {
     this.userProfile.resumeFile = $event.files[0];
+  }
+
+  onResumeRemove($event) {
+    this.userProfile.resumeFile = null;
   }
 
   updateProfile() {
