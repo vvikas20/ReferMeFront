@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Registration } from 'src/referMe/modules/login/models/registration.model';
 import { User } from '../../models/user.model';
 import { UserService } from 'src/referMe/core/services/user.service';
 import { AppUser } from 'src/referMe/core/models/app-user.model';
 import { UserProfile } from '../../models/user-profile.model';
 import { AlertService } from 'src/referMe/core/helper/alert.service';
+import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
   selector: 'referMe-my-account',
@@ -13,6 +14,8 @@ import { AlertService } from 'src/referMe/core/helper/alert.service';
 })
 export class MyAccountComponent implements OnInit {
 
+  @ViewChild('resumeModal') resumeModal: ModalDirective;
+  pdfSrc: string;
 
   loginErrorMessgae: string;
   registrationErrorMessgae: string;
@@ -47,13 +50,39 @@ export class MyAccountComponent implements OnInit {
         this.userProfile.emailAddress = next.EmailAddress;
         this.userProfile.mobile = next.Mobile;
         this.userProfile.profile = next.Profile == null ? null : `data:image/png;base64,${next.Profile}`;
-        this.userProfile.resume = next.Resume;
-        this.blobUrl = next.Resume == null ? '' : window.URL.createObjectURL(next.Resume);
+        this.userProfile.resume = next.Resume == null ? '' : new Blob([this.base64ToArrayBuffer(next.Resume)]);
       },
       error => {
 
       },
       () => { });
+  }
+
+  base64ToArrayBuffer(base64: string) {
+    const binaryString = window.atob(base64); // Comment this if not using base64
+    const bytes = new Uint8Array(binaryString.length);
+    return bytes.map((byte, i) => binaryString.charCodeAt(i));
+  }
+
+  createAndDownloadBlobFile(body, filename, extension = 'pdf') {
+    const blob = new Blob([body]);
+    const fileName = `${filename}.${extension}`;
+    if (navigator.msSaveBlob) {
+      // IE 10+
+      navigator.msSaveBlob(blob, fileName);
+    } else {
+      const link = document.createElement('a');
+      // Browsers that support HTML5 download attribute
+      if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', fileName);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
   }
 
   onProfileSelect($event) {
@@ -75,5 +104,18 @@ export class MyAccountComponent implements OnInit {
 
       },
       () => { });
+  }
+
+  downloadResume() {
+    this.createAndDownloadBlobFile(this.userProfile.resume, `${this.appUser.firstName}_${this.appUser.lastName}`);
+  }
+
+  viewResume() {
+    this.pdfSrc = URL.createObjectURL(this.userProfile.resume);
+    this.resumeModal.show();
+  }
+
+  hideResume() {
+    this.resumeModal.hide();
   }
 }

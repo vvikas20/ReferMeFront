@@ -27,6 +27,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ChipsModule } from 'primeng/chips';
 import { FieldsetModule } from 'primeng/fieldset';
 import { FileUploadModule } from 'primeng/fileupload';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 import { ModalModule } from 'ngx-bootstrap';
 import { MyPostComponent } from './components/posts/my-post/my-post.component';
 import { JobpostService } from './services/jobpost.service';
@@ -54,6 +56,7 @@ import { LocationService } from './services/location.service';
     ChipsModule,
     FieldsetModule,
     FileUploadModule,
+    PdfViewerModule,
     ModalModule.forRoot(),
     HomeRoutingModule,
     SharedModule
