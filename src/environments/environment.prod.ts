@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  serverURL: 'http://api.vsvikassingh.co.in'
+  serverURL: 'http://api.refermecommunity.in'
 };
