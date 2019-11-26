@@ -44,7 +44,7 @@ export class JobComponent implements OnInit {
     this.referral.postId = this.userPostDetail.postDetail.postID;
     this.referral.to = this.userPostDetail.userDetail.emailAddress;
     this.referral.subject = `Referral Request for ${this.userPostDetail.postDetail.position} at ${this.userPostDetail.postDetail.company}`;
-    this.referral.message = `<p>I am interested in applying for the position of <strong>${this.userPostDetail.postDetail.position}</strong> at <strong>${this.userPostDetail.postDetail.company}</strong>.</p><p><br></p><p><br></p><p><br></p><p>Thanks,</p><p>${this.appUser.firstName} ${this.appUser.lastName}</p><p>${this.appUser.emailAddress}</p><p>${this.appUser.mobile}</p>`;
+    this.referral.message = `<p>I am interested in applying for the position of <strong>${this.userPostDetail.postDetail.position}</strong> at <strong>${this.userPostDetail.postDetail.company}</strong>.</p><p><br></p><p>Thanks,</p><p>${this.appUser.firstName} ${this.appUser.lastName}</p>`;
 
     this.requestReferralModal.show();
   }

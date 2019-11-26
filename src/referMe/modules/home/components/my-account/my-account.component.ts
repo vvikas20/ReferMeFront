@@ -7,6 +7,7 @@ import { UserProfile } from '../../models/user-profile.model';
 import { AlertService } from 'src/referMe/core/helper/alert.service';
 import { ModalDirective } from 'ngx-bootstrap';
 import { FileUpload } from 'primeng/fileupload';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'referMe-my-account',
@@ -32,6 +33,7 @@ export class MyAccountComponent implements OnInit {
 
 
   constructor(private userService: UserService,
+    private router: Router,
     private alertService: AlertService,
     private appUser: AppUser) { }
 
@@ -133,5 +135,9 @@ export class MyAccountComponent implements OnInit {
 
   hideResume() {
     this.resumeModal.hide();
+  }
+
+  closeProfileScreen() {
+    this.router.navigateByUrl('/home');
   }
 }
